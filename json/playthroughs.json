@@ -1,0 +1,20 @@
+[
+  {
+    "playerId": 1,
+    "roomId": 1,
+    "puzzleId": 1,
+    "itemId": 1,
+    "startTime": "2025-09-27T14:32:23",
+    "endTime": "2025-09-27T14:39:56",
+    "status": "completed"
+  },
+  {
+    "playerId": 2,
+    "roomId": 2,
+    "puzzleId": 2,
+    "itemId": 2,
+    "startTime": "2025-09-27T14:35:",08
+    "endTime": "2025-09-27T14:40:09",
+    "status": "abandoned"
+  }
+]

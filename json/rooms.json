@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "roomName": "Library",
+    "description": "Dusty room filled with bookshelves",
+    "puzzles": [1],
+    "items": [1]
+  },
+  {
+    "id": 2,
+    "roomName": "Basement",
+    "description": "Dark basement with hidden passages",
+    "puzzles": [2],
+    "items": [2]
+  }
+]
