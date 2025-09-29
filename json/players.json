@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "username": "aliceketchum",
+    "firstName": "Alice",
+    "lastName": "Brown",
+    "email": "alice@example.com",
+    "score": 250,
+    "achievements": [1]   // references achievements.json
+  },
+  {
+    "id": 2,
+    "username": "bob42",
+    "firstName": "Bob",
+    "lastName": "Smith",
+    "email": "bob@example.com",
+    "score": 120,
+    "achievements": []
+  }
+]
