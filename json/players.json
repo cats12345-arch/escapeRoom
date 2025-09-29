@@ -6,7 +6,7 @@
     "lastName": "Brown",
     "email": "alice@example.com",
     "score": 250,
-    "achievements": [1]   // references achievements.json
+    "achievements": [1]
   },
   {
     "id": 2,
