@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "username": "dmoss",
+    "password": "1234abc",
+    "Players": [{
+      "id": 1,
+      "score": 4,
+      "Achievement": [{
+        "id": 1,
+        "name": "Really fast huh",
+        "awarded": false,
+        "description": "Completed in less than 2min"
+      }]
+    }]
+  },
+  {
+    "id": 2,
+    "username": "MadilynMei",
+    "password": "favartistrn",
+    "Players": [{
+      "id": 2,
+      "score": 10,
+      "Achievement": [{
+        "id": 2,
+        "name": "taking your time",
+        "awarded": true,
+        "description": "Take longer than 10min on a puzzle"
+      }]
+    }]
+  }
+]

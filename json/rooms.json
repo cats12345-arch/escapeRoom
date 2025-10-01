@@ -2,30 +2,56 @@
   {
     "id": 1,
     "roomName": "Library",
-    "description": "Dusty room filled with bookshelves",
-    "puzzles": [1],
-    "items": [1]
+    "type": "Riddle",
+    "solved": false,
+    "roomInfo": [{
+      "roomDescription": "A grand, dimly lit library filled with towering bookshelves, dusty tomes, and hidden secrets waiting to be unlocked.",
+      "options": "1. There is a chest \n 2. There is a bookshelf"
+    }],
+    "puzzles": [{
+      "solution": "Piano",
+      "hint": ["what has keys", "what is grand"],
+      "puzzleNum": 1,
+      "solved": false
+
+    }],
+    "items": [{
+      "id": 1,
+      "name": "mirror",
+      "description": "a mirror that lets you see things from a different angle",
+      "usableOn": "puzzle"
+    }],
+    "riddlePuzzle": [{
+      "riddle": "I have keys but no locks, hammers but no nails, and strings that sing when struck — what am I?",
+      "hint": "It is often played"
+    }]
   },
   {
     "id": 2,
-    "roomName": "Basement",
-    "description": "Dark basement with hidden passages",
-    "puzzles": [2],
-    "items": [2]
-  },
-  {
-    "puzzles" : [
-    {
-        "id": 1,
-        "puzzleType": "RiddlePuzzle",
-        "riddle": "What has keys but can`t open locks?",
-      "solution": "Piano"
-    },
-    {
+    "roomName": "Victorian",
+    "type": "Cipher",
+    "solved": true,
+    "roomInfo": [{
+      "roomDescription": "Brass gears, ink-stained papers, and a clockwork cipher box fill the study — crack the code hidden in the clock`s chime.",
+      "options": "1. There is are some dice \n 2. There a desk"
+    }],
+    "puzzles": [{
       "id": 2,
-      "puzzleType": "CipherPuzzle",
-      "cipherClues": ["QEB NRFZH YOLTK"],
-      "solution": "THE QUICK BROWN"
+      "solution": "Meet at midnight by the gazebo",
+      "hint": ["Her name hangs above the mantel", "Victoria"],
+      "puzzleNum": 2,
+      "solved": true
+
+    }],
+    "items": [{
+      "id": 2,
+      "name": "key",
+      "description": "The decryption key for the puzzle",
+      "usableOn": "puzzle"
+    }],
+    "cipherPuzzle": [{
+      "riddle": "A wax-sealed note reads: HMGM OK UIYVKZVK JY OPG ZOQMBJ",
+      "hint": "Vigenere"
     }]
   }
 ]
