@@ -12,5 +12,20 @@
     "description": "Dark basement with hidden passages",
     "puzzles": [2],
     "items": [2]
+  },
+  {
+    "puzzles" : [
+    {
+        "id": 1,
+        "puzzleType": "RiddlePuzzle",
+        "riddle": "What has keys but can`t open locks?",
+      "solution": "Piano"
+    },
+    {
+      "id": 2,
+      "puzzleType": "CipherPuzzle",
+      "cipherClues": ["QEB NRFZH YOLTK"],
+      "solution": "THE QUICK BROWN"
+    }]
   }
 ]
