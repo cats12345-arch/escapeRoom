@@ -2,13 +2,13 @@ package escaperoon;
 
 import java.util.ArrayList;
 
-public class Room 
+public static class Room 
 {
-    private String roomName;
-    private String type;
-    private boolean solved;
-    private Arraylist<Puzzle> puzzles;
-    private ArrayList<Item> inventory;
+    protected String roomName;
+    protected String type;
+    protected boolean solved;
+    protected Arraylist<Puzzle> puzzles;
+    protected ArrayList<Item> inventory;
 
      public Room()
  {
@@ -54,7 +54,7 @@ public class Room
 
  public void exploreRoom()
  {
-    
+
  }
     
  public void startPuzzle()
