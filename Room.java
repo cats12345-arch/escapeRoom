@@ -12,8 +12,8 @@ public class Room
 
      public Room()
  {
-    this.roomName = "";
-    this.type = "";
+    this.roomName = "Unnamed";
+    this.type = "Normal";
     this.solved = false;
     this.puzzles = new ArrayList<>();
     this.inventory = new ArrayList<>();
@@ -31,17 +31,30 @@ public class Room
 
  public boolean isSolved()
  {
-
+    for(Puzzle p: puzzles)
+    {
+        if(!p.isSolved())
+        {
+            return false;
+        }
+    }
+    return solved;
  }
 
  public Item getItem(Player player)
  {
-
+    if(!inventory.isEmpty())
+    {
+        Item item = inventory.remove(0);
+        player.giveItem(item);
+        return item;
+    }
+    return 0;
  }
 
  public void exploreRoom()
  {
-
+    
  }
     
  public void startPuzzle()
