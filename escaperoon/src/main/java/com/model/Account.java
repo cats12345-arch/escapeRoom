@@ -2,16 +2,20 @@ package com.model;
 
 import java.util.ArrayList;
 
-public class Account {
+public abstract class Account {
     protected String username;
     protected String password;
     private ArrayList<Player> players;
 
-    public Account(String username, String password) {
-        this.username = username;
-        this.password = password;
-        this.players = new ArrayList<Player>();
-    }
+   // public Account(String username, String password) {
+
+    //}
+
+    //public Account(String username, String password, ArrayList<Player> player) {
+        //this.username = username;
+        //this.password = password;
+        //this.players = player;
+    //}
 
     public Player getPlayer(String username, String password) {
         for(int i=0; i<players.size(); i++) {
@@ -48,6 +52,6 @@ public class Account {
     }
 
     public String toString() {
-        return username + password;
+        return username + password + players;
     }
 }

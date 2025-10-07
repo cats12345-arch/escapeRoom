@@ -9,9 +9,17 @@ public class Player extends Account{
     private ArrayList<Achievement> awards;
 
     public Player(String username, String password, int score, ArrayList<Achievement> achievements) {
-        super(username, password);
+        this.username = username;
+        this.password = password;
         this.score = score;
         this.awards = achievements;
+    }
+
+    public Player(String username, String password, int score) {
+        this.username= username;
+        this.password = password;
+        this.score = score;
+        this.awards = new ArrayList<Achievement>();
     }
 
     public int getScore() {
@@ -36,6 +44,6 @@ public class Player extends Account{
     }
 
     public String toString() {
-        return "Username: " + username + "\nPassword: " + password + "\nScore: " + score;
+        return "Username: " + username + "\nPassword: " + password + "\nScore: " + score + "\n" + awards.toString();
     }
 }
