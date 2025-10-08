@@ -1,3 +1,5 @@
+package com.model;
+
 import java.util.ArrayList;
 
 public class RoomList {
@@ -15,12 +17,12 @@ public class RoomList {
 
     public Room getRoom(String roomName)
     {
-        return room;
+        return null;
     }
 
     public void newRoom()
     {
-        System.out.println(null);
+        System.out.println("");
     }
 
     public void newStart()

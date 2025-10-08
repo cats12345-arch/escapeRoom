@@ -1,3 +1,5 @@
+package com.model;
+
 public class RoonInfo 
 {
     //instance 
@@ -5,7 +7,7 @@ public class RoonInfo
     protected String options;
 
     //constructor 
-    public RoomInfo()
+    public RoonInfo()
     {
         this.roomDescription = "";
         this.options = "";
@@ -23,7 +25,7 @@ public class RoonInfo
 
     public Item chest()
     {
-
+        return null;
     }
 
     public void bookshelf()

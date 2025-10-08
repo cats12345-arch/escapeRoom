@@ -1,3 +1,4 @@
+package com.model;
 public class ItemPuzzle extends Puzzle {
     protected Item item;
     private String hint;

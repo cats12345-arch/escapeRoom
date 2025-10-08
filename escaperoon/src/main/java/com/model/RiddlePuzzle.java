@@ -1,3 +1,4 @@
+package com.model;
 public class RiddlePuzzle extends Puzzle {
     protected String riddle;
     private String hint;
