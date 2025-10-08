@@ -10,6 +10,14 @@ public class Achievement {
         this.description = description;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
     
     public String toString() {
         return name + "\n" + description;

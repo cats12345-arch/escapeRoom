@@ -30,6 +30,10 @@ public abstract class Account {
         return this.username;
     }
 
+    public String getPassword() {
+        return this.password;
+    }
+
     public void loadPlayers(String username, String password, int score) {
         Player player = new Player(username, password, score);
         players.add(player);

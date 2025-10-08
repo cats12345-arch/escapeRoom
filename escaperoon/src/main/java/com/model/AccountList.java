@@ -18,8 +18,8 @@ public class AccountList {
         return accountList;
     }
 
-    public Account getAccount() {
-        return null;
+    public ArrayList<Account> getAccount() {
+        return accounts;
     }
 
     public void saveAccount() {
