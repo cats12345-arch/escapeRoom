@@ -1,29 +1,39 @@
 package com.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public abstract class Account {
-    protected String username;
-    protected String password;
-    private ArrayList<Player> players;
+    private String username;
+    private String password;
+    private ArrayList<RoomProgress> roomProgresses;
+    private int score;
+    private ArrayList<Achievement> achievements;
+    private HashMap<Room, RoomProgress> progress;
 
-   // public Account(String username, String password) {
+    public Account(String username, String password, ArrayList<RoomProgress> roomProgresses, int score, ArrayList<Achievement> achievements, HashMap<Room, RoomProgress> progress) {
+        this.username = username;
+        this.password = password;
+        this.roomProgresses = roomProgresses;
+        this.score = score;
+        this.achievements = achievements;
+        this.progress = progress;
+    }
 
-    //}
+    public ArrayList<RoomProgress> getRoomProgresses() {
+        return roomProgresses;
+    }
+    
+    public int getScore() {
+        return score;
+    }
 
-    //public Account(String username, String password, ArrayList<Player> player) {
-        //this.username = username;
-        //this.password = password;
-        //this.players = player;
-    //}
+    public ArrayList<Achievement> getAchievements() {
+        return achievements;
+    }
 
-    public Player getPlayer(String username, String password) {
-        for(int i=0; i<players.size(); i++) {
-            if(players.get(i).getUsername().equals(username) && players.get(i).getPassword().equals(password)) {
-                return players.get(i);
-            }
-        }
-        return null;
+    public HashMap<Room, RoomProgress> getProgress() {
+        return progress;
     }
 
     public String getUsername() {
@@ -34,28 +44,11 @@ public abstract class Account {
         return this.password;
     }
 
-    public void loadPlayers(String username, String password, int score) {
-        Player player = new Player(username, password, score);
-        players.add(player);
-    }
-
-    public Player logout() {
-        return null;
-    }
-
     public void resetPassword(String newPassword) {
         this.password = newPassword;
     }
 
-    public void accountDeletion(String username, String password) {
-        for(int i=0; i<players.size(); i++) {
-            if(players.get(i).getUsername().equals(username) && players.get(i).getPassword().equals(password)) {
-                players.remove(i);
-            }
-        }
-    }
-
     public String toString() {
-        return username + password + players;
+        return "\nUsername: " + username + "\nPassword: " + password + "\nThe Rooms Progress: " + roomProgresses + "\nScore: " + score + "\nList of Player Achievements: " + achievements + "\nProgress:" + progress;
     }
 }
