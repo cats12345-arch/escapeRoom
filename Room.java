@@ -54,12 +54,17 @@ public static class Room
 
  public void exploreRoom()
  {
-
+   
  }
     
  public void startPuzzle()
  {
 
+ }
+
+ public String toString()
+ {
+    return roomName + type + solved + puzzles.toString() + inventory.toString(); 
  }
 
  
