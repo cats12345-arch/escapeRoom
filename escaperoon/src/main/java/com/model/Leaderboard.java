@@ -1,3 +1,5 @@
+package com.model; 
+
 public class Leaderboard {
     private HashMap<Player, Integer> scores;
     
