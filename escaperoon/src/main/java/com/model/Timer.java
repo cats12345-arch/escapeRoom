@@ -1,3 +1,5 @@
+package com.model;
+
 public class Timer 
 {
     private int duration;
