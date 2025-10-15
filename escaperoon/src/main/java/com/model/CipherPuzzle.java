@@ -1,3 +1,4 @@
+package com.model;
 public class CipherPuzzle extends Puzzle {
      protected int caesarCiphers = 4;
      protected String anagram;
