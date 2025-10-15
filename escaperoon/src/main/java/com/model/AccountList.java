@@ -8,7 +8,7 @@ public class AccountList {
 
     //will implement this when the database stuff is done since it primarly concerns that.
     private AccountList() {
-
+        accounts = DataLoader.getPlayers();
     }
 
     public static AccountList getInstance() {

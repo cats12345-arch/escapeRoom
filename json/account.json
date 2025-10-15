@@ -8,23 +8,23 @@
         "awarded": true,
         "description": "Completed in less than 2min"
       }],
-      "roomProgress": [{
-        "items": [{
-          "name": "map",
-          "description": "This is a map that will help you solve the puzzle"
-        }],
-        "puzzleProgress": [{
-          "puzzleComplete": true,
-          "time": {
-            "minTime": "PT5M"
-          },
-          "numhintsUsed": 2
-        }],
-        "roomComplete": true,
+    "roomProgress": [{
+      "items": [{
+        "name": "map",
+        "description": "This is a map that will help you solve the puzzle"
+      }],
+      "puzzleProgress": [{
+        "puzzleComplete": true,
         "time": {
-          "minTime": "PT15M"
-        }
-      }]
+          "minTime": "PT5M"
+        },
+        "numhintsUsed": 2
+      }],
+      "roomComplete": true,
+      "time": {
+        "minTime": "PT15M"
+      }
+    }]
   },
   {
     "username": "The Happy Fits",

@@ -9,6 +9,14 @@ public class Item {
         this.description = description;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     public String toString() {
         return "\nItem: \n" + "Name: " + name + "\nDescription " + description;
     }
