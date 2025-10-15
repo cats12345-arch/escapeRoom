@@ -3,7 +3,7 @@ package com.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public abstract class Account {
+public class Account {
     private String username;
     private String password;
     private ArrayList<RoomProgress> roomProgresses;

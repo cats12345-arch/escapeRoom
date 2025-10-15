@@ -7,14 +7,27 @@ public abstract class DataConstants {
     //Accounts-will be part of players later after testing is done
     protected static final String ACCOUNT_USER_NAME = "username";
     protected static final String ACCOUNT_PASSWORD = "password";
-    protected static final String PLAYER_ARRAY = "Players";
-    //Players
-    protected static final String PLAYER_SCORE = "score";
-    protected static final String ACHIEVEMENT_AWARDS = "Achievement";
+    protected static final String ACCOUNT_SCORE = "score";
+    protected static final String ACCOUNT_ACHIEVEMENT = "achievement";
+    protected static final String ACCOUNT_ROOM_PROGRESS = "roomProgress";
+
     //Achievement
     protected static final String ACHIEVEMENT_NAME = "name";
     protected static final String ACHIEVEMENT_AWARDED = "awarded";
     protected static final String ACHIEVEMENT_DESCRIPTION = "description";
+
+    //Room Progress
+    protected static final String ROOM_PROGRESS_ITEMS = "items";
+    protected static final String ROOM_PUZZLE_PROGRESS = "puzzleProgress";
+    protected static final String ROOM_PROGRESS_COMPLETED = "roomComplete";
+
+    //Puzzle Progress
+    protected static final String PUZZLE_PROGRESS_COMPLETED = "puzzleComplete";
+    protected static final String PUZZLE_PROGRESS_TIME = "time";
+    protected static final String PUZZLE_HINTS_USED = "numhintsUsed";
+
+    //Time
+    protected static final String TIME = "minTime";
 
     //Room
     protected static final String ROOM_ROOM_NAME = "roomName";

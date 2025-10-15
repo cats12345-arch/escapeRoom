@@ -1,7 +1,9 @@
 package com.model;
 
 import java.io.FileReader;
+import java.time.Duration;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -10,8 +12,8 @@ import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants{
     
-    public static ArrayList<Player> getPlayers() {
-        ArrayList<Player> players = new ArrayList<Player>();
+    public static ArrayList<Account> getPlayers() {
+        ArrayList<Account> accounts = new ArrayList<Account>();
 
         try {
             FileReader reader = new FileReader(USER_FILE_NAME);
@@ -21,31 +23,69 @@ public class DataLoader extends DataConstants{
                 JSONObject accountJSON = (JSONObject)accountsJSON.get(i);
                 String username = (String)accountJSON.get(ACCOUNT_USER_NAME);
                 String password = (String)accountJSON.get(ACCOUNT_PASSWORD);
-                
-                JSONArray playersJSON = (JSONArray)accountJSON.get(PLAYER_ARRAY);
-                for (int j=0; j < playersJSON.size(); j++) {
-                    JSONObject playerJSON = (JSONObject)playersJSON.get(j);
-                    int score = ((Long)playerJSON.get(PLAYER_SCORE)).intValue();
+                int score = ((Long)accountJSON.get(ACCOUNT_SCORE)).intValue();
 
-                    ArrayList<Achievement> achievements = new ArrayList<Achievement>();
-
-                    JSONArray achievementsJSON = (JSONArray)playerJSON.get(ACHIEVEMENT_AWARDS);
-                    for (int m=0; m<achievementsJSON.size(); m++) {
-                        JSONObject achievementJSON = (JSONObject)achievementsJSON.get(m);
-                        String name = (String)achievementJSON.get(ACHIEVEMENT_NAME);
-                        Boolean awarded = (Boolean)achievementJSON.get(ACHIEVEMENT_AWARDED);
-                        String description = (String)achievementJSON.get(ACHIEVEMENT_DESCRIPTION);
-                        achievements.add(new Achievement(name, awarded, description));
-                    }
-                    players.add(new Player(username, password, score, achievements));
+                //Achievements
+                ArrayList<Achievement> achievements = new ArrayList<Achievement>();
+                JSONArray achievementsJSON = (JSONArray)accountJSON.get(ACCOUNT_ACHIEVEMENT);
+                for (int j=0; j < achievementsJSON.size(); j++) {
+                    JSONObject achievementJSON = (JSONObject)achievementsJSON.get(j);
+                    String name = (String)achievementJSON.get(ACHIEVEMENT_NAME);
+                    Boolean awarded = (Boolean)achievementJSON.get(ACHIEVEMENT_AWARDED);
+                    String description = (String)achievementJSON.get(ACHIEVEMENT_DESCRIPTION);
+                    achievements.add(new Achievement(name, awarded, description));
                 }
+
+                //Room Progress
+                HashMap<Room, RoomProgress> map = new HashMap<Room, RoomProgress>();
+                ArrayList<RoomProgress> roomProgress = new ArrayList<RoomProgress>();
+                JSONArray roomProgressesJSON = (JSONArray)accountJSON.get(ACCOUNT_ROOM_PROGRESS);
+                for (int j=0; j < roomProgressesJSON.size(); j++) {
+                    JSONObject roomProgressJSON = (JSONObject)roomProgressesJSON.get(j);
+
+                    //Items
+                    ArrayList<Item> items = new ArrayList<Item>();
+                    JSONArray itemsJSON = (JSONArray)roomProgressJSON.get(ROOM_PROGRESS_ITEMS);
+                    for (int m=0; m < itemsJSON.size(); m++) {
+                        JSONObject itemJSON = (JSONObject)itemsJSON.get(m);
+                        String itemName = (String)itemJSON.get(ITEM_NAME);
+                        String itemDescription = (String)itemJSON.get(ITEM_DESCRIPTION);
+                        items.add(new Item(itemName, itemDescription));
+                    }
+
+                    //Puzzle Progress
+                    ArrayList<PuzzleProgress> puzzleProgress = new ArrayList<PuzzleProgress>();
+                    JSONArray puzzleProgressesJSON = (JSONArray)roomProgressJSON.get(puzzleProgress);
+                    for (int m=0; m<puzzleProgressesJSON.size(); m++) {
+                        JSONObject puzzleProgressJSON = (JSONObject)puzzleProgressesJSON.get(m);
+                        Boolean completed = (Boolean)puzzleProgressJSON.get(PUZZLE_PROGRESS_COMPLETED);
+
+                        //Time or Duration take your pick
+                        JSONObject timeJSON = (JSONObject)puzzleProgressJSON.get(PUZZLE_PROGRESS_TIME);
+                        String totalTime = (String)timeJSON.get(TIME);
+                        Duration time = Duration.parse(totalTime);
+
+                        int numHintsUsed = ((Long)puzzleProgressJSON.get(PUZZLE_HINTS_USED)).intValue();
+                        puzzleProgress.add(new PuzzleProgress(completed, time, numHintsUsed));
+                    }
+
+                    boolean roomCompleted = (boolean)roomProgressJSON.get(ROOM_PROGRESS_COMPLETED);
+                    JSONObject timeJSON = (JSONObject)roomProgressJSON.get(PUZZLE_PROGRESS_TIME);
+                    String totalTime = (String)timeJSON.get(TIME);
+                    Duration time = Duration.parse(totalTime);
+                    roomProgress.add(new RoomProgress(items, puzzleProgress, roomCompleted, time));
+                    
+                    Room room = new Room();
+                    map.put(room, new RoomProgress(items, puzzleProgress, roomCompleted, time));
+                }
+                accounts.add(new Account(username, password, roomProgress, score, achievements, map));
             }
-            return players;
+            return accounts;
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return players;
+        return accounts;
     }
 
     public static ArrayList<Room> getRooms() {
@@ -91,7 +131,7 @@ public class DataLoader extends DataConstants{
     
 
     public static void main(String[] args){
-		ArrayList<Player> users = DataLoader.getPlayers();
+		ArrayList<Account> users = DataLoader.getPlayers();
 
 		for(Account user : users){
 			System.out.println(user);
