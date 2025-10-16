@@ -3,7 +3,7 @@ package com.model;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public abstract class Account {
+public class Account {
     private String username;
     private String password;
     private ArrayList<RoomProgress> roomProgresses;
@@ -18,6 +18,16 @@ public abstract class Account {
         this.score = score;
         this.achievements = achievements;
         this.progress = progress;
+    }
+
+    //defaultish constructor to create an account
+    public Account(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.roomProgresses = new ArrayList<RoomProgress>();
+        this.score = 0;
+        this.achievements = new ArrayList<Achievement>();
+        this.progress = new HashMap<Room, RoomProgress>();
     }
 
     public ArrayList<RoomProgress> getRoomProgresses() {

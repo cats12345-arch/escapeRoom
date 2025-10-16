@@ -20,6 +20,10 @@ public class PuzzleProgress {
     public Duration getTime() {
         return time;
     }
+    
+    public String getTimeString() {
+        return time.toString();
+    }
 
     public int getnumHintsUsed() {
         return numHintsUsed;

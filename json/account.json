@@ -1,32 +1,56 @@
 [
   {
-    "id": 1,
     "username": "dmoss",
     "password": "1234abc",
-    "Players": [{
-      "id": 1,
-      "score": 4,
-      "Achievement": [{
-        "id": 1,
+    "score": 10,
+    "achievement": [{
         "name": "Really fast huh",
-        "awarded": false,
+        "awarded": true,
         "description": "Completed in less than 2min"
-      }]
+      }],
+    "roomProgress": [{
+      "items": [{
+        "name": "map",
+        "description": "This is a map that will help you solve the puzzle"
+      }],
+      "puzzleProgress": [{
+        "puzzleComplete": true,
+        "puzzleTime": {
+          "minTime": "PT5M"
+        },
+        "numhintsUsed": 2
+      }],
+      "roomComplete": true,
+      "roomTime": {
+        "minTime": "PT15M"
+      }
     }]
   },
   {
-    "id": 2,
-    "username": "MadilynMei",
-    "password": "favartistrn",
-    "Players": [{
-      "id": 2,
-      "score": 10,
-      "Achievement": [{
-        "id": 2,
-        "name": "taking your time",
+    "username": "The Happy Fits",
+    "password": "tooLate",
+    "score": 4,
+    "achievement": [{
+        "name": "Quick one",
         "awarded": true,
-        "description": "Take longer than 10min on a puzzle"
+        "description": "Completed a puzlle in less than 5min"
+      }],
+      "roomProgress": [{
+        "items": [{
+          "name": "lockpick",
+          "description": "This is a lockpick that will let you solve a puzzle"
+        }],
+        "puzzleProgress": [{
+          "puzzleComplete": true,
+          "puzzleTime": {
+            "minTime": "PT15M"
+          },
+          "numhintsUsed": 4
+        }],
+        "roomComplete": true,
+        "roomTime": {
+          "minTime": "PT7M"
+        }
       }]
-    }]
   }
 ]

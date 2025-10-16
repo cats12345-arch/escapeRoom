@@ -14,6 +14,10 @@ public class Achievement {
         return this.name;
     }
 
+    public boolean getAwarded() {
+        return awarded;
+    }
+
     public String getDescription() {
         return this.description;
     }
