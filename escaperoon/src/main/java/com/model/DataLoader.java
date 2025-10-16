@@ -55,8 +55,8 @@ public class DataLoader extends DataConstants{
 
                     //Puzzle Progress
                     ArrayList<PuzzleProgress> puzzleProgress = new ArrayList<PuzzleProgress>();
-                    JSONArray puzzleProgressesJSON = (JSONArray)roomProgressJSON.get(puzzleProgress);
-                    for (int m=0; m<puzzleProgress.size(); m++) {
+                    JSONArray puzzleProgressesJSON = (JSONArray)roomProgressJSON.get(ROOM_PUZZLE_PROGRESS);
+                    for (int m=0; m<puzzleProgressesJSON.size(); m++) {
                         JSONObject puzzleProgressJSON = (JSONObject)puzzleProgressesJSON.get(m);
                         Boolean completed = (Boolean)puzzleProgressJSON.get(PUZZLE_PROGRESS_COMPLETED);
 

@@ -46,6 +46,7 @@ public class DataWriter extends DataConstants{
         for(int i=0; i<roomProgressList.size(); i++) {
             jsonroomProgress.add(getRoomProgess(roomProgressList.get(i)));
         }
+        accountdetails.put(ACCOUNT_ROOM_PROGRESS, jsonroomProgress);
         return accountdetails;
     }
 
@@ -64,13 +65,22 @@ public class DataWriter extends DataConstants{
         for(int i=0; i<puzzleProgressList.size(); i++) {
             jsonpuzzleProgressList.add(getPuzzleProgress(puzzleProgressList.get(i)));
         }
+        roomProgressDetails.put(ROOM_PUZZLE_PROGRESS, jsonpuzzleProgressList);
+        
+        roomProgressDetails.put(ROOM_PROGRESS_COMPLETED, roomProgress.getIsComplete());
+        JSONObject roomTimeDetails = new JSONObject();
+        roomTimeDetails.put(TIME, roomProgress.getTimeString());
+        roomProgressDetails.put(ROOM_PROGRESS_TIME, roomTimeDetails);
         return roomProgressDetails;
     }
 
     private static JSONObject getPuzzleProgress(PuzzleProgress puzzleProgress) {
         JSONObject puzzleProgressDetails = new JSONObject();
-
-
+        puzzleProgressDetails.put(PUZZLE_PROGRESS_COMPLETED, puzzleProgress.getIsComplete());
+        JSONObject puzzleTimeDetails = new JSONObject();
+        puzzleTimeDetails.put(TIME, puzzleProgress.getTimeString());
+        puzzleProgressDetails.put(PUZZLE_PROGRESS_TIME, puzzleTimeDetails);
+        puzzleProgressDetails.put(PUZZLE_HINTS_USED, puzzleProgress.getnumHintsUsed());
         return puzzleProgressDetails;
     }
 
@@ -91,6 +101,6 @@ public class DataWriter extends DataConstants{
     }
     
     public static void main(String[] args) {
-        //still need to do testing
+        DataWriter.savePlayers();
     }
 }
