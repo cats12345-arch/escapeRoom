@@ -18,6 +18,15 @@ public class AccountList {
         return accountList;
     }
 
+    public Account login(String username, String password) {
+        for(int i=0; i<accounts.size(); i++) {
+            if(accounts.get(i).getUsername().equals(username) && accounts.get(i).getPassword().equals(password)){
+                return accounts.get(i);
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Account> getAccount() {
         return accounts;
     }

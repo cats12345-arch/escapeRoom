@@ -20,6 +20,8 @@ public class Account {
         this.progress = progress;
     }
 
+    
+
     public ArrayList<RoomProgress> getRoomProgresses() {
         return roomProgresses;
     }
