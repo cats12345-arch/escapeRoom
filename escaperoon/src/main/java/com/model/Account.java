@@ -20,7 +20,15 @@ public class Account {
         this.progress = progress;
     }
 
-    
+    //defaultish constructor to create an account
+    public Account(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.roomProgresses = new ArrayList<RoomProgress>();
+        this.score = 0;
+        this.achievements = new ArrayList<Achievement>();
+        this.progress = new HashMap<Room, RoomProgress>();
+    }
 
     public ArrayList<RoomProgress> getRoomProgresses() {
         return roomProgresses;

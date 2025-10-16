@@ -27,15 +27,24 @@ public class AccountList {
         return null;
     }
 
+    public void newAccount(String username, String password) {
+        Account newAccount = new Account(username, password);
+        accounts.add(newAccount);
+    }
+
     public ArrayList<Account> getAccount() {
         return accounts;
     }
 
     public void saveAccount() {
-
+        DataWriter.savePlayers();
     }
 
     public static void main(String[] args) {
-        
+        AccountList accounts = AccountList.getInstance();
+        //Account testAccount = accounts.login("dmoss", "1234abc");
+        accounts.newAccount("Weakend Friends", "Weightless");
+        Account testAccount2 = accounts.login("Weakend Friends", "Weightless");
+        System.out.println(testAccount2);
     }
 }
