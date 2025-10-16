@@ -15,13 +15,13 @@
       }],
       "puzzleProgress": [{
         "puzzleComplete": true,
-        "time": {
+        "puzzleTime": {
           "minTime": "PT5M"
         },
         "numhintsUsed": 2
       }],
       "roomComplete": true,
-      "time": {
+      "roomTime": {
         "minTime": "PT15M"
       }
     }]
@@ -42,17 +42,15 @@
         }],
         "puzzleProgress": [{
           "puzzleComplete": true,
-          "time": [{
-            "minTime": 3,
-            "minName": "MINUTES"
-          }],
+          "puzzleTime": {
+            "minTime": "PT15M"
+          },
           "numhintsUsed": 4
         }],
         "roomComplete": true,
-        "time": [{
-          "minTime": 9,
-          "minName": "MINUTES"
-        }]
+        "roomTime": {
+          "minTime": "PT7M"
+        }
       }]
   }
 ]

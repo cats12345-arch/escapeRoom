@@ -56,7 +56,7 @@ public class DataLoader extends DataConstants{
                     //Puzzle Progress
                     ArrayList<PuzzleProgress> puzzleProgress = new ArrayList<PuzzleProgress>();
                     JSONArray puzzleProgressesJSON = (JSONArray)roomProgressJSON.get(puzzleProgress);
-                    for (int m=0; m<puzzleProgressesJSON.size(); m++) {
+                    for (int m=0; m<puzzleProgress.size(); m++) {
                         JSONObject puzzleProgressJSON = (JSONObject)puzzleProgressesJSON.get(m);
                         Boolean completed = (Boolean)puzzleProgressJSON.get(PUZZLE_PROGRESS_COMPLETED);
 
@@ -70,7 +70,7 @@ public class DataLoader extends DataConstants{
                     }
 
                     boolean roomCompleted = (boolean)roomProgressJSON.get(ROOM_PROGRESS_COMPLETED);
-                    JSONObject timeJSON = (JSONObject)roomProgressJSON.get(PUZZLE_PROGRESS_TIME);
+                    JSONObject timeJSON = (JSONObject)roomProgressJSON.get(ROOM_PROGRESS_TIME);
                     String totalTime = (String)timeJSON.get(TIME);
                     Duration time = Duration.parse(totalTime);
                     roomProgress.add(new RoomProgress(items, puzzleProgress, roomCompleted, time));

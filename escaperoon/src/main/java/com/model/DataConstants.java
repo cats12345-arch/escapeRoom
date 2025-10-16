@@ -20,10 +20,11 @@ public abstract class DataConstants {
     protected static final String ROOM_PROGRESS_ITEMS = "items";
     protected static final String ROOM_PUZZLE_PROGRESS = "puzzleProgress";
     protected static final String ROOM_PROGRESS_COMPLETED = "roomComplete";
+    protected static final String ROOM_PROGRESS_TIME = "roomTime";
 
     //Puzzle Progress
     protected static final String PUZZLE_PROGRESS_COMPLETED = "puzzleComplete";
-    protected static final String PUZZLE_PROGRESS_TIME = "time";
+    protected static final String PUZZLE_PROGRESS_TIME = "puzzleTime";
     protected static final String PUZZLE_HINTS_USED = "numhintsUsed";
 
     //Time
