@@ -54,11 +54,22 @@ public static class Room
 
  public void exploreRoom()
  {
-   
+   System.out.println("Exploring " + roomName + ". Found "
+   + inventory.size() + " items and "
+   + puzzles.size() + " puzzles.");
  }
     
  public void startPuzzle()
  {
+    for (Puzzle p : puzzles)
+    {
+        if(!p.isSolved())
+        {
+            p.start();
+            return;
+        }
+    }
+    System.out.println("You've completed all the puzzles in this room");
 
  }
 
