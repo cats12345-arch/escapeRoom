@@ -8,11 +8,37 @@ public class RoomProgress {
     private ArrayList<PuzzleProgress> puzzles;
     private boolean isComplete;
     private Duration time;
+    private Room room;
 
     public RoomProgress(ArrayList<Item> items, ArrayList<PuzzleProgress> puzzles, boolean isComplete, Duration time) {
         this.items = items;
         this.puzzles = puzzles;
         this.isComplete = isComplete;
+        this.time = time;
+    }
+
+    public RoomProgress() {
+        this.items = new ArrayList<Item>();
+        this.puzzles = new ArrayList<PuzzleProgress>();
+        this.isComplete = false;
+        this.time = null;
+    }
+
+    public void addItem(String name, String description) {
+        Item newItem = new Item(name, description);
+        items.add(newItem);
+    }
+
+    public void addPuzzle(boolean isComplete, Duration time, int numHintsUsed) {
+        PuzzleProgress newPuzzleProgress = new PuzzleProgress(isComplete, time, numHintsUsed);
+        puzzles.add(newPuzzleProgress);
+    }
+
+    public void setCompletion(boolean bool) {
+        this.isComplete = bool;
+    }
+
+    public void setTime(Duration time) {
         this.time = time;
     }
 
