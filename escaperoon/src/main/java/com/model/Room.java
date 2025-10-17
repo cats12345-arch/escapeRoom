@@ -2,12 +2,12 @@ package com.model;
 
 import java.util.ArrayList;
 
-public static class Room 
+public class Room 
 {
     protected String roomName;
     protected String type;
     protected boolean solved;
-    protected Arraylist<Puzzle> puzzles;
+    protected ArrayList<Puzzle> puzzles;
     protected ArrayList<Item> inventory;
 
     //RoomInfo

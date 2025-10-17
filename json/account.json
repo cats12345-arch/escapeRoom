@@ -23,6 +23,14 @@
       "roomComplete": true,
       "roomTime": {
         "minTime": "PT15M"
+      },
+      "room": {
+        "roomName": "first Room",
+        "type": "type",
+        "solved": true,
+        "puzzles": [{
+          
+        }]
       }
     }]
   },
