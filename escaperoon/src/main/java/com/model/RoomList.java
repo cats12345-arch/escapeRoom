@@ -12,7 +12,16 @@ public class RoomList {
     //private constructor 
     private RoomList()
     {
-       rooms = new ArrayList<>();
+       rooms = DataLoader.getRooms();
+    }
+
+    public static RoomList getInstance()
+    {
+        if(roomList == null)
+       {
+         roomList = new RoomList();
+       } 
+       return roomList;
     }
 
     public Room getRoom(String roomName)

@@ -36,6 +36,14 @@ public class AccountList {
         return accounts;
     }
 
+    public void deleteAccount(String username, String password) {
+        for(int i=0; i<accounts.size(); i++) {
+            if(accounts.get(i).getUsername().equals(username) && accounts.get(i).getPassword().equals(password)){
+                accounts.remove(i);
+            }
+        }
+    }
+
     public void saveAccount() {
         DataWriter.savePlayers();
     }
