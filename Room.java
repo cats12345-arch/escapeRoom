@@ -161,13 +161,17 @@ public void inputOptions(int num, Player player) {
     }
 
     // Helpers to manage inventory/puzzles from outside (not strictly in UML but useful)
-    public void addItem(Item item) { inventory.add(item); }
-    public void addPuzzle(Puzzle puzzle) { puzzles.add(puzzle); }
+    public void addItem(Item item) 
+    { 
+        inventory.add(item); 
+    }
 
+    public void addPuzzle(Puzzle puzzle) 
+    { 
+        puzzles.add(puzzle); 
+    }
 
-
-
-
+    
  public String toString()
  {
     return roomName + type + solved + puzzles.toString() + inventory.toString(); 
