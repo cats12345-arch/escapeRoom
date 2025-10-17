@@ -1,33 +1,66 @@
 package com.model;
 
-import java.util.ArrayList;
-
-public class RoomList {
-
+public class RoomList 
+{
     private static RoomList roomList;
 
-    //Collection of rooms 
     private ArrayList<Room> rooms;
 
-    //private constructor 
-    private RoomList()
+    private Roomlist()
     {
-       rooms = new ArrayList<>();
+        rooms = new ArrayList<>();
+    }
+
+    public static RoomList getInstance()
+    {
+        if(roomList == null)
+        {
+            roomList = new RoomList();
+        }
+        return roomList;
     }
 
     public Room getRoom(String roomName)
     {
+        for (Room room : rooms)
+        {
+            if(room.roomName.equalsIgnoreCase(roomName))
+            {
+                return room;
+            }
+        }
         return null;
     }
 
+
     public void newRoom()
     {
-        System.out.println("");
+        if(room != null && !rooms.contains(room))
+        {
+            rooms.add(room);
+            System.out.println("A new room has been added: " + room.roomName);
+
+        }
+    }
+
+    public void saveRoom()
+    {
+        System.out.println("Saving room...");
     }
 
     public void newStart()
     {
-        
+        System.out.println("Starting new game...");
+        for (Room room : rooms)
+        {
+            room.reset();
+        }
     }
-    
+
+    public String toString()
+    {
+        return roomList + rooms.toString;
+    }
+
+
 }
