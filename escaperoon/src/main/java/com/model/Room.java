@@ -2,12 +2,12 @@ package com.model;
 
 import java.util.ArrayList;
 
-public static class Room 
+public class Room 
 {
     protected String roomName;
     protected String type;
     protected boolean solved;
-    protected Arraylist<Puzzle> puzzles;
+    protected ArrayList<Puzzle> puzzles;
     protected ArrayList<Item> inventory;
 
     //RoomInfo
@@ -46,7 +46,7 @@ public static class Room
     return solved;
  }
 
- public Item getItem(Player player)
+ public ArrayList<Item> getItem()
  {
     if(!inventory.isEmpty())
     {
@@ -54,6 +54,9 @@ public static class Room
         player.giveItem(item);
         return item;
     }
+
+    
+
     return 0;
  }
 
@@ -86,7 +89,7 @@ public static class Room
     System.out.println(options);
  }
 
-public void inputOptions(int num, Player player) {
+public void inputOptions(int num, Account player) {
         switch (num) {
             case 1:
                 Item found = chest();
