@@ -170,6 +170,23 @@ public void inputOptions(int num, Player player) {
     return roomName + type + solved + puzzles.toString() + inventory.toString(); 
  }
 
+    Object getInventory() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    Object getInventory() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public Object getInventory() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getInventory'");
+    }
+
+    Object getInventory() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
  
 }
  
