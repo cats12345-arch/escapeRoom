@@ -15,17 +15,29 @@ public class Timer
 
     public void start()
     {
-        while (timeRemaining > 0)
-        {
-            tick();
-        }
-        timesUp = true;
+       this.timeRemaining = duration; 
+       this.timesUp = false;
     }
 
 
     public void tick()
     {
-        timeRemaining--;
+        if(timesUp)
+        {
+            return;
+        }
+
+        if (timeRemaining > 0)
+        {
+            timeRemaining--;
+
+            timeWarning();
+
+            if(timeRemaining == 0)
+            {
+                timesUp = true;
+            }
+        }
     }
 
     public void timeWarning()
@@ -36,5 +48,14 @@ public class Timer
     public boolean isTimeUp()
     {
         return timesUp;
+    }
+
+    public void stop()
+    {
+        if(!timesUp)
+        {
+            timesUp = true;
+            timeRemaining = 0;
+        }
     }
 }
