@@ -107,7 +107,7 @@ public class Object
         }
     }
 
-    private void empty() 
+    private void empty()
     {
         this.contains = null;
     }
