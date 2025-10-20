@@ -48,11 +48,18 @@ public class AccountList {
         DataWriter.savePlayers();
     }
 
+    
+    public String toString() {
+        return accounts.toString();
+    }
+
     public static void main(String[] args) {
         AccountList accounts = AccountList.getInstance();
         //Account testAccount = accounts.login("dmoss", "1234abc");
         accounts.newAccount("Weakend Friends", "Weightless");
         Account testAccount2 = accounts.login("Weakend Friends", "Weightless");
         System.out.println(testAccount2);
+        //accounts.deleteAccount("dmoss", "1234abc");
+        //System.out.println(accounts);
     }
 }
