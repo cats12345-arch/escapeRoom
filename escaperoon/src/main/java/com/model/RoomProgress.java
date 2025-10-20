@@ -68,6 +68,6 @@ public class RoomProgress {
     }
 
     public String toString() {
-        return "\nIs it complete: " + isComplete + "\nTime to complete room" + time + "\nPuzzles in the Room and their info: " + puzzles + "\nItems in this room and their info: " + items;
+        return "\nIs it complete: " + isComplete + "\nTime to complete room" + time + "\nPuzzles in the Room and their info: " + puzzles + "\nItems in this room and their info: " + items + "\nRoom and the info associated with it" + room;
     }
 }

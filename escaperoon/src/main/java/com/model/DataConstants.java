@@ -28,7 +28,7 @@ public abstract class DataConstants {
     protected static final String ROOM_PROGRESS_ROOM_TYPE = "type";
     protected static final String ROOM_PROGRESS_ROOM_SOLVED = "solved";
     protected static final String ROOM_PROGERSS_ROOM_PUZZLE = "puzzles";
-    protected static final String ROOM_PROGRESS_ROOM_ITEMS = "roomItems";
+    protected static final String ROOM_PROGRESS_ROOM_ITEMS = "items";
 
     //Puzzle Progress
     protected static final String PUZZLE_PROGRESS_COMPLETED = "puzzleComplete";

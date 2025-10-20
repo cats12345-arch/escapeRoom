@@ -54,6 +54,6 @@ public class PuzzleProgress {
     }
 
     public String toString() {
-        return "\nIs Puzzle complete: " + isComplete + "\nTime on puzzle: " + time + "\nNumber of hints Used: " + numHintsUsed;
+        return "\nIs Puzzle complete: " + isComplete + "\nTime on puzzle: " + time + "\nNumber of hints Used: " + numHintsUsed + "\nPuzzle associated with puzzle Progress: " + puzzle;
     }
 }

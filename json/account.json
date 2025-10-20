@@ -124,7 +124,7 @@
             }],
             "puzzleNum": 1
           }],
-          "roomItems": [{
+          "items": [{
             "roomItemName": "Shefu",
             "roomItemDescription": "Thumb"
           }],

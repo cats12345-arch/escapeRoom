@@ -3,12 +3,10 @@ package com.model;
 import java.io.FileReader;
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-;
 
 public class DataLoader extends DataConstants{
     
@@ -153,7 +151,7 @@ public class DataLoader extends DataConstants{
                     String roomDescription = (String)roomJSON.get(ROOM_DESCRIPTION);
                     String roomOptions = (String)roomJSON.get(ROOM_OPTIONS);
 
-                    Room room = new Room(roomName, roomType, roomCompleted, puzzles, roomItems, roomDescription, roomOptions);
+                    Room room = new Room(roomName, roomType, roomSolved, puzzles, roomItems, roomDescription, roomOptions);
                     roomProgress.add(new RoomProgress(items, puzzleProgress, roomCompleted, time, room));
                 }
                 accounts.add(new Account(username, password, roomProgress, score, achievements));
@@ -213,10 +211,10 @@ public class DataLoader extends DataConstants{
 			System.out.println(user);
 		}
 
-        ArrayList<Room> rooms = DataLoader.getRooms();
+        //ArrayList<Room> rooms = DataLoader.getRooms();
 
-        for(Room room : rooms) {
-            System.out.println(room);
-        }
+        //for(Room room : rooms) {
+            //System.out.println(room);
+        //}
 	}
 }
