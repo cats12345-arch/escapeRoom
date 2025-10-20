@@ -4,20 +4,40 @@
     "roomName": "Library",
     "type": "Riddle",
     "solved": false,
-    "roomInfo": [{
-      "roomDescription": "A grand, dimly lit library filled with towering bookshelves, dusty tomes, and hidden secrets waiting to be unlocked.",
-      "options": "1. There is a chest \n 2. There is a bookshelf"
-    }],
+    "roomDescription": "A grand, dimly lit library filled with towering bookshelves, dusty tomes, and hidden secrets waiting to be unlocked.",
+    "options": "1. There is a chest \n 2. There is a bookshelf",
     "puzzles": [{
-      "solution": "Piano",
-      "hint": ["what has keys", "what is grand"],
-      "puzzleNum": 1,
-      "solved": false,
-      "riddlePuzzle": [{
-        "riddle": "I have keys but no locks, hammers but no nails, and strings that sing when struck — what am I?",
-        "hint": "It is often played"
-      }]
-    }],
+      "type": "Riddle",
+      "riddle": "The Polar Boys",
+      "answer": "Goodbye",
+      "hints": [{
+        "hint1": "3rd Example hint"
+      },
+      {
+        "hint2": "3rd Examplehint2"
+      },
+      {
+        "hint3": "3rd Examplehint3"
+      }],
+      "puzzleNum": 1
+    },
+    {
+      "type": "cipher",
+      "solution": "Arc System Works",
+      "ceasarCiphers": 5,
+      "anagram": "please pretend this is an anagram",
+      "hints": [{
+        "hint1": "3rd Example hint"
+      },
+      {
+        "hint2": "3rd Examplehint2"
+      },
+      {
+        "hint3": "3rd Examplehint3"
+      }],
+      "puzzleNum": 2
+    }
+    ],
     "items": [{
       "id": 1,
       "name": "mirror",

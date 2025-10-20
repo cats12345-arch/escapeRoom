@@ -21,11 +21,30 @@ public abstract class DataConstants {
     protected static final String ROOM_PUZZLE_PROGRESS = "puzzleProgress";
     protected static final String ROOM_PROGRESS_COMPLETED = "roomComplete";
     protected static final String ROOM_PROGRESS_TIME = "roomTime";
+    protected static final String ROOM_ROOM = "room";
+
+    //Room Progess Room 
+    protected static final String ROOM_PROGRESS_ROOM_NAME = "roomName";
+    protected static final String ROOM_PROGRESS_ROOM_TYPE = "type";
+    protected static final String ROOM_PROGRESS_ROOM_SOLVED = "solved";
+    protected static final String ROOM_PROGERSS_ROOM_PUZZLE = "puzzles";
+    protected static final String ROOM_PROGRESS_ROOM_ITEMS = "items";
 
     //Puzzle Progress
     protected static final String PUZZLE_PROGRESS_COMPLETED = "puzzleComplete";
     protected static final String PUZZLE_PROGRESS_TIME = "puzzleTime";
     protected static final String PUZZLE_HINTS_USED = "numhintsUsed";
+    protected static final String PUZZLE_PROGRESS_PUZZLE = "puzzle";
+
+    //Puzzle Progress puzzle
+    protected static String PUZZLE_TYPE = "type";
+    protected static String PUZZLE_RIDDLE = "riddle";
+    protected static String PUZZLE_ANSWER = "answer";
+    protected static String PUZZLE_HINTS = "hints";
+    protected static String PUZZLE_PUZZLE_NUM = "puzzleNum";
+
+    //Hint
+    protected static String HINTS = "hint";
 
     //Time
     protected static final String TIME = "minTime";
@@ -35,6 +54,8 @@ public abstract class DataConstants {
     protected static final String ROOM_ROOM_TYPE = "type";
     protected static final String PUZZLE_ARRAY = "puzzles";
     protected static final String ITEM_ARRAY = "items";
+    protected static final String ROOM_DESCRIPTION = "roomDescription";
+    protected static final String ROOM_OPTIONS = "roomOptions";
 
     //puzzles
     protected static final String PUZZLE_SOLUTION = "solution";

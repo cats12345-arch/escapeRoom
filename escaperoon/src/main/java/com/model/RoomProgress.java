@@ -10,11 +10,12 @@ public class RoomProgress {
     private Duration time;
     private Room room;
 
-    public RoomProgress(ArrayList<Item> items, ArrayList<PuzzleProgress> puzzles, boolean isComplete, Duration time) {
+    public RoomProgress(ArrayList<Item> items, ArrayList<PuzzleProgress> puzzles, boolean isComplete, Duration time, Room room) {
         this.items = items;
         this.puzzles = puzzles;
         this.isComplete = isComplete;
         this.time = time;
+        this.room = room;
     }
 
     public RoomProgress() {
@@ -29,8 +30,8 @@ public class RoomProgress {
         items.add(newItem);
     }
 
-    public void addPuzzle(boolean isComplete, Duration time, int numHintsUsed) {
-        PuzzleProgress newPuzzleProgress = new PuzzleProgress(isComplete, time, numHintsUsed);
+    public void addPuzzle(boolean isComplete, Duration time, int numHintsUsed, Puzzle puzzle) {
+        PuzzleProgress newPuzzleProgress = new PuzzleProgress(isComplete, time, numHintsUsed, puzzle);
         puzzles.add(newPuzzleProgress);
     }
 
@@ -58,11 +59,15 @@ public class RoomProgress {
         return time;
     }
 
+    public Room getRoom() {
+        return room;
+    }
+
     public String getTimeString() {
         return time.toString();
     }
 
     public String toString() {
-        return "\nIs it complete: " + isComplete + "\nTime to complete room" + time + "\nPuzzles in the Room and their info: " + puzzles + "\nItems in this room and their info: " + items;
+        return "\nIs it complete: " + isComplete + "\nTime to complete room" + time + "\nPuzzles in the Room and their info: " + puzzles + "\nItems in this room and their info: " + items + "\nRoom and the info associated with it" + room;
     }
 }

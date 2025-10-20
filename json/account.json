@@ -18,7 +18,22 @@
         "puzzleTime": {
           "minTime": "PT5M"
         },
-        "numhintsUsed": 2
+        "numhintsUsed": 2,
+        "puzzle": {
+          "type": "Riddle",
+          "riddle": "example riddle",
+          "answer": "example answer",
+          "hints": [{
+            "hint": "Example hint"
+          },
+          {
+            "hint": "Examplehint2"
+          },
+          {
+            "hint": "Examplehint3"
+          }],
+          "puzzleNum": 1
+        }
       }],
       "roomComplete": true,
       "roomTime": {
@@ -29,7 +44,23 @@
         "type": "type",
         "solved": true,
         "puzzles": [{
-          
+          "type": "Riddle",
+          "riddle": "example riddle",
+          "answer": "example answer",
+          "hints": [{
+            "hint": "Example hint"
+          },
+          {
+            "hint": "Examplehint2"
+          },
+          {
+            "hint": "Examplehint3"
+          }],
+          "puzzleNum": 1
+        }],
+        "items": [{
+          "roomItemName": "Flipturn",
+          "roomItemDescription": "August"
         }]
       }
     }]
@@ -53,11 +84,52 @@
           "puzzleTime": {
             "minTime": "PT15M"
           },
-          "numhintsUsed": 4
+          "numhintsUsed": 4,
+          "puzzle": {
+            "type": "2nd Riddle",
+            "riddle": "2nd example riddle",
+            "answer": "2nd example answer",
+            "hints": [{
+              "hint1": "2nd Example hint"
+            },
+            {
+              "hint2": "2nd Examplehint2"
+            },
+            {
+              "hint3": "2nd Examplehint3"
+            }],
+            "puzzleNum": 1
+          }
         }],
         "roomComplete": true,
         "roomTime": {
           "minTime": "PT7M"
+        },
+        "room": {
+          "roomName": "first Room",
+          "type": "type",
+          "solved": true,
+          "puzzles": [{
+            "type": "2nd Riddle",
+            "riddle": "2nd example riddle",
+            "answer": "2nd example answer",
+            "hints": [{
+              "hint1": "2nd Example hint"
+            },
+            {
+              "hint2": "2nd Examplehint2"
+            },
+            {
+              "hint3": "2nd Examplehint3"
+            }],
+            "puzzleNum": 1
+          }],
+          "items": [{
+            "roomItemName": "Shefu",
+            "roomItemDescription": "Thumb"
+          }],
+          "roomDescription": "Young the Giant",
+          "roomOptions": "Superposition"
         }
       }]
   }
