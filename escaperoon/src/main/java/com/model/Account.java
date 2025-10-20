@@ -9,15 +9,13 @@ public class Account {
     private ArrayList<RoomProgress> roomProgresses;
     private int score;
     private ArrayList<Achievement> achievements;
-    private HashMap<Room, RoomProgress> progress;
 
-    public Account(String username, String password, ArrayList<RoomProgress> roomProgresses, int score, ArrayList<Achievement> achievements, HashMap<Room, RoomProgress> progress) {
+    public Account(String username, String password, ArrayList<RoomProgress> roomProgresses, int score, ArrayList<Achievement> achievements) {
         this.username = username;
         this.password = password;
         this.roomProgresses = roomProgresses;
         this.score = score;
         this.achievements = achievements;
-        this.progress = progress;
     }
 
     //defaultish constructor to create an account

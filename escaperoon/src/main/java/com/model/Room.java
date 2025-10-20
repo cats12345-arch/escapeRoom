@@ -14,6 +14,15 @@ public class Room
     protected String roomDescription;
     protected String options;
 
+    public Room(String roomName, String type, boolean solved, ArrayList<Puzzle> puzzles, ArrayList<Item> inventory, String roomDescription, String roomOptions) {
+        this.roomName = roomName;
+        this.type = type;
+        this.solved = solved;
+        this.puzzles = puzzles;
+        this.inventory = inventory;
+        this.roomDescription = roomDescription;
+        this.options = roomOptions;
+    }
 
      public Room()
  {

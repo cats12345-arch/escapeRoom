@@ -8,10 +8,11 @@ public class PuzzleProgress {
     private int numHintsUsed;
     private Puzzle puzzle;
 
-    public PuzzleProgress(boolean isComplete, Duration time, int numHintsUsed) {
+    public PuzzleProgress(boolean isComplete, Duration time, int numHintsUsed, Puzzle puzzle) {
         this.isComplete = isComplete;
         this.time = time;
         this.numHintsUsed = numHintsUsed;
+        this.puzzle = puzzle;
     }
 
     public PuzzleProgress() {
@@ -42,6 +43,10 @@ public class PuzzleProgress {
     
     public String getTimeString() {
         return time.toString();
+    }
+
+    public Puzzle getPuzzle() {
+        return puzzle;
     }
 
     public int getnumHintsUsed() {
