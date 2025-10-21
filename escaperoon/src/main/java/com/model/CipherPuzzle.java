@@ -3,19 +3,18 @@ package com.model;
 import java.util.ArrayList;
 
 public class CipherPuzzle extends Puzzle {
-     protected int caesarCiphers;
-     protected String anagram;
-     private String encodedText;
+    protected int caesarCiphers;
+    protected String anagram;
+    protected String encodedText;
 
+    public CipherPuzzle(String plainText, int caesarCiphers, String anagram, ArrayList<String> hint, int puzzleNum) {
+        super(plainText, hint, puzzleNum, "CIPHER");
+        this.caesarCiphers = caesarCiphers;
+        this.anagram = anagram;
+        this.encodedText = encrypt(plainText, caesarCiphers);
+    }
 
-     public CipherPuzzle(String plainText, int caesarCiphers, String anagram, ArrayList<String> hints, int puzzleNum) {
-      super(plainText, hints, puzzleNum);
-      this.caesarCiphers = caesarCiphers;
-      this.anagram = anagram;
-      this.encodedText = encrypt(plainText, caesarCiphers);
-     }
-
-      private String encrypt(String text, int shift) {
+    private String encrypt(String text, int shift) {
         StringBuilder result = new StringBuilder();
         for (char c : text.toUpperCase().toCharArray()) {
             if (Character.isLetter(c)) {
@@ -28,33 +27,31 @@ public class CipherPuzzle extends Puzzle {
         return result.toString();
     }
 
-    public boolean attempt(string input) {
-      if (input == null || input.isEmpty()) {
-         System.out.println("Enter a guess to decode the cipher.");
-         return false;
-      }
-
-      if (input.equalsIgnoreCase(solution)) {
-         solved = true;
-         System.out.println("Thats correct! you solved the cipher.");
-         return true;
-      } else {
-         System.out.println("Incorrect. Try again or use a hint.");
-         return false;
-      }
+    @Override
+    public boolean attempt(String input) {
+        if (input.equalsIgnoreCase(solution)) {
+            solved = true;
+            System.out.println("Correct! You solved the cipher.");
+            return true;
+        } else {
+            System.out.println("Incorrect. Try again.");
+            return false;
+        }
     }
 
+    @Override
     public void displayHint() {
-      System.out.println("Cipher Puzzle: ");
-      System.out.println("Encoded Text: + encodedText");
-      System.out.println("Hint: The letters are shifted forward by " + caesarCiphers + ".");
-      if (anagram != null && !anagram.isEmpty()) {
-         System.out.println("Extra Clue (anagram): " + anagram);
-      }
-      super.displayHint();
+        System.out.println("Cipher Puzzle:");
+        System.out.println("Encoded Text: " + encodedText);
+        System.out.println("Hint: The letters are shifted forward by " + caesarCiphers + ".");
+        if (anagram != null && !anagram.isEmpty()) {
+            System.out.println("Anagram Clue: " + anagram);
+        }
+        super.displayHint();
     }
 
+    @Override
     public String toString() {
-      return "Cipher Puzzle (Shift " + caesarCiphers + "):" + encodedText + (anagram != null ? ", Anagram: " + anagram : "");
-    } 
+        return puzzleType + "|" + solution + "|" + caesarCiphers + "|" + anagram + "|" + encodedText + "|" + puzzleNum + "|" + solved;
+    }
 }

@@ -1,89 +1,74 @@
 package com.model;
+
 import java.util.ArrayList;
-//Temp removing abstract to test
+
 public abstract class Puzzle {
     protected String solution;
-    //protected ArrayList <Hint> hint;
     protected int puzzleNum;
     protected boolean solved;
     protected ArrayList<String> hint;
+    protected String puzzleType; // identifies puzzle type for saving/loading
 
-    public Puzzle(String solution, ArrayList<String> hint, int puzzleNum) {
-        this.solution = solution.toUpperCase();
+    // Full constructor
+    public Puzzle(String solution, ArrayList<String> hint, int puzzleNum, String puzzleType) {
+        this.solution = solution != null ? solution.toUpperCase() : "";
         this.puzzleNum = puzzleNum;
-        this.hint = hint;
+        this.hint = hint != null ? hint : new ArrayList<>();
         this.solved = false;
+        this.puzzleType = puzzleType != null ? puzzleType : "GENERIC";
     }
 
+    // Default constructor
     public Puzzle() {
         this.solution = "";
         this.puzzleNum = 0;
         this.hint = new ArrayList<>();
         this.solved = false;
-
-    }
-        
-
-    public void grabItem() {
-        System.out.println("You have grabbed an item");
-    }
-
-    public void lookAtItem() {
-        System.out.println("You inspect the item carefully");
-    }
-
-    public void addItem() {
-        System.out.print("You added the item to your inventory");
+        this.puzzleType = "GENERIC";
     }
 
     public boolean attempt(String input) {
         if (input == null || input.isEmpty()) {
-            System.out.println("You must enter an answer");
+            System.out.println("You must enter an answer.");
             return false;
         }
+
         if (input.equalsIgnoreCase(solution)) {
             solved = true;
-            System.out.println("✅ Correct! Puzzle solved.");
+            System.out.println("Correct! You solved the puzzle.");
             return true;
         } else {
-            System.out.println("Incorrect. Try again or use a hint.");
+            System.out.println("Incorrect. Try again.");
             return false;
         }
-
-    }
-
-    public void showHint() {
-        if (hint == null || hint.isEmpty()) {
-            System.out.println("no  hints available");
-        } else {
-            System.out.println("Hints:");
-            for (int i = 0; i < hint.size(); i++) {
-                System.out.println(" " + (i+1) + "." + hint.get(i));
-            }
-        }
-    }
-
-    public void reset() {
-        this.solved = false;
-        System.out.println("The puzzle was reset");
     }
 
     public boolean isSolved() {
         return solved;
     }
 
+    public void reset() {
+        this.solved = false;
+    }
+
     public void displayHint() {
-        if (hint != null && !hint.isEmpty()) {
+        if (!hint.isEmpty()) {
             System.out.println("Hint: " + hint.get(0));
         } else {
-            System.out.println("No hints is available");
+            System.out.println("No hints available.");
         }
-    }  
+    }
 
+    public String getPuzzleType() {
+        return puzzleType;
+    }
+
+    public void setPuzzleType(String puzzleType) {
+        this.puzzleType = puzzleType;
+    }
+
+    @Override
     public String toString() {
-        return "\nPuzzle #" + puzzleNum +
-                "\nSolution: " + solution +
-                "\nSolved: " + solved +
-                "\nHints: " + hint;
+        return puzzleType + "|" + solution + "|" + puzzleNum + "|" + solved + "|" + String.join(",", hint);
     }
 }

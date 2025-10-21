@@ -6,15 +6,17 @@ public class RiddlePuzzle extends Puzzle {
     protected String riddle;
 
     public RiddlePuzzle(String riddle, String answer, ArrayList<String> hint, int puzzleNum) {
-        super(answer, hint, puzzleNum);
+        super(answer, hint, puzzleNum, "RIDDLE");
         this.riddle = riddle;
     }
 
     public RiddlePuzzle() {
-        System.out.println(".()");
+        super();
         this.riddle = "";
+        this.puzzleType = "RIDDLE";
     }
 
+    @Override
     public boolean attempt(String input) {
         if (input == null || input.isEmpty()) {
             System.out.println("Enter an answer to solve the riddle.");
@@ -25,26 +27,27 @@ public class RiddlePuzzle extends Puzzle {
             solved = true;
             System.out.println("Correct! You solved the riddle.");
             return true;
-
         } else {
-            System.out.println("Inccorect. Try again or use a hint.");
+            System.out.println("Incorrect. Try again or use a hint.");
             return false;
         }
     }
 
+    @Override
     public void displayHint() {
         System.out.println("Riddle: " + riddle);
         super.displayHint();
     }
 
+    @Override
     public String toString() {
-        return "Riddle Puzzle #" + puzzleNum + ": " + riddle;
+        return puzzleType + "|" + riddle + "|" + solution + "|" + puzzleNum + "|" + solved + "|" + String.join(",", hint);
     }
 
     public static ArrayList<RiddlePuzzle> loadDefaultRiddles() {
         ArrayList<RiddlePuzzle> riddles = new ArrayList<>();
 
-         riddles.add(new RiddlePuzzle(
+        riddles.add(new RiddlePuzzle(
                 "I grow in fields and feed the land; trade me well to lend a hand.",
                 "WHEAT",
                 new ArrayList<>(java.util.List.of("A golden resource from the fields.")),
@@ -66,20 +69,12 @@ public class RiddlePuzzle extends Puzzle {
         ));
 
         riddles.add(new RiddlePuzzle(
-                "I am the goal, what players chase; gain ten of me to win the race.",
-                "VICTORY",
-                new ArrayList<>(java.util.List.of("Represents success in the game.")),
-                4
-        ));
-
-        riddles.add(new RiddlePuzzle(
                 "Trade and build, expand your might; gather resources to win the fight.",
                 "CATAN",
                 new ArrayList<>(java.util.List.of("The name of the island itself.")),
-                5
+                4
         ));
 
         return riddles;
-    } 
-
+    }
 }
