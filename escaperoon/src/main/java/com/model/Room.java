@@ -55,7 +55,7 @@ public class Room
     return solved;
  }
 
- public Item getItem(Player player)
+ public ArrayList<Item> getItem()
  {
     if(!inventory.isEmpty())
     {
@@ -63,6 +63,9 @@ public class Room
         player.giveItem(item);
         return item;
     }
+
+    
+
     return 0;
  }
 
@@ -95,7 +98,7 @@ public class Room
     System.out.println(options);
  }
 
-public void inputOptions(int num, Player player) {
+public void inputOptions(int num, Account player) {
         switch (num) {
             case 1:
                 Item found = chest();
