@@ -164,6 +164,40 @@ public class DataLoader extends DataConstants{
         return accounts;
     }
 
+    private static ArrayList<Puzzle> helperPuzzle(JSONArray array) {
+        //puzzle array list I really need to make this into a method dear god
+        ArrayList<Puzzle> puzzles = new ArrayList<Puzzle>();
+        JSONArray puzzlesJSON = (JSONArray)roomJSON.get(ROOM_PROGERSS_ROOM_PUZZLE);
+        for(int n=0; n<puzzlesJSON.size(); n++) {
+            JSONObject puzzleJSON = (JSONObject)puzzlesJSON.get(n);
+            String puzzleType = (String)puzzleJSON.get(PUZZLE_TYPE);
+            String puzzleRiddle = (String)puzzleJSON.get(PUZZLE_RIDDLE);
+            String puzzleAnswer = (String)puzzleJSON.get(PUZZLE_ANSWER);
+                        
+            //puzzle hints 
+            ArrayList<String> hints = new ArrayList<String>();
+            JSONArray hintsJSON = (JSONArray)puzzleJSON.get(PUZZLE_HINTS);
+            for (int k=0; k<hintsJSON.size(); k++) {
+                JSONObject hintJSON = (JSONObject)hintsJSON.get(n);
+                String hint = (String)hintJSON.get(HINTS);
+                hints.add(hint);
+            }
+                        
+            int puzzleNum = ((Long)puzzleJSON.get(PUZZLE_PUZZLE_NUM)).intValue();
+
+            Puzzle puzzle = null;
+            if(puzzleType.equalsIgnoreCase("riddle")) {
+            puzzle = new RiddlePuzzle(puzzleRiddle, puzzleAnswer, hints, puzzleNum);
+            } else if (puzzleType.equalsIgnoreCase("cipher")) {
+
+            } else {
+                puzzle = new RiddlePuzzle(puzzleRiddle, puzzleAnswer, hints, puzzleNum);
+            }
+        }
+        return null;
+    }
+    
+
     public static ArrayList<Room> getRooms() {
         ArrayList<Room> Rooms = new ArrayList<Room>();
 
@@ -174,9 +208,10 @@ public class DataLoader extends DataConstants{
                     JSONObject roomJSON = (JSONObject)roomsJSON.get(i);
                     String roomName = (String)roomJSON.get(ROOM_ROOM_NAME);
                     String type = (String)roomJSON.get(ROOM_ROOM_TYPE);
+                    Boolean solved = (Boolean)roomJSON.get(ROOM_SOLVED);
 
+                    //PuzzleList
                     ArrayList<Puzzle> puzzles = new ArrayList<Puzzle>();
-
                     JSONArray puzzlesJSON = (JSONArray)roomJSON.get(PUZZLE_ARRAY);
                     for (int j=0; j<puzzlesJSON.size(); j++) {
                         JSONObject puzzleJSON = (JSONObject)puzzlesJSON.get(j);

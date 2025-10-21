@@ -52,6 +52,7 @@ public abstract class DataConstants {
     //Room
     protected static final String ROOM_ROOM_NAME = "roomName";
     protected static final String ROOM_ROOM_TYPE = "type";
+    protected static final String ROOM_SOLVED = "solved";
     protected static final String PUZZLE_ARRAY = "puzzles";
     protected static final String ITEM_ARRAY = "items";
     protected static final String ROOM_DESCRIPTION = "roomDescription";
@@ -60,15 +61,13 @@ public abstract class DataConstants {
     //puzzles
     protected static final String PUZZLE_SOLUTION = "solution";
     protected static final String PUZZLE_NUM = "puzzleNum";
-    protected static final String RIDDLE_PUZZLE_ARRAY = "riddlePuzzle";
-    protected static final String CIPHER_PUZZLE_ARRAY = "cipherPuzzle";
-    protected static final String ITEM_PUZZLE_ARRAY = "itemPuzzle";
 
     //shared between the different puzzles
     protected static final String PUZZLE_HINT = "hint";
     
     //Riddle Puzzle
     protected static final String RIDDLE_RIDDLE = "riddle";
+
 
     //Items
     protected static final String ITEM_NAME = "name";
