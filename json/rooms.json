@@ -35,10 +35,14 @@
       "puzzleNum": 2
     }],
     "items": [{
-      "id": 1,
       "name": "mirror",
       "description": "a mirror that lets you see things from a different angle",
       "usableOn": "puzzle"
+    }],
+    "objects": [{
+      "objectDescription": "Infinitely Sweet",
+      "contains": "Breakup Shoes",
+      "imagePath": "ummm images???"
     }],
     "roomDescription": "A grand, dimly lit library filled with towering bookshelves, dusty tomes, and hidden secrets waiting to be unlocked.",
     "options": "1. There is a chest \n 2. There is a bookshelf"
@@ -47,10 +51,6 @@
     "roomName": "Victorian",
     "type": "Cipher",
     "solved": true,
-    "roomInfo": [{
-      "roomDescription": "Brass gears, ink-stained papers, and a clockwork cipher box fill the study — crack the code hidden in the clock`s chime.",
-      "options": "1. There is are some dice \n 2. There a desk"
-    }],
     "puzzles": [{
       "type": "Riddle",
       "riddle": "JAWWNY",
@@ -87,6 +87,13 @@
       "name": "key",
       "description": "The decryption key for the puzzle",
       "usableOn": "puzzle"
-    }]
+    }],
+    "objects": [{
+      "objectDescription": "Infinitely Sweet",
+      "contains": "Breakup Shoes",
+      "imagePath": "ummm images???"
+    }],
+    "roomDescription": "Brass gears, ink-stained papers, and a clockwork cipher box fill the study — crack the code hidden in the clock`s chime.",
+    "options": "1. There is are some dice \n 2. There a desk"
   }
 ]

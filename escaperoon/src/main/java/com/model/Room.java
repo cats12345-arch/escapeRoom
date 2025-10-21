@@ -9,17 +9,19 @@ public class Room
     protected boolean solved;
     protected ArrayList<Puzzle> puzzles;
     protected ArrayList<Item> inventory;
+    protected ArrayList<Object> objects;
 
     //RoomInfo
     protected String roomDescription;
     protected String options;
 
-    public Room(String roomName, String type, boolean solved, ArrayList<Puzzle> puzzles, ArrayList<Item> inventory, String roomDescription, String roomOptions) {
+    public Room(String roomName, String type, boolean solved, ArrayList<Puzzle> puzzles, ArrayList<Item> inventory, ArrayList<Object> objects, String roomDescription, String roomOptions) {
         this.roomName = roomName;
         this.type = type;
         this.solved = solved;
         this.puzzles = puzzles;
         this.inventory = inventory;
+        this.objects = objects;
         this.roomDescription = roomDescription;
         this.options = roomOptions;
     }
