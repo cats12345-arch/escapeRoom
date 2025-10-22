@@ -40,7 +40,7 @@ public abstract class DataConstants {
 
     //Puzzle Progress puzzle
     protected static String PUZZLE_TYPE = "type";
-    protected static String PUZZLE_ANSWER = "solution";
+    protected static String PUZZLE_ANSWER = "answer";
     protected static String PUZZLE_HINTS = "hints";
     protected static String PUZZLE_PUZZLE_NUM = "puzzleNum";
 

@@ -20,7 +20,7 @@
     },
     {
       "type": "cipher",
-      "solution": "Arc System Works",
+      "answer": "Arc System Works",
       "ceasarCiphers": 5,
       "anagram": "please pretend this is an anagram",
       "hints": [{
@@ -68,7 +68,7 @@
     },
     {
       "type": "cipher",
-      "solution": "Blue Rain Boots",
+      "answer": "Blue Rain Boots",
       "ceasarCiphers": 5,
       "anagram": "This is totally an annagram",
       "hints": [{
