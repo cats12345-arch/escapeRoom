@@ -1,15 +1,33 @@
 package com.model; 
+import java.util.HashMap;
 
 public class Leaderboard {
-    private HashMap<Player, Integer> scores;
+    private HashMap<Account, Integer> scores;
+    private static Leaderboard leaderboard;
     
     public Leaderboard() {
-        scores = new HashMap<>();
+        this.scores = new HashMap<>();
     }
 
-    public void addScore(Player player)
+    public static Leaderboard getInstance() {
+        if(leaderboard == null) {
+            leaderboard = new Leaderboard();
+        }
+        return leaderboard;
+    }
+
+    public void addScore(Account account)
     {
-        scores.put(player, scores.getScore());
+        if(account == null)
+        return;
+
+        int newScore = account.getScore();
+        Integer current = scores.get(account);
+
+        if(current == null || newScore > current)
+        {
+            scores.put(account, newScore);
+        }
     }
 
     public void displayTop()
