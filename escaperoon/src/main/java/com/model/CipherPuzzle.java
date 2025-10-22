@@ -14,6 +14,14 @@ public class CipherPuzzle extends Puzzle {
         this.encodedText = encrypt(plainText, caesarCiphers);
     }
 
+    public int getCeaserCipher() {
+        return caesarCiphers;
+    }
+
+    public String getAnagram() {
+        return anagram;
+    }
+
     private String encrypt(String text, int shift) {
         StringBuilder result = new StringBuilder();
         for (char c : text.toUpperCase().toCharArray()) {

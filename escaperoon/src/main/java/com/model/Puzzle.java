@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public abstract class Puzzle {
     protected String solution;
     protected int puzzleNum;
-    protected boolean solved;
     protected ArrayList<String> hint;
     protected String puzzleType; // identifies puzzle type for saving/loading
 
@@ -14,8 +13,23 @@ public abstract class Puzzle {
         this.solution = solution != null ? solution.toUpperCase() : "";
         this.puzzleNum = puzzleNum;
         this.hint = hint != null ? hint : new ArrayList<>();
-        this.solved = false;
         this.puzzleType = puzzleType != null ? puzzleType : "GENERIC";
+    }
+
+    public String getPuzzleType() {
+        return puzzleType;
+    }
+
+    public String getSolution() {
+        return solution;
+    }
+
+    public int getPuzzleNum() {
+        return puzzleNum;
+    }
+
+    public ArrayList<String> getHints() {
+        return hint;
     }
 
     // Default constructor
@@ -23,7 +37,6 @@ public abstract class Puzzle {
         this.solution = "";
         this.puzzleNum = 0;
         this.hint = new ArrayList<>();
-        this.solved = false;
         this.puzzleType = "GENERIC";
     }
 
@@ -57,10 +70,6 @@ public abstract class Puzzle {
         } else {
             System.out.println("No hints available.");
         }
-    }
-
-    public String getPuzzleType() {
-        return puzzleType;
     }
 
     public void setPuzzleType(String puzzleType) {

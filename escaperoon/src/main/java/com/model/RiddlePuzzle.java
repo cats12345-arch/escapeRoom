@@ -16,6 +16,10 @@ public class RiddlePuzzle extends Puzzle {
         this.puzzleType = "RIDDLE";
     }
 
+    public String getRiddle() {
+        return riddle;
+    }
+
     @Override
     public boolean attempt(String input) {
         if (input == null || input.isEmpty()) {

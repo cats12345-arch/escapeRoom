@@ -1,6 +1,7 @@
 package com.model;
 public abstract class DataConstants {
     protected static final String USER_TEMP_FILE_NAME = "json/temp.json";
+    protected static final String ROOM_TEMP_FILE_NAME = "json/tempRoom.json";
     protected static final String USER_FILE_NAME = "json/account.json";
     protected static final String ROOM_FILE_NAME = "json/rooms.json";
 

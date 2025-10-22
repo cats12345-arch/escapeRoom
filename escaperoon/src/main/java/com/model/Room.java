@@ -27,14 +27,45 @@ public class Room
     }
 
      public Room()
- {
+    {
     this.roomName = "Unnamed";
     this.type = "Normal";
     this.solved = false;
     this.puzzles = new ArrayList<>();
     this.inventory = new ArrayList<>();
+    }
 
- }
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public String getRoomType() {
+        return type;
+    }
+
+    public Boolean getSolved() {
+        return solved;
+    }
+
+    public ArrayList<Puzzle> getPuzzles() {
+        return puzzles;
+    }
+
+    public ArrayList<Item> getItems() {
+        return inventory;
+    }
+
+    public ArrayList<Object> getObjects() {
+        return objects;
+    }
+
+    public String getRoomDescription() {
+        return roomDescription;
+    }
+
+    public String getRoomOption() {
+        return options;
+    }
 
  public void reset()
  {
