@@ -133,8 +133,8 @@
             "puzzleNum": 1
           }],
           "items": [{
-            "roomItemName": "Shefu",
-            "roomItemDescription": "Thumb"
+            "name": "Shefu",
+            "description": "Thumb"
           }],
           "roomDescription": "Young the Giant",
           "roomOptions": "Superposition",

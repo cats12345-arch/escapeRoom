@@ -181,7 +181,7 @@ public void inputOptions(int num, Account player) {
 
  public String toString()
  {
-    return roomName + type + solved + puzzles.toString() + inventory.toString(); 
+    return roomName + type + solved + puzzles.toString() + inventory.toString() + "\n" + objects + roomDescription + options; 
  }
 
     Object getInventory() {

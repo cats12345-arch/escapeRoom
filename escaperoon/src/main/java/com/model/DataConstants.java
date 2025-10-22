@@ -39,7 +39,7 @@ public abstract class DataConstants {
 
     //Puzzle Progress puzzle
     protected static String PUZZLE_TYPE = "type";
-    protected static String PUZZLE_ANSWER = "answer";
+    protected static String PUZZLE_ANSWER = "solution";
     protected static String PUZZLE_HINTS = "hints";
     protected static String PUZZLE_PUZZLE_NUM = "puzzleNum";
 
@@ -68,7 +68,7 @@ public abstract class DataConstants {
     protected static final String PUZZLE_ARRAY = "puzzles";
     protected static final String ITEM_ARRAY = "items";
     protected static final String ROOM_DESCRIPTION = "roomDescription";
-    protected static final String ROOM_OPTIONS = "roomOptions";
+    protected static final String ROOM_OPTIONS = "options";
 
     //puzzles
     protected static final String PUZZLE_SOLUTION = "solution";
