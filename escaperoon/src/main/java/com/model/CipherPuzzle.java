@@ -23,8 +23,16 @@ public class CipherPuzzle extends Puzzle {
             } else {
                 result.append(c);
             }
+        }                                 //make method to print out the hints
+        return result.toString(); 
+    }
+
+    public String hintString(ArrayList<String> hint) {
+        String finalString = "";
+        for(int i=0; i<hint.size(); i++) {
+            finalString += hint.get(i);
         }
-        return result.toString();
+        return finalString;
     }
 
     @Override

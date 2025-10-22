@@ -41,7 +41,15 @@ public class RiddlePuzzle extends Puzzle {
 
     @Override
     public String toString() {
-        return puzzleType + "|" + riddle + "|" + solution + "|" + puzzleNum + "|" + solved + "|" + String.join(",", hint);
+        return puzzleType + "|" + riddle + "|" + solution + "|" + puzzleNum + "|" + solved + "|" + hintString(hint);
+    }
+
+    public String hintString(ArrayList<String> hint) {
+        String finalString = "";
+        for(int i=0; i<hint.size(); i++) {
+            finalString += hint.get(i);
+        }
+        return finalString;
     }
 
     public static ArrayList<RiddlePuzzle> loadDefaultRiddles() {
@@ -57,12 +65,12 @@ public class RiddlePuzzle extends Puzzle {
         riddles.add(new RiddlePuzzle(
                 "From mountains high, I shine and gleam; build your cities with my beam.",
                 "ORE",
-                new ArrayList<>(java.util.List.of("A mined resource.")),
+                new ArrayList<>(java.util.List.of("A mined rocky resource.")),
                 2
         ));
 
         riddles.add(new RiddlePuzzle(
-                "Lay me down to reach new ground; I'm made of wood, strong and sound.",
+                "Lay me down to reach new ground; I'm strong and sound, made of wood and brick to expand real quick!",
                 "ROAD",
                 new ArrayList<>(java.util.List.of("Used to connect settlements.")),
                 3
