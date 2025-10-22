@@ -45,7 +45,7 @@ public class RiddlePuzzle extends Puzzle {
 
     @Override
     public String toString() {
-        return puzzleType + "|" + riddle + "|" + solution + "|" + puzzleNum + "|" + solved + "|" + String.join(",", hint);
+        return puzzleType + "|" + riddle + "|" + solution + "|" + puzzleNum  + "|" + String.join(",", hint);
     }
 
     public static ArrayList<RiddlePuzzle> loadDefaultRiddles() {

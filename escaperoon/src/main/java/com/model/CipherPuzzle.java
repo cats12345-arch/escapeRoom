@@ -60,6 +60,6 @@ public class CipherPuzzle extends Puzzle {
 
     @Override
     public String toString() {
-        return puzzleType + "|" + solution + "|" + caesarCiphers + "|" + anagram + "|" + encodedText + "|" + puzzleNum + "|" + solved;
+        return puzzleType + "|" + solution + "|" + caesarCiphers + "|" + anagram + "|" + encodedText + "|" + puzzleNum;
     }
 }

@@ -148,7 +148,7 @@ public class DataLoader extends DataConstants{
             ArrayList<String> hints = new ArrayList<String>();
             JSONArray hintsJSON = (JSONArray)puzzleJSON.get(PUZZLE_HINTS);
             for (int k=0; k<hintsJSON.size(); k++) {
-                JSONObject hintJSON = (JSONObject)hintsJSON.get(n);
+                JSONObject hintJSON = (JSONObject)hintsJSON.get(k);
                 String hint = (String)hintJSON.get(HINTS);
                 hints.add(hint);
             }

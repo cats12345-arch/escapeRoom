@@ -8,13 +8,13 @@
       "riddle": "The Polar Boys",
       "answer": "Goodbye",
       "hints": [{
-        "hint1": "3rd Example hint"
+        "hint": "3rd Example hint"
       },
       {
-        "hint2": "3rd Examplehint2"
+        "hint": "3rd Examplehint2"
       },
       {
-        "hint3": "3rd Examplehint3"
+        "hint": "3rd Examplehint3"
       }],
       "puzzleNum": 1
     },
@@ -24,13 +24,13 @@
       "ceasarCiphers": 5,
       "anagram": "please pretend this is an anagram",
       "hints": [{
-        "hint1": "3rd Example hint"
+        "hint": "3rd Example hint"
       },
       {
-        "hint2": "3rd Examplehint2"
+        "hint": "3rd Examplehint2"
       },
       {
-        "hint3": "3rd Examplehint3"
+        "hint": "3rd Examplehint3"
       }],
       "puzzleNum": 2
     }],
@@ -56,13 +56,13 @@
       "riddle": "JAWWNY",
       "answer": "Anything You want",
       "hints": [{
-        "hint1": "5th Example hint"
+        "hint": "5th Example hint"
       },
       {
-        "hint2": "5th Examplehint2"
+        "hint": "5th Examplehint2"
       },
       {
-        "hint3": "5th Examplehint3"
+        "hint": "5th Examplehint3"
       }],
       "puzzleNum": 1
     },
@@ -72,13 +72,13 @@
       "ceasarCiphers": 5,
       "anagram": "This is totally an annagram",
       "hints": [{
-        "hint1": "4th Example hint"
+        "hint": "4th Example hint"
       },
       {
-        "hint2": "4th Examplehint2"
+        "hint": "4th Examplehint2"
       },
       {
-        "hint3": "4th Examplehint3"
+        "hint": "4th Examplehint3"
       }],
       "puzzleNum": 2
     }],
