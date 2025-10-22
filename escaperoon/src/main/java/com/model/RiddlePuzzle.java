@@ -16,6 +16,10 @@ public class RiddlePuzzle extends Puzzle {
         this.puzzleType = "RIDDLE";
     }
 
+    public String getRiddle() {
+        return riddle;
+    }
+
     @Override
     public boolean attempt(String input) {
         if (input == null || input.isEmpty()) {
@@ -41,6 +45,7 @@ public class RiddlePuzzle extends Puzzle {
 
     @Override
     public String toString() {
+<<<<<<< HEAD
         return puzzleType + "|" + riddle + "|" + solution + "|" + puzzleNum + "|" + solved + "|" + hintString(hint);
     }
 
@@ -50,6 +55,9 @@ public class RiddlePuzzle extends Puzzle {
             finalString += hint.get(i);
         }
         return finalString;
+=======
+        return puzzleType + "|" + riddle + "|" + solution + "|" + puzzleNum  + "|" + String.join(",", hint);
+>>>>>>> dc4d605d95ca28d76e32a065a988909f28c74111
     }
 
     public static ArrayList<RiddlePuzzle> loadDefaultRiddles() {

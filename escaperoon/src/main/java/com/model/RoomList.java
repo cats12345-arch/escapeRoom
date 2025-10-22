@@ -1,3 +1,5 @@
+package com.model;
+
 import java.util.ArrayList;
 
 public class RoomList 
@@ -6,9 +8,9 @@ public class RoomList
 
     private ArrayList<Room> rooms;
 
-    private Roomlist()
+    private RoomList()
     {
-        rooms = new ArrayList<>();
+        rooms = DataLoader.getRooms();
     }
 
     public static RoomList getInstance()
@@ -18,6 +20,10 @@ public class RoomList
             roomList = new RoomList();
         }
         return roomList;
+    }
+
+    public ArrayList<Room> getRoomList() {
+        return rooms;
     }
 
     public Room getRoom(String roomName)
