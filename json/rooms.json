@@ -35,10 +35,24 @@
       "puzzleNum": 2
     }],
     "items": [{
-      "name": "mirror",
-      "description": "a mirror that lets you see things from a different angle",
+      "name": "wheat",
+      "description": "A golden source of fuel for you and sheep.",
       "usableOn": "puzzle"
-    }],
+    }, {
+      "name": "ore",
+      "description": "A rocky element from the mountains of catan."
+    }
+    , {
+      "name": "sheep",
+      "description": "The only and lonely animal of catan."
+    }, {
+      "name": "brick",
+      "description": "While technically clay found in mines, we call it brick."
+    }, {
+      "name": "lumber",
+      "description": "Found inside the forest."
+    }
+    ],
     "objects": [{
       "objectDescription": "Infinitely Sweet",
       "contains": "Breakup Shoes",
