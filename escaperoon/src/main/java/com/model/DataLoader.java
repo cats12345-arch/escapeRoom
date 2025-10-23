@@ -148,7 +148,7 @@ public class DataLoader extends DataConstants{
             ArrayList<String> hints = new ArrayList<String>();
             JSONArray hintsJSON = (JSONArray)puzzleJSON.get(PUZZLE_HINTS);
             for (int k=0; k<hintsJSON.size(); k++) {
-                JSONObject hintJSON = (JSONObject)hintsJSON.get(n);
+                JSONObject hintJSON = (JSONObject)hintsJSON.get(k);
                 String hint = (String)hintJSON.get(HINTS);
                 hints.add(hint);
             }
@@ -183,7 +183,7 @@ public class DataLoader extends DataConstants{
             String imgPath = (String)objectJSON.get(OBJECT_IMAGE_PATH);
             objects.add(new Object(objectDescription, contains, imgPath));
        }
-        return null;
+        return objects;
     }
     
 
@@ -200,14 +200,7 @@ public class DataLoader extends DataConstants{
                     Boolean solved = (Boolean)roomJSON.get(ROOM_SOLVED);
 
                     //PuzzleList
-                    ArrayList<Puzzle> puzzles = new ArrayList<Puzzle>();
-                    JSONArray puzzlesJSON = (JSONArray)roomJSON.get(PUZZLE_ARRAY);
-                    for (int j=0; j<puzzlesJSON.size(); j++) {
-                        JSONObject puzzleJSON = (JSONObject)puzzlesJSON.get(j);
-                        String solution = (String)puzzleJSON.get(PUZZLE_SOLUTION);
-                        int puzzleNum = ((Long)puzzleJSON.get(PUZZLE_NUM)).intValue();
-                        puzzles.add(new Puzzle(solution, puzzleNum));
-                    }
+                    ArrayList<Puzzle> puzzles = helperPuzzle((JSONArray)roomJSON.get(PUZZLE_ARRAY));
 
                     ArrayList<Item> items = new ArrayList<Item>();
 
@@ -219,7 +212,12 @@ public class DataLoader extends DataConstants{
                         items.add(new Item(name, description));
                     }
 
-                    Rooms.add(new Room(roomName, type, puzzles, items));
+                    ArrayList<Object> objects = helperObject((JSONArray)roomJSON.get(ROOM_OBJECTS));
+
+                    String roomDescription = (String)roomJSON.get(ROOM_DESCRIPTION);
+                    String roomOptions = (String)roomJSON.get(ROOM_OPTIONS);
+
+                    Rooms.add(new Room(roomName, type, solved, puzzles, items, objects, roomDescription, roomOptions));
                 }
 
             } catch (Exception e) {
@@ -235,10 +233,11 @@ public class DataLoader extends DataConstants{
 			System.out.println(user);
 		}
 
-        //ArrayList<Room> rooms = DataLoader.getRooms();
+        ArrayList<Room> rooms = DataLoader.getRooms();
 
-        //for(Room room : rooms) {
-            //System.out.println(room);
-        //}
+        for(Room room : rooms) {
+            System.out.println(room);
+            System.out.println("\n");
+        }
 	}
 }

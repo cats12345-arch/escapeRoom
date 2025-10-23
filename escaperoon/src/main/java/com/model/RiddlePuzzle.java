@@ -16,6 +16,10 @@ public class RiddlePuzzle extends Puzzle {
         this.puzzleType = "RIDDLE";
     }
 
+    public String getRiddle() {
+        return riddle;
+    }
+
     @Override
     public boolean attempt(String input) {
         if (input == null || input.isEmpty()) {
@@ -41,7 +45,19 @@ public class RiddlePuzzle extends Puzzle {
 
     @Override
     public String toString() {
-        return puzzleType + "|" + riddle + "|" + solution + "|" + puzzleNum + "|" + solved + "|" + String.join(",", hint);
+<<<<<<< HEAD
+        return puzzleType + "|" + riddle + "|" + solution + "|" + puzzleNum + "|" + solved + "|" + hintString(hint);
+    }
+
+    public String hintString(ArrayList<String> hint) {
+        String finalString = "";
+        for(int i=0; i<hint.size(); i++) {
+            finalString += hint.get(i);
+        }
+        return finalString;
+=======
+        return puzzleType + "|" + riddle + "|" + solution + "|" + puzzleNum  + "|" + String.join(",", hint);
+>>>>>>> dc4d605d95ca28d76e32a065a988909f28c74111
     }
 
     public static ArrayList<RiddlePuzzle> loadDefaultRiddles() {
@@ -57,12 +73,12 @@ public class RiddlePuzzle extends Puzzle {
         riddles.add(new RiddlePuzzle(
                 "From mountains high, I shine and gleam; build your cities with my beam.",
                 "ORE",
-                new ArrayList<>(java.util.List.of("A mined resource.")),
+                new ArrayList<>(java.util.List.of("A mined rocky resource.")),
                 2
         ));
 
         riddles.add(new RiddlePuzzle(
-                "Lay me down to reach new ground; I'm made of wood, strong and sound.",
+                "Lay me down to reach new ground; I'm strong and sound, made of wood and brick to expand real quick!",
                 "ROAD",
                 new ArrayList<>(java.util.List.of("Used to connect settlements.")),
                 3

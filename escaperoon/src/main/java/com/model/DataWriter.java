@@ -8,6 +8,23 @@ import org.json.simple.JSONObject;
 
 public class DataWriter extends DataConstants{
 
+    public static void saveRooms() {
+        RoomList rooms = RoomList.getInstance();
+        ArrayList<Room> roomList = rooms.getRoomList();
+
+        JSONArray jsonRooms = new JSONArray();
+        for(int i=0; i<roomList.size();i++) {
+            jsonRooms.add(getRoom(roomList.get(i)));
+        }
+
+        try (FileWriter file = new FileWriter(ROOM_TEMP_FILE_NAME)) {
+            file.write(jsonRooms.toJSONString());
+            file.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void savePlayers() {
         AccountList accounts = AccountList.getInstance();
         ArrayList<Account> accountList = accounts.getAccount();
@@ -71,7 +88,73 @@ public class DataWriter extends DataConstants{
         JSONObject roomTimeDetails = new JSONObject();
         roomTimeDetails.put(TIME, roomProgress.getTimeString());
         roomProgressDetails.put(ROOM_PROGRESS_TIME, roomTimeDetails);
+
+        Room roomDetails = roomProgress.getRoom();
+        JSONObject jsonRoom = getRoom(roomDetails);
+        roomProgressDetails.put(ROOM_ROOM, jsonRoom);
         return roomProgressDetails;
+    }
+
+    public static JSONObject getRoom(Room roomDetails) {
+        JSONObject jsonRoom = new JSONObject();
+        jsonRoom.put(ROOM_PROGRESS_ROOM_NAME, roomDetails.getRoomName());
+        jsonRoom.put(ROOM_PROGRESS_ROOM_TYPE, roomDetails.getRoomType());
+        jsonRoom.put(ROOM_PROGRESS_ROOM_SOLVED, roomDetails.getSolved());
+        
+        ArrayList<Puzzle> puzzleList = roomDetails.getPuzzles();
+        JSONArray jsonPuzzleList = new JSONArray();
+        for(int i=0; i<puzzleList.size(); i++) {
+            jsonPuzzleList.add(getPuzzle(puzzleList.get(i)));
+        }
+        jsonRoom.put(PUZZLE_ARRAY, jsonPuzzleList);
+
+        ArrayList<Item> roomItemList = roomDetails.getItems();
+        JSONArray jsonRoomItemList = new JSONArray();
+        for(int i=0; i<roomItemList.size(); i++) {
+            jsonRoomItemList.add(getItems(roomItemList.get(i)));
+        }
+        jsonRoom.put(ITEM_ARRAY, jsonRoomItemList);
+
+        ArrayList<Object> objectList = roomDetails.getObjects();
+        JSONArray jsonRoomObjectList = new JSONArray();
+        for(int i=0; i<objectList.size(); i++) {
+            jsonRoomObjectList.add(getObject(objectList.get(i)));
+        }
+        jsonRoom.put(ROOM_OBJECTS, jsonRoomObjectList);
+        return jsonRoom;
+    }
+
+    private static JSONObject getObject(Object object) {
+        JSONObject objectDetails = new JSONObject();
+        objectDetails.put(OBJECT_DESCRIPTION, object.getDescription());
+        objectDetails.put(OBJECT_CONTAINS, object.getContains());
+        objectDetails.put(OBJECT_IMAGE_PATH, object.getImagePath());
+        return objectDetails;
+    }
+
+    private static JSONObject getPuzzle(Puzzle puzzle) {
+        JSONObject puzzleDetails = new JSONObject();
+        puzzleDetails.put(PUZZLE_ANSWER, puzzle.getSolution());
+        puzzleDetails.put(PUZZLE_PUZZLE_NUM, puzzle.getPuzzleNum());
+        JSONArray puzzleHintDetails = new JSONArray();
+        ArrayList<String> hints = puzzle.getHints();
+        for(int i=0; i<hints.size(); i++) {
+            JSONObject hint = new JSONObject();
+            hint.put(HINTS, hints.get(i));
+            puzzleHintDetails.add(hint);
+        }
+        puzzleDetails.put(PUZZLE_HINTS, puzzleHintDetails);
+
+        puzzleDetails.put(PUZZLE_TYPE, puzzle.getPuzzleType());
+        if(puzzle.getPuzzleType().equalsIgnoreCase("cipher")) {
+            puzzleDetails.put(CIPHER_ANAGRAM, ((CipherPuzzle) puzzle).getCeaserCipher());
+            puzzleDetails.put(CIPHER_CEASER, ((CipherPuzzle) puzzle).getCeaserCipher());
+        } else if(puzzle.getPuzzleType().equalsIgnoreCase("riddle")) {
+            puzzleDetails.put(PUZZLE_RIDDLE, ((RiddlePuzzle) puzzle).getRiddle());
+        } else if(puzzle.getPuzzleType().equalsIgnoreCase("item")) {
+
+        }
+        return puzzleDetails;
     }
 
     private static JSONObject getPuzzleProgress(PuzzleProgress puzzleProgress) {
@@ -81,6 +164,9 @@ public class DataWriter extends DataConstants{
         puzzleTimeDetails.put(TIME, puzzleProgress.getTimeString());
         puzzleProgressDetails.put(PUZZLE_PROGRESS_TIME, puzzleTimeDetails);
         puzzleProgressDetails.put(PUZZLE_HINTS_USED, puzzleProgress.getnumHintsUsed());
+        
+        JSONObject jsonPuzzle = getPuzzle(puzzleProgress.getPuzzle());
+        puzzleProgressDetails.put(PUZZLE_PROGRESS_PUZZLE, jsonPuzzle);
         return puzzleProgressDetails;
     }
 
@@ -102,5 +188,6 @@ public class DataWriter extends DataConstants{
     
     public static void main(String[] args) {
         DataWriter.savePlayers();
+        DataWriter.saveRooms();
     }
 }
