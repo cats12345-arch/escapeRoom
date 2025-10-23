@@ -190,6 +190,26 @@ public void inputOptions(int num, Account player) {
         puzzles.add(puzzle); 
     }
 
+    public void interactWithObject()
+    {
+        for(int i = 0; i < objects.size(); ++i)
+        {
+            int num = i + 1;
+            System.out.println(num +"." + objects.get(i).getName());
+        }
+    }
+
+    public Object GetObject(int option)
+    {
+        return objects.get(option);
+    }
+
+    public void showObjectOption()
+    {
+        System.out.println("1. Show Description" );
+        System.out.println("2. Interact");
+    }
+
 
  public String toString()
  {
