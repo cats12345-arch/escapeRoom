@@ -89,18 +89,12 @@ public class Room
     return solved;
  }
 
- public ArrayList<Item> getItem()
+ public void resetItem()
  {
-    if(!inventory.isEmpty())
-    {
-        Item item = inventory.remove(0);
-        player.giveItem(item);
-        return item;
+    for(int i=0; i<inventory.size();i++) {
+        inventory.remove(i);
+        i--;
     }
-
-    
-
-    return 0;
  }
 
  public void exploreRoom()
@@ -110,20 +104,6 @@ public class Room
    + puzzles.size() + " puzzles.");
  }
     
- public void startPuzzle()
- {
-    for (Puzzle p : puzzles)
-    {
-        if(!p.isSolved())
-        {
-            p.start();
-            return;
-        }
-    }
-    System.out.println("You've completed all the puzzles in this room");
-
- }
-
 
 
  private void displayOptions()
@@ -138,7 +118,7 @@ public void inputOptions(int num, Account player) {
                 Item found = chest();
                 if (found != null) {
                     System.out.println("You found: " + found.getName());
-                    if (player != null) player.giveItem(found);
+                    if (player != null);
                 } else {
                     System.out.println("The chest is empty.");
                 }

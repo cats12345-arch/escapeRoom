@@ -38,17 +38,6 @@ public class RoomList
         return null;
     }
 
-
-    public void newRoom()
-    {
-        if(room != null && !rooms.contains(room))
-        {
-            rooms.add(room);
-            System.out.println("A new room has been added: " + room.roomName);
-
-        }
-    }
-
     public void saveRoom()
     {
         System.out.println("Saving room...");
@@ -65,7 +54,7 @@ public class RoomList
 
     public String toString()
     {
-        return roomList + rooms.toString;
+        return roomList + rooms.toString();
     }
 
 
