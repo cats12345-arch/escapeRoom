@@ -15,7 +15,8 @@ public class Room
     protected String roomDescription;
     protected String options;
 
-    public Room(String roomName, String type, boolean solved, ArrayList<Puzzle> puzzles, ArrayList<Item> inventory, ArrayList<Object> objects, String roomDescription, String roomOptions) {
+    public Room(String roomName, String type, boolean solved, ArrayList<Puzzle> puzzles, 
+    ArrayList<Item> inventory, ArrayList<Object> objects, String roomDescription, String roomOptions) {
         this.roomName = roomName;
         this.type = type;
         this.solved = solved;
@@ -214,23 +215,6 @@ public void inputOptions(int num, Account player) {
  {
     return roomName + type + solved + puzzles.toString() + inventory.toString() + "\n" + objects + roomDescription + options; 
  }
-
-    Object getInventory() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    Object getInventory() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public Object getInventory() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getInventory'");
-    }
-
-    Object getInventory() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
  
 }
