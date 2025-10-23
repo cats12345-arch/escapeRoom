@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class RiddlePuzzle extends Puzzle {
     protected String riddle;
+    
 
     public RiddlePuzzle(String riddle, String answer, ArrayList<String> hint, int puzzleNum) {
         super(answer, hint, puzzleNum, "RIDDLE");
@@ -28,7 +29,7 @@ public class RiddlePuzzle extends Puzzle {
         }
 
         if (input.equalsIgnoreCase(solution)) {
-            solved = true;
+
             System.out.println("Correct! You solved the riddle.");
             return true;
         } else {
@@ -45,7 +46,7 @@ public class RiddlePuzzle extends Puzzle {
 
     @Override
     public String toString() {
-        return puzzleType + "|" + riddle + "|" + solution + "|" + puzzleNum + "|" + solved + "|" + hintString(hint);
+        return puzzleType + "|" + riddle + "|" + solution + "|" + puzzleNum + "|" + hintString(hint);
     }
 
     public String hintString(ArrayList<String> hint) {
