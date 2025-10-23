@@ -1,7 +1,6 @@
 package com.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Account {
     private String username;
@@ -25,7 +24,6 @@ public class Account {
         this.roomProgresses = new ArrayList<RoomProgress>();
         this.score = 0;
         this.achievements = new ArrayList<Achievement>();
-        this.progress = new HashMap<Room, RoomProgress>();
     }
 
     public ArrayList<RoomProgress> getRoomProgresses() {
@@ -38,10 +36,6 @@ public class Account {
 
     public ArrayList<Achievement> getAchievements() {
         return achievements;
-    }
-
-    public HashMap<Room, RoomProgress> getProgress() {
-        return progress;
     }
 
     public String getUsername() {

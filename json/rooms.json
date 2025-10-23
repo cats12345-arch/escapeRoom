@@ -1,11 +1,8 @@
 [
   {
-    "id": 1,
     "roomName": "Library",
     "type": "Riddle",
     "solved": false,
-    "roomDescription": "A grand, dimly lit library filled with towering bookshelves, dusty tomes, and hidden secrets waiting to be unlocked.",
-    "options": "1. There is a chest \n 2. There is a bookshelf",
     "puzzles": [{
       "type": "Riddle",
       "riddle": "The Polar Boys",
@@ -36,40 +33,67 @@
         "hint3": "3rd Examplehint3"
       }],
       "puzzleNum": 2
-    }
-    ],
+    }],
     "items": [{
-      "id": 1,
       "name": "mirror",
       "description": "a mirror that lets you see things from a different angle",
       "usableOn": "puzzle"
-    }]
+    }],
+    "objects": [{
+      "objectDescription": "Infinitely Sweet",
+      "contains": "Breakup Shoes",
+      "imagePath": "ummm images???"
+    }],
+    "roomDescription": "A grand, dimly lit library filled with towering bookshelves, dusty tomes, and hidden secrets waiting to be unlocked.",
+    "options": "1. There is a chest \n 2. There is a bookshelf"
   },
   {
-    "id": 2,
     "roomName": "Victorian",
     "type": "Cipher",
     "solved": true,
-    "roomInfo": [{
-      "roomDescription": "Brass gears, ink-stained papers, and a clockwork cipher box fill the study — crack the code hidden in the clock`s chime.",
-      "options": "1. There is are some dice \n 2. There a desk"
-    }],
     "puzzles": [{
-      "id": 2,
-      "solution": "Meet at midnight by the gazebo",
-      "hint": ["Her name hangs above the mantel", "Victoria"],
-      "puzzleNum": 2,
-      "solved": true,
-      "cipherPuzzle": [{
-        "riddle": "A wax-sealed note reads: HMGM OK UIYVKZVK JY OPG ZOQMBJ",
-        "hint": "Vigenere"
-      }]
+      "type": "Riddle",
+      "riddle": "JAWWNY",
+      "answer": "Anything You want",
+      "hints": [{
+        "hint1": "5th Example hint"
+      },
+      {
+        "hint2": "5th Examplehint2"
+      },
+      {
+        "hint3": "5th Examplehint3"
+      }],
+      "puzzleNum": 1
+    },
+    {
+      "type": "cipher",
+      "solution": "Blue Rain Boots",
+      "ceasarCiphers": 5,
+      "anagram": "This is totally an annagram",
+      "hints": [{
+        "hint1": "4th Example hint"
+      },
+      {
+        "hint2": "4th Examplehint2"
+      },
+      {
+        "hint3": "4th Examplehint3"
+      }],
+      "puzzleNum": 2
     }],
     "items": [{
       "id": 2,
       "name": "key",
       "description": "The decryption key for the puzzle",
       "usableOn": "puzzle"
-    }]
+    }],
+    "objects": [{
+      "objectDescription": "Infinitely Sweet",
+      "contains": "Breakup Shoes",
+      "imagePath": "ummm images???"
+    }],
+    "roomDescription": "Brass gears, ink-stained papers, and a clockwork cipher box fill the study — crack the code hidden in the clock`s chime.",
+    "options": "1. There is are some dice \n 2. There a desk"
   }
 ]

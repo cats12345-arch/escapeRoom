@@ -29,6 +29,7 @@ public abstract class DataConstants {
     protected static final String ROOM_PROGRESS_ROOM_SOLVED = "solved";
     protected static final String ROOM_PROGERSS_ROOM_PUZZLE = "puzzles";
     protected static final String ROOM_PROGRESS_ROOM_ITEMS = "items";
+    protected static final String ROOM_OBJECTS = "objects";
 
     //Puzzle Progress
     protected static final String PUZZLE_PROGRESS_COMPLETED = "puzzleComplete";
@@ -38,10 +39,21 @@ public abstract class DataConstants {
 
     //Puzzle Progress puzzle
     protected static String PUZZLE_TYPE = "type";
-    protected static String PUZZLE_RIDDLE = "riddle";
     protected static String PUZZLE_ANSWER = "answer";
     protected static String PUZZLE_HINTS = "hints";
     protected static String PUZZLE_PUZZLE_NUM = "puzzleNum";
+
+    //Riddle
+    protected static String PUZZLE_RIDDLE = "riddle";
+
+    //Cipher
+    protected static String CIPHER_ANAGRAM = "anagram";
+    protected static String CIPHER_CEASER = "ceasarCiphers";
+
+    //Object
+    protected static String OBJECT_DESCRIPTION = "objectDescription";
+    protected static String OBJECT_CONTAINS = "contains";
+    protected static String OBJECT_IMAGE_PATH = "imagePath";
 
     //Hint
     protected static String HINTS = "hint";
@@ -52,6 +64,7 @@ public abstract class DataConstants {
     //Room
     protected static final String ROOM_ROOM_NAME = "roomName";
     protected static final String ROOM_ROOM_TYPE = "type";
+    protected static final String ROOM_SOLVED = "solved";
     protected static final String PUZZLE_ARRAY = "puzzles";
     protected static final String ITEM_ARRAY = "items";
     protected static final String ROOM_DESCRIPTION = "roomDescription";
@@ -60,15 +73,13 @@ public abstract class DataConstants {
     //puzzles
     protected static final String PUZZLE_SOLUTION = "solution";
     protected static final String PUZZLE_NUM = "puzzleNum";
-    protected static final String RIDDLE_PUZZLE_ARRAY = "riddlePuzzle";
-    protected static final String CIPHER_PUZZLE_ARRAY = "cipherPuzzle";
-    protected static final String ITEM_PUZZLE_ARRAY = "itemPuzzle";
 
     //shared between the different puzzles
     protected static final String PUZZLE_HINT = "hint";
     
     //Riddle Puzzle
     protected static final String RIDDLE_RIDDLE = "riddle";
+
 
     //Items
     protected static final String ITEM_NAME = "name";

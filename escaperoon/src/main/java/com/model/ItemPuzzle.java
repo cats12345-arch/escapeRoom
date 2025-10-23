@@ -3,19 +3,18 @@ package com.model;
 import java.util.ArrayList;
 
 public class ItemPuzzle extends Puzzle {
-    private ArrayList<Item> requiredItems;
-    private Room room;
+    protected ArrayList<Item> requiredItems;
+    protected Room room;
 
-    public ItemPuzzle(ArrayList<Item> requiredItems, String solution, ArrayList<String> hint, int puzzleNum, Room room ) {
-        super(solution, hint, puzzleNum);
+    public ItemPuzzle(ArrayList<Item> requiredItems, String solution, ArrayList<String> hint, int puzzleNum, Room room) {
+        super(solution, hint, puzzleNum, "ITEM");
         this.requiredItems = requiredItems != null ? requiredItems : new ArrayList<>();
         this.room = room;
     }
 
-    public ItemPuzzle() {
-        System.out.println(".()");
-        this.requiredItems = new ArrayList<>();
-        this.room = null;
+    public ItemPuzzle(ArrayList<Item> requiredItems, String solution, ArrayList<String> hint, int puzzleNum) {
+        super(solution, hint, puzzleNum, "ITEM");
+        this.requiredItems = requiredItems != null ? requiredItems : new ArrayList<>();
     }
 
     public boolean playerHasItems(ArrayList<Item> playerInventory) {
@@ -50,18 +49,13 @@ public class ItemPuzzle extends Puzzle {
 
         System.out.println("No item named '" + itemName + "' found in this room.");
     }
-    
+
+    @Override
     public boolean attempt(String input) {
-        // Example: solution could be "SETTLEMENT" or "CITY"
         if (input.equalsIgnoreCase(solution)) {
-            if (playerHasItems(room.getInventory())) {
-                solved = true;
-                System.out.println(" You built a " + solution + "! Puzzle solved.");
-                return true;
-            } else {
-                System.out.println(" You don't have all the required items to build a " + solution + ".");
-                return false;
-            }
+            solved = true;
+            System.out.println("You built a " + solution + ". Puzzle solved.");
+            return true;
         } else {
             System.out.println("Incorrect. Try again or gather more resources.");
             return false;
@@ -70,19 +64,20 @@ public class ItemPuzzle extends Puzzle {
 
     @Override
     public void displayHint() {
-        System.out.println("Item Puzzle: You need to gather resources to build something important!");
+        System.out.println("Item Puzzle: You need to gather resources to build something important.");
         super.displayHint();
-        System.out.print("Required items: ");
-        for (Item item : requiredItems) {
-            System.out.print(item.getName() + " ");
+        if (requiredItems != null && !requiredItems.isEmpty()) {
+            System.out.print("Required items: ");
+            for (Item item : requiredItems) {
+                System.out.print(item.getName() + " ");
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 
     @Override
     public String toString() {
-        return "Item Puzzle (build: " + solution + ") | Requires: " +
-                requiredItems.stream().map(Item::getName).toList();
+        return puzzleType + "|" + solution + "|" + puzzleNum + "|" + solved +
+                "|Required items: " + (requiredItems != null ? requiredItems.stream().map(Item::getName).toList() : "None");
     }
-
 }
