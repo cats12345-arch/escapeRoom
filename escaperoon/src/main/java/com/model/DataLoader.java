@@ -178,10 +178,14 @@ public class DataLoader extends DataConstants{
        ArrayList<Object> objects = new ArrayList<Object>();
        for(int i=0; i<array.size(); i++) {
             JSONObject objectJSON = (JSONObject)array.get(i);
+            String objectName = (String)objectJSON.get(OBJECT_NAME);
             String objectDescription = (String)objectJSON.get(OBJECT_DESCRIPTION);
-            String contains = (String)objectJSON.get(OBJECT_CONTAINS);
-            String imgPath = (String)objectJSON.get(OBJECT_IMAGE_PATH);
-            objects.add(new Object(objectDescription, contains, imgPath));
+            JSONObject contains = (JSONObject)objectJSON.get(OBJECT_CONTAINS);
+            String name = (String)contains.get(ITEM_NAME);
+            String description = (String)contains.get(ITEM_DESCRIPTION);
+            Item item = new Item(name, description);
+            //Fake error IDK why its there
+            objects.add(new Object(objectName, objectDescription, item));
        }
         return objects;
     }
@@ -236,8 +240,8 @@ public class DataLoader extends DataConstants{
         ArrayList<Room> rooms = DataLoader.getRooms();
 
         for(Room room : rooms) {
-            System.out.println(room);
-            System.out.println("\n");
+           System.out.println(room);
+           System.out.println("\n");
         }
 	}
 }

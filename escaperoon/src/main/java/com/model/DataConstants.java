@@ -54,7 +54,7 @@ public abstract class DataConstants {
     //Object
     protected static String OBJECT_DESCRIPTION = "objectDescription";
     protected static String OBJECT_CONTAINS = "contains";
-    protected static String OBJECT_IMAGE_PATH = "imagePath";
+    protected static String OBJECT_NAME = "objectName";
 
     //Hint
     protected static String HINTS = "hint";

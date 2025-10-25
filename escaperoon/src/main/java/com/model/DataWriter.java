@@ -127,8 +127,9 @@ public class DataWriter extends DataConstants{
     private static JSONObject getObject(Object object) {
         JSONObject objectDetails = new JSONObject();
         objectDetails.put(OBJECT_DESCRIPTION, object.getDescription());
-        objectDetails.put(OBJECT_CONTAINS, object.getContains());
-        objectDetails.put(OBJECT_IMAGE_PATH, object.getImagePath());
+        objectDetails.put(OBJECT_NAME, object.getName());
+        JSONObject objectItem = getItems(object.getContains());
+        objectDetails.put(OBJECT_CONTAINS, objectItem);
         return objectDetails;
     }
 

@@ -64,9 +64,12 @@
           "usableOn": "puzzle"
         }],
         "objects": [{
+          "objectName": "object name",
           "objectDescription": "Infinitely Sweet",
-          "contains": "Breakup Shoes",
-          "imagePath": "ummm images???"
+          "contains": {
+            "name": "example item name",
+            "description": "example item description"
+          }
         }],
         "roomDescription": "A grand, dimly lit library filled with towering bookshelves, dusty tomes, and hidden secrets waiting to be unlocked.",
         "options": "1. There is a chest \n 2. There is a bookshelf"
@@ -139,9 +142,12 @@
           "roomDescription": "Young the Giant",
           "roomOptions": "Superposition",
           "objects": [{
+            "objectName": "object name",
             "objectDescription": "Infinitely Sweet",
-            "contains": "Breakup Shoes",
-            "imagePath": "ummm images???"
+            "contains": {
+              "name": "example item name",
+              "description": "example item description"
+            }
           }]
         }
       }]
