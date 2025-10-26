@@ -17,7 +17,7 @@ public class GameEngine {
     {
         this.accounts = new ArrayList<>();
         this.leaderboard = new Leaderboard();
-        this.time = new Timer();
+        this.time = new Timer(0);
         this.currentPuzzle = null;
     }
 

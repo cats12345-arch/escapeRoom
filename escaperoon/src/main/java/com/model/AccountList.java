@@ -54,10 +54,17 @@ public class AccountList {
      * Allows the creation of a new account
      * @param username the username of the new account
      * @param password the password of the new account
+     * @return returns false if account already exist
      */
-    public void newAccount(String username, String password) {
+    public Boolean newAccount(String username, String password) {
+        for(int i=0; i<accounts.size(); i++ ) {
+            if(accounts.get(i).getUsername().equals(username)) {
+                return false;
+            }
+        }
         Account newAccount = new Account(username, password);
         accounts.add(newAccount);
+        return true;
     }
 
     /**

@@ -1,6 +1,8 @@
 package com.model; 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.SortedMap;
 import java.util.TreeMap;
 
 public class Leaderboard {
@@ -32,11 +34,14 @@ public class Leaderboard {
         }
     }
 
-    public void displayTop()
+    public void displayTop(ArrayList<Account> accounts)
     {
-        TreeMap<Account, Integer> sortedMap = new TreeMap<>(scores);
-        for(Map.Entry<Account, Integer> entry: sortedMap.entrySet()) {
-            System.out.println(entry.getKey().getUsername() + ": " + entry.getValue());
+        SortedMap<String, Integer> sortedMap = new TreeMap<String, Integer>();
+        for(int i=0; i < accounts.size(); i++) {
+            sortedMap.put(accounts.get(i).getUsername(), accounts.get(i).getScore());
+        }
+        for(Map.Entry<String, Integer> entry: sortedMap.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
         }
     }
 }

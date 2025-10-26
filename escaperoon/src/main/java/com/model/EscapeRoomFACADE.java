@@ -49,7 +49,10 @@ public Account newAccount(String username, String password)
         return null;
     }
 
-    accountList.newAccount(username, password);
+    Boolean works = accountList.newAccount(username, password);
+    if (!works) {
+        return null;
+    }
     
     for(Account acc : accountList.getAccount())
     {
@@ -155,7 +158,7 @@ public void addToLeaderbaord() {
 }
 
 public void displayLeaderBoard() {
-    leaderboard.displayTop();
+    leaderboard.displayTop(accountList.getAccount());
 }
 public void puzzleAnswer(String answer)
 {

@@ -16,8 +16,8 @@ public class UI {
         println("Escape Room Testing");
         boolean running = true;
 
+        printMenu();
         while (running) {
-            printMenu();
             String choice = prompt("Choose an option");
 
             switch (choice) {
@@ -50,6 +50,8 @@ public class UI {
                 case "14": loadGame(); 
                 break;
                 case "15": leaderboard(); 
+                break;
+                case "16": printMenu();
                 break;
                 case "0": running = false; 
                 break;
@@ -157,6 +159,7 @@ public class UI {
         println("13 - Save game");
         println("14 - Load game");
         println("15 - Leaderboard");
+        println("16 - Show options");
         println("0  - Exit");
     }
 
@@ -167,8 +170,12 @@ public class UI {
 
         try
         {
-            facade.login(username, password);
-            println("Login successful");
+            Account acc = facade.login(username, password);
+            if(acc == null) {
+                System.out.println("Login Failed due to different username and password");
+            } else {
+                println("Login successful");
+            }
         } catch (Exception e)
         {
             println("Exception during login: " + e.getMessage());
@@ -183,8 +190,12 @@ public class UI {
 
         try
         {
-            facade.newAccount(username, password);
-            println("Account created successfully");
+            Account acc = facade.newAccount(username, password);
+            if(acc == null) {
+                System.out.println("An account with this username already exits!");
+            } else {
+                println("Account created successfully");
+            }
         } catch (Exception e)
         {
             println("Exception during account creation: " + e.getMessage());
