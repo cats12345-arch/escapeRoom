@@ -9,10 +9,16 @@ public class Leaderboard {
     private HashMap<Account, Integer> scores;
     private static Leaderboard leaderboard;
     
+    /*
+     * Contructs a new Leaderboard instance
+     */
     public Leaderboard() {
         this.scores = new HashMap<>();
     }
 
+    /*
+     * Returns a single instance of leaderboard
+     */
     public static Leaderboard getInstance() {
         if(leaderboard == null) {
             leaderboard = new Leaderboard();
@@ -20,6 +26,11 @@ public class Leaderboard {
         return leaderboard;
     }
 
+    /*
+     * Adds or updates the score of a account 
+     * If the account does not exist, it is added
+     * If the account exists and the new score is higher, it is updated
+     */
     public void addScore(Account account)
     {
         if(account == null)
@@ -34,6 +45,9 @@ public class Leaderboard {
         }
     }
 
+    /*
+     * Displays the username and scores of the top accounts 
+     */
     public void displayTop(ArrayList<Account> accounts)
     {
         SortedMap<String, Integer> sortedMap = new TreeMap<String, Integer>();

@@ -125,7 +125,6 @@ public class DataWriter extends DataConstants{
         JSONObject jsonRoom = new JSONObject();
         jsonRoom.put(ROOM_PROGRESS_ROOM_NAME, roomDetails.getRoomName());
         jsonRoom.put(ROOM_PROGRESS_ROOM_TYPE, roomDetails.getRoomType());
-        jsonRoom.put(ROOM_PROGRESS_ROOM_SOLVED, roomDetails.getSolved());
         
         ArrayList<Puzzle> puzzleList = roomDetails.getPuzzles();
         JSONArray jsonPuzzleList = new JSONArray();

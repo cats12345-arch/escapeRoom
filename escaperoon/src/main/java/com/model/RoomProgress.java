@@ -30,6 +30,10 @@ public class RoomProgress {
         this.room = room;
     }
 
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
     /**
      * A default constructor used for room progress used when making a new account
      */
@@ -39,6 +43,10 @@ public class RoomProgress {
         this.isComplete = false;
         this.time = null;
         this.room = null;
+    }
+
+    public void setRoomProgress(Room room) {
+        this.room = room;
     }
 
     /**
@@ -61,6 +69,10 @@ public class RoomProgress {
     public void addPuzzle(boolean isComplete, Duration time, int numHintsUsed, Puzzle puzzle) {
         PuzzleProgress newPuzzleProgress = new PuzzleProgress(isComplete, time, numHintsUsed, puzzle);
         puzzles.add(newPuzzleProgress);
+    }
+
+    public void addPuzzleProgress(PuzzleProgress puzzle) {
+        this.puzzles.add(puzzle);
     }
 
     /**

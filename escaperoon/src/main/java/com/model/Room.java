@@ -64,6 +64,27 @@ public class Room
         return sb.toString();
     }
 
+    public String getObjectnames() {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<objects.size(); i++) {
+            int num = i;
+            num++;
+            sb.append("\n" + num + ".: " + objects.get(i).getName());
+        }
+        return sb.toString();
+    }
+
+    public Object getObject(int num) {
+        if(num > objects.size()) {
+            return null;
+        }
+        return objects.get(num);
+    }
+
+    public void addToInventory(Item item) {
+        inventory.add(item);
+    }
+
     public String getItemsDetails() {
         StringBuilder sb = new StringBuilder();
         for(int i=0; i<inventory.size(); i++) {
@@ -83,6 +104,56 @@ public class Room
         return inventory.size();
     }
 
+    public void showDifferentPuzzles() {
+        for(int i=0; i< puzzles.size(); i++ ) {
+            int num = i;
+            num++;
+            System.out.println(num + ". " + puzzles.get(i).getPuzzleType());
+        }
+    }
+
+    public Puzzle getPuzzle(int num) {
+        if(num > puzzles.size()) {
+            System.out.println("Number entered is out of bounds");
+        }
+        return puzzles.get(num);
+    }
+
+    public String getPuzzleDetails() {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<puzzles.size(); i++) {
+            int num = i;
+            num++;
+            sb.append("\n" + num + ".: " + puzzles.get(i).getPuzzleType());
+        }
+        return sb.toString();
+    }
+
+    public void showDifferentObjects() {
+        for(int i=0; i< objects.size(); i++ ) {
+            int num = i;
+            num++;
+            System.out.println(num + ". " + objects.get(i).getName());
+        }
+    }
+
+    public Boolean showWhich(int num) {
+        if(num == 1) {
+            showDifferentObjects();
+            return true;
+        } else if(num == 2) {
+            showDifferentPuzzles();
+            return false;
+        } else {
+            System.out.println("Invalid input");
+            return false;
+        }
+    }
+
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
+
     /**
      * Returns the room name.
      *
@@ -99,15 +170,6 @@ public class Room
      */
     public String getRoomType() {
         return type;
-    }
-
-    /**
-     * Returns whether the room is marked as solved.
-     *
-     * @return {@code true} if solved flag is set, {@code false} otherwise
-     */
-    public Boolean getSolved() {
-        return solved;
     }
 
     /**
@@ -155,19 +217,6 @@ public class Room
         return options;
     }
 
-    /**
-     * Checks whether all puzzles in the room are solved. If any puzzle is not solved,
-     * returns {@code false}. If there are no puzzles, returns the value of {@link #solved}.
-     *
-     * @return {@code true} if every puzzle is solved or {@link #solved} is {@code true} when there are no puzzles
-     */
-    public boolean getSolved()
-    {
-        if (puzzles == null || puzzles.isEmpty()) {
-            return solved;
-        }
-        return true;
-    }
 
     /**
      * Removes all items from the room inventory.

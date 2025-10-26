@@ -27,6 +27,14 @@ public class PuzzleProgress {
         this.puzzle = puzzle;
     }
 
+    public void setPuzzle(Puzzle puzzle) {
+        this.puzzle = puzzle;
+    }
+
+    public void addNumHintsUsed() {
+        this.numHintsUsed++;
+    }
+
     /**
      *  default constructor
      */
