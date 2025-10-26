@@ -13,6 +13,9 @@ public class RoomList
         rooms = DataLoader.getRooms();
     }
 
+    /**
+     * @return
+     */
     public static RoomList getInstance()
     {
         if(roomList == null)
