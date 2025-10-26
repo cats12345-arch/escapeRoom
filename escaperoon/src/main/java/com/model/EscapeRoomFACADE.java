@@ -1,5 +1,6 @@
 package com.model;
 
+import java.util.ArrayList;
 
 public class EscapeRoomFACADE {
 
@@ -11,7 +12,9 @@ private final RoomList roomList;
 private final GameEngine gameEngine;
 private final Leaderboard leaderboard;
 private final Timer timer = new Timer(1800);
-
+private int puzzleNum;
+private Puzzle puzzle;
+private int hintNum;
 
 public EscapeRoomFACADE()
 {
@@ -19,6 +22,8 @@ public EscapeRoomFACADE()
     this.roomList = RoomList.getInstance();
     this.gameEngine = GameEngine.getInstance();
     this.leaderboard = Leaderboard.getInstance();
+    this.puzzleNum = 0;
+    this.hintNum = 0;
 }
 
 public Account login(String username, String password)
@@ -44,14 +49,17 @@ public Account newAccount(String username, String password)
         return null;
     }
 
-    accountList.newAccount(username, password);
+    Boolean works = accountList.newAccount(username, password);
+    if (!works) {
+        return null;
+    }
     
     for(Account acc : accountList.getAccount())
     {
         if(acc.getUsername().equals(username) && acc.getPassword().equals(password))
         {
             this.account = acc;
-            DataWriter.savePlayers();
+            accountList.saveAccounts();
             return acc;
         }
     }
@@ -71,19 +79,15 @@ public void getLeaderboard()
 }
 
 
-public void saveGame()
-{
-    if(accountList != null)
-    {
-    accountList.saveAccount();
-    DataWriter.savePlayers();
-    }
-
+public void saveGame() {
+    accountList.saveAccounts();
+    roomList.saveRoom();
 }
 
 public void loadGame()
 {
     DataLoader.getPlayers();
+    DataLoader.getRooms();
 }
 
 public void endGame()
@@ -98,10 +102,42 @@ public void startGame()
     timer.start();
 }
 
-public void puzzleSelect()
-{
-    gameEngine.loadNextPuzzle();
+public void nextPuzzle() {
+    gameEngine.loadNextPuzzle(puzzleNum);
+    puzzleNum++;
+}
 
+public String puzzleAnswer() {
+    return puzzle.getSolution();
+}
+
+public void puzzleSelect(int num)
+{
+    gameEngine.loadNextPuzzle(num);
+}
+
+public String getNextHint() {
+    String temp = puzzle.getHint(hintNum);
+    if(temp == null) {
+        return null;
+    }
+    hintNum++;
+    return temp;
+}
+
+public String getAllItemsDescription() {
+    return room.getItemsDetails();
+}
+
+public String getAllItemNames() {
+    return room.getItemsNames();
+}
+
+public String getItemInfo(int num) {
+    if(num > room.getInventorySize()) {
+        return null;
+    }
+    return room.getItemInfo(num);
 }
 
 public void roomSelect(String roomName)
@@ -109,11 +145,21 @@ public void roomSelect(String roomName)
     roomList.getRoom(roomName);
 }
 
-public void exploreRoom()
+public String exploreRoom()
 {
-    room.exploreRoom();
+    return room.getRoomInfo();
 }
 
+public void addToLeaderbaord() {
+    ArrayList<Account> accounts = accountList.getAccount();
+    for (int i=0; i < accounts.size(); i++) {
+        leaderboard.addScore(accounts.get(i));
+    }
+}
+
+public void displayLeaderBoard() {
+    leaderboard.displayTop(accountList.getAccount());
+}
 public void puzzleAnswer(String answer)
 {
     
@@ -131,6 +177,6 @@ public void selectItem(String itemName)
 
 public void createRoom()
 {
-    roomList.newRoom();
+    roomList.getRoom(null);
 }
 }

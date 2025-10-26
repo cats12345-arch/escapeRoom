@@ -43,7 +43,7 @@ public class RoomList
 
     public void saveRoom()
     {
-        System.out.println("Saving room...");
+        DataWriter.saveRooms();
     }
 
     public void newStart()

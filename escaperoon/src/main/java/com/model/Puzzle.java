@@ -6,9 +6,8 @@ public abstract class Puzzle {
     protected String solution;
     protected int puzzleNum;
     protected ArrayList<String> hint;
-    protected String puzzleType; // identifies puzzle type for saving/loading
+    protected String puzzleType;
 
-    // Full constructor
     public Puzzle(String solution, ArrayList<String> hint, int puzzleNum, String puzzleType) {
         this.solution = solution != null ? solution.toUpperCase() : "";
         this.puzzleNum = puzzleNum;
@@ -16,8 +15,18 @@ public abstract class Puzzle {
         this.puzzleType = puzzleType != null ? puzzleType : "GENERIC";
     }
 
-    public String getPuzzleType() {
+    public Puzzle() {
+        this.solution = "";
+        this.puzzleNum = 0;
+        this.hint = new ArrayList<>();
+        this.puzzleType = "GENERIC";
+    }
+public String getPuzzleType() {
         return puzzleType;
+    }
+
+    public void setPuzzleType(String puzzleType) {
+        this.puzzleType = puzzleType;
     }
 
     public String getSolution() {
@@ -32,12 +41,11 @@ public abstract class Puzzle {
         return hint;
     }
 
-    // Default constructor
-    public Puzzle() {
-        this.solution = "";
-        this.puzzleNum = 0;
-        this.hint = new ArrayList<>();
-        this.puzzleType = "GENERIC";
+    public String getHint(int num) {
+        if(num > hint.size()) {
+            return null;
+        }
+        return hint.get(num);
     }
 
     public boolean attempt(String input) {
@@ -47,21 +55,12 @@ public abstract class Puzzle {
         }
 
         if (input.equalsIgnoreCase(solution)) {
-            solved = true;
             System.out.println("Correct! You solved the puzzle.");
             return true;
         } else {
             System.out.println("Incorrect. Try again.");
             return false;
         }
-    }
-
-    public boolean isSolved() {
-        return solved;
-    }
-
-    public void reset() {
-        this.solved = false;
     }
 
     public void displayHint() {
@@ -72,12 +71,9 @@ public abstract class Puzzle {
         }
     }
 
-    public void setPuzzleType(String puzzleType) {
-        this.puzzleType = puzzleType;
-    }
-
-    @Override
+    
     public String toString() {
-        return puzzleType + "|" + solution + "|" + puzzleNum + "|" + solved + "|" + String.join(",", hint);
-    }
+        return puzzleType + "|" + solution + "|" + puzzleNum + "|" + String.join(",", hint);
+      
+    }   
 }

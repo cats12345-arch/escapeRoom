@@ -43,17 +43,7 @@ public class CipherPuzzle extends Puzzle {
         return finalString;
     }
 
-    @Override
-    public boolean attempt(String input) {
-        if (input.equalsIgnoreCase(solution)) {
-            solved = true;
-            System.out.println("Correct! You solved the cipher.");
-            return true;
-        } else {
-            System.out.println("Incorrect. Try again.");
-            return false;
-        }
-    }
+    
 
     @Override
     public void displayHint() {
