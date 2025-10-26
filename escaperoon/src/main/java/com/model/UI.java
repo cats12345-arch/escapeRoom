@@ -136,6 +136,89 @@ public class UI {
         println("0  - Exit");
     }
 
+    private void login()
+    {
+        String username = prompt("Username");
+        String password = prompt("Password");
+
+        try
+        {
+            facade.login(username, password);
+            println("Login successful");
+        } catch (Exception e)
+        {
+            println("Exception during login: " + e.getMessage());
+            e.printStackTrace(System.out);
+        }
+    }
+
+    private void createAccount()
+    {
+        String username = prompt("Choose username");
+        String password = prompt("Choose password");
+
+        try
+        {
+            facade.newAccount(username, password);
+            println("Account created successfully");
+        } catch (Exception e)
+        {
+            println("Exception during account creation: " + e.getMessage());
+            e.printStackTrace(System.out);
+        }
+    }
+
+    private void logout()
+    {
+        try
+        {
+            facade.logout();
+            println("Logged out successfully");
+        } catch (Exception e)
+        {
+            println("Exception during logout: " + e.getMessage());
+            e.printStackTrace(System.out);
+        }
+    }
+
+    private void selectRoom()
+    {
+        String room = prompt("Room name");
+
+        try {
+            facade.roomSelect(room);
+            println("Room selected successfully");
+        } catch (Exception e)
+        {
+            println("Exception selecting room: " + e.getMessage());
+            e.printStackTrace(System.out);
+        }
+    }
+
+    private void createRoom()
+    {
+        try {
+            facade.createRoom();
+            println("Room created successfully");
+        } catch (Exception e)
+        {
+            println("Exception creating room: " + e.getMessage());
+            e.printStackTrace(System.out);
+        }
+    }
+
+    private void startGame()
+    {
+        try {
+            facade.startGame();
+            println("Game started successfully");
+        } catch (Exception e)
+        {
+            println("Exception starting game: " + e.getMessage());
+            e.printStackTrace(System.out);
+        }
+    }
+
     private String prompt(String label) {
         System.out.print(label + ": ");
         return scanner.nextLine().trim();
