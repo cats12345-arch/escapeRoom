@@ -8,6 +8,10 @@ public class UI {
     private final EscapeRoomFACADE facade;
     private final Scanner scanner = new Scanner(System.in);
 
+    /*
+     * Constructs a new UI instance
+     * Initializes the facade
+     */
     public UI() {
         this.facade = new EscapeRoomFACADE();
     }
@@ -20,6 +24,9 @@ public class UI {
         while (running) {
             String choice = prompt("Choose an option");
 
+            /*
+             * Displays the menu and handles user input
+             */
             switch (choice) {
                 case "1": login(); 
                 break;
@@ -121,15 +128,26 @@ public class UI {
         
     }
 
+    /*
+     * Explores the selected room 
+     */
+
     private void exploreRoom() {
         facade.exploreRoom();
     }
 
+    /*
+     * Saves the current game state 
+     */
     private void saveGame() {
         System.out.println("Saving game");
         facade.saveGame();
         System.out.println("Completed");
     }
+
+    /*
+     * Loads a previously saved game state 
+     */
 
     private void loadGame () {
         System.out.println("Loading game");
@@ -137,11 +155,17 @@ public class UI {
         System.out.println("Completed");
     }
 
+    /*
+     * Updates and displays the leaderboard 
+     */
     private void leaderboard () {
         facade.addToLeaderbaord();
         facade.displayLeaderBoard();
     }
 
+    /*
+     * Displays the menu options to the player 
+     */
     private void printMenu() {
         println("Menu");
         println("1  - Login");
@@ -163,6 +187,11 @@ public class UI {
         println("0  - Exit");
     }
 
+
+    /*
+     * Tells the user to login with a username and password
+     * Logs them into the game if the username and password are correct
+     */
     private void login()
     {
         String username = prompt("Username");
@@ -183,6 +212,9 @@ public class UI {
         }
     }
 
+    /*
+     * Tells the user to created a new account with a username and password
+     */
     private void createAccount()
     {
         String username = prompt("Choose username");
@@ -203,6 +235,9 @@ public class UI {
         }
     }
 
+    /*
+     * Logs the current user out 
+     */
     private void logout()
     {
         try
@@ -216,6 +251,9 @@ public class UI {
         }
     }
 
+    /*
+     * Tells the user to select a room by name 
+     */
     private void selectRoom()
     {
         String room = prompt("Room name");
@@ -230,6 +268,9 @@ public class UI {
         }
     }
 
+    /*
+     * Creates a new room 
+     */
     private void createRoom()
     {
         try {
@@ -242,6 +283,9 @@ public class UI {
         }
     }
 
+    /*
+     * Starts the game and allows the player to interact with objects and puzzles 
+     */
     private void startGame()
     {
         try {
@@ -312,11 +356,17 @@ public class UI {
         }
     }
 
+    /*
+     * Prompts the user for input and returns their response 
+     */
     private String prompt(String label) {
         System.out.print(label + ": ");
         return scanner.nextLine().trim();
     }
 
+    /*
+     * Prints a string to the console 
+     */
     private void println(String s) {
         System.out.println(s);
     }
