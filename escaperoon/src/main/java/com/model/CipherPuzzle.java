@@ -14,6 +14,14 @@ public class CipherPuzzle extends Puzzle {
         this.encodedText = encrypt(plainText, caesarCiphers);
     }
 
+    public int getCeaserCipher() {
+        return caesarCiphers;
+    }
+
+    public String getAnagram() {
+        return anagram;
+    }
+
     private String encrypt(String text, int shift) {
         StringBuilder result = new StringBuilder();
         for (char c : text.toUpperCase().toCharArray()) {
@@ -23,21 +31,19 @@ public class CipherPuzzle extends Puzzle {
             } else {
                 result.append(c);
             }
-        }
-        return result.toString();
+        }                                 //make method to print out the hints
+        return result.toString(); 
     }
 
-    @Override
-    public boolean attempt(String input) {
-        if (input.equalsIgnoreCase(solution)) {
-            solved = true;
-            System.out.println("Correct! You solved the cipher.");
-            return true;
-        } else {
-            System.out.println("Incorrect. Try again.");
-            return false;
+    public String hintString(ArrayList<String> hint) {
+        String finalString = "";
+        for(int i=0; i<hint.size(); i++) {
+            finalString += hint.get(i);
         }
+        return finalString;
     }
+
+    
 
     @Override
     public void displayHint() {
@@ -52,6 +58,6 @@ public class CipherPuzzle extends Puzzle {
 
     @Override
     public String toString() {
-        return puzzleType + "|" + solution + "|" + caesarCiphers + "|" + anagram + "|" + encodedText + "|" + puzzleNum + "|" + solved;
+        return puzzleType + "|" + solution + "|" + caesarCiphers + "|" + anagram + "|" + encodedText + "|" + puzzleNum;
     }
 }

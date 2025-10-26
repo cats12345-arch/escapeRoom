@@ -15,7 +15,8 @@ public class Room
     protected String roomDescription;
     protected String options;
 
-    public Room(String roomName, String type, boolean solved, ArrayList<Puzzle> puzzles, ArrayList<Item> inventory, ArrayList<Object> objects, String roomDescription, String roomOptions) {
+    public Room(String roomName, String type, boolean solved, ArrayList<Puzzle> puzzles, 
+    ArrayList<Item> inventory, ArrayList<Object> objects, String roomDescription, String roomOptions) {
         this.roomName = roomName;
         this.type = type;
         this.solved = solved;
@@ -27,14 +28,45 @@ public class Room
     }
 
      public Room()
- {
+    {
     this.roomName = "Unnamed";
     this.type = "Normal";
     this.solved = false;
     this.puzzles = new ArrayList<>();
     this.inventory = new ArrayList<>();
+    }
 
- }
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public String getRoomType() {
+        return type;
+    }
+
+    public Boolean getSolved() {
+        return solved;
+    }
+
+    public ArrayList<Puzzle> getPuzzles() {
+        return puzzles;
+    }
+
+    public ArrayList<Item> getItems() {
+        return inventory;
+    }
+
+    public ArrayList<Object> getObjects() {
+        return objects;
+    }
+
+    public String getRoomDescription() {
+        return roomDescription;
+    }
+
+    public String getRoomOption() {
+        return options;
+    }
 
  public void reset()
  {
@@ -57,18 +89,12 @@ public class Room
     return solved;
  }
 
- public ArrayList<Item> getItem()
+ public void resetItem()
  {
-    if(!inventory.isEmpty())
-    {
-        Item item = inventory.remove(0);
-        player.giveItem(item);
-        return item;
+    for(int i=0; i<inventory.size();i++) {
+        inventory.remove(i);
+        i--;
     }
-
-    
-
-    return 0;
  }
 
  public void exploreRoom()
@@ -78,20 +104,6 @@ public class Room
    + puzzles.size() + " puzzles.");
  }
     
- public void startPuzzle()
- {
-    for (Puzzle p : puzzles)
-    {
-        if(!p.isSolved())
-        {
-            p.start();
-            return;
-        }
-    }
-    System.out.println("You've completed all the puzzles in this room");
-
- }
-
 
 
  private void displayOptions()
@@ -106,7 +118,7 @@ public void inputOptions(int num, Account player) {
                 Item found = chest();
                 if (found != null) {
                     System.out.println("You found: " + found.getName());
-                    if (player != null) player.giveItem(found);
+                    if (player != null);
                 } else {
                     System.out.println("The chest is empty.");
                 }
@@ -178,28 +190,31 @@ public void inputOptions(int num, Account player) {
         puzzles.add(puzzle); 
     }
 
+    public void interactWithObject()
+    {
+        for(int i = 0; i < objects.size(); ++i)
+        {
+            int num = i + 1;
+            System.out.println(num +"." + objects.get(i).getName());
+        }
+    }
+
+    public Object GetObject(int option)
+    {
+        return objects.get(option);
+    }
+
+    public void showObjectOption()
+    {
+        System.out.println("1. Show Description" );
+        System.out.println("2. Interact");
+    }
+
 
  public String toString()
  {
-    return roomName + type + solved + puzzles.toString() + inventory.toString(); 
+    return roomName + type + solved + puzzles.toString() + inventory.toString() + "\n" + objects + roomDescription + options; 
  }
-
-    Object getInventory() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    Object getInventory() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public Object getInventory() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getInventory'");
-    }
-
-    Object getInventory() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
  
 }

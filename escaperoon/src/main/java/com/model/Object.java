@@ -3,118 +3,42 @@ package com.model;
 public class Object 
 {
     //Instance
+    private String name;
     private String description;
-    private String contains;
-    private String imagePath;
+    private Item contains;
+
 
     //Constructor
-    public Object(String description, String contains, String imagePath)
+    public Object(String name, String description, Item contains)
     {
+        this.name = name;
         this.description = description;
         this.contains = contains;
-        this.imagePath = imagePath;
-
-    }
-
-    //Default
-    public Object()
-    {
-        this.description = "Normal object.";
-        this.contains = "Nothing";
-        this.imagePath = "";
-
     }
 
     //Methods
+    public String getName() {
+        return name;
+    }
     public String getDescription() 
     {
         return description;
     }
 
-    public void setDescription(String description) 
-    {
-        this.description = description;
-    }
-
-    public String getContains() 
+    public Item getContains() 
     {
         return contains;
     }
 
-    public void setContains(String contains) 
+    public Item interact()
     {
-        this.contains = contains;
-    }
-
-    public String getImagePath() 
-    {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) 
-    {
-        this.imagePath = imagePath;
-    }
-
-    public String inspect()
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.append(description);
-        if (isContainer()) {
-            sb.append(" It looks like it might contain something.");
-        }
-        return sb.toString();
-    }
-    //Returns true if its useful
-    public boolean isContainer()
-    {
-        return contains != null && !contains.trim().isEmpty();
-    }
-
-
-    public Item interact(Account player)
-    {
-        if(isContainer())
-        {
-            Item item = revealContents();
-            if(item != null && player != null)
-            {
-                player.giveItem(item);
-            }
-            return item;
-        } 
-        else
-        {
-            System.out.println("You found nothing within this object.");
-            return null;
-        }
-    }
-
-    public Item revealContents()
-    {
-        if(!isContainer())
-        {
-            return null;
-        }
-        else 
-        {
-
-        Item found = new Item(contains);
-        
-        empty();
-
-        return found;
-        }
-    }
-
-    private void empty()
-    {
-        this.contains = null;
+        System.out.println("You interact with " + name + " and you got " + contains.getName());
+        return contains;
     }
 
     @Override
     public String toString() {
-        return "Object [description:" + description + ", contains:" + contains + ", imagePath:" + imagePath + "]";
+        return "Object [description:" + description + ", contains:" + contains + "]";
     }
 
     

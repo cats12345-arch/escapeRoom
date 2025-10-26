@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class RiddlePuzzle extends Puzzle {
     protected String riddle;
+    
 
     public RiddlePuzzle(String riddle, String answer, ArrayList<String> hint, int puzzleNum) {
         super(answer, hint, puzzleNum, "RIDDLE");
@@ -16,6 +17,10 @@ public class RiddlePuzzle extends Puzzle {
         this.puzzleType = "RIDDLE";
     }
 
+    public String getRiddle() {
+        return riddle;
+    }
+
     @Override
     public boolean attempt(String input) {
         if (input == null || input.isEmpty()) {
@@ -24,7 +29,7 @@ public class RiddlePuzzle extends Puzzle {
         }
 
         if (input.equalsIgnoreCase(solution)) {
-            solved = true;
+
             System.out.println("Correct! You solved the riddle.");
             return true;
         } else {
@@ -41,7 +46,15 @@ public class RiddlePuzzle extends Puzzle {
 
     @Override
     public String toString() {
-        return puzzleType + "|" + riddle + "|" + solution + "|" + puzzleNum + "|" + solved + "|" + String.join(",", hint);
+        return puzzleType + "|" + riddle + "|" + solution + "|" + puzzleNum + "|" + hintString(hint);
+    }
+
+    public String hintString(ArrayList<String> hint) {
+        String finalString = "";
+        for(int i=0; i<hint.size(); i++) {
+            finalString += hint.get(i);
+        }
+        return finalString;
     }
 
     public static ArrayList<RiddlePuzzle> loadDefaultRiddles() {
@@ -57,12 +70,12 @@ public class RiddlePuzzle extends Puzzle {
         riddles.add(new RiddlePuzzle(
                 "From mountains high, I shine and gleam; build your cities with my beam.",
                 "ORE",
-                new ArrayList<>(java.util.List.of("A mined resource.")),
+                new ArrayList<>(java.util.List.of("A mined rocky resource.")),
                 2
         ));
 
         riddles.add(new RiddlePuzzle(
-                "Lay me down to reach new ground; I'm made of wood, strong and sound.",
+                "Lay me down to reach new ground; I'm strong and sound, made of wood and brick to expand real quick!",
                 "ROAD",
                 new ArrayList<>(java.util.List.of("Used to connect settlements.")),
                 3

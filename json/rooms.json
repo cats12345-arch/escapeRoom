@@ -8,41 +8,58 @@
       "riddle": "The Polar Boys",
       "answer": "Goodbye",
       "hints": [{
-        "hint1": "3rd Example hint"
+        "hint": "3rd Example hint"
       },
       {
-        "hint2": "3rd Examplehint2"
+        "hint": "3rd Examplehint2"
       },
       {
-        "hint3": "3rd Examplehint3"
+        "hint": "3rd Examplehint3"
       }],
       "puzzleNum": 1
     },
     {
       "type": "cipher",
-      "solution": "Arc System Works",
+      "answer": "Arc System Works",
       "ceasarCiphers": 5,
       "anagram": "please pretend this is an anagram",
       "hints": [{
-        "hint1": "3rd Example hint"
+        "hint": "3rd Example hint"
       },
       {
-        "hint2": "3rd Examplehint2"
+        "hint": "3rd Examplehint2"
       },
       {
-        "hint3": "3rd Examplehint3"
+        "hint": "3rd Examplehint3"
       }],
       "puzzleNum": 2
     }],
     "items": [{
-      "name": "mirror",
-      "description": "a mirror that lets you see things from a different angle",
+      "name": "wheat", 
+      "description": "A golden source of fuel for you and sheep.",
       "usableOn": "puzzle"
-    }],
+    }, {
+      "name": "ore", 
+      "description": "A rocky element from the mountains of catan."
+    }
+    , {
+      "name": "sheep", 
+      "description": "The only and lonely animal of catan."
+    }, {
+      "name": "brick", 
+      "description": "While technically clay found in mines, we call it brick."
+    }, {
+      "name": "lumber", 
+      "description": "Found inside the forest."
+    }
+    ],
     "objects": [{
+      "objectName": "object name",
       "objectDescription": "Infinitely Sweet",
-      "contains": "Breakup Shoes",
-      "imagePath": "ummm images???"
+      "contains": {
+        "name": "example item name",
+        "description": "example item description"
+      }
     }],
     "roomDescription": "A grand, dimly lit library filled with towering bookshelves, dusty tomes, and hidden secrets waiting to be unlocked.",
     "options": "1. There is a chest \n 2. There is a bookshelf"
@@ -56,29 +73,29 @@
       "riddle": "JAWWNY",
       "answer": "Anything You want",
       "hints": [{
-        "hint1": "5th Example hint"
+        "hint": "5th Example hint"
       },
       {
-        "hint2": "5th Examplehint2"
+        "hint": "5th Examplehint2"
       },
       {
-        "hint3": "5th Examplehint3"
+        "hint": "5th Examplehint3"
       }],
       "puzzleNum": 1
     },
     {
       "type": "cipher",
-      "solution": "Blue Rain Boots",
+      "answer": "Blue Rain Boots",
       "ceasarCiphers": 5,
       "anagram": "This is totally an annagram",
       "hints": [{
-        "hint1": "4th Example hint"
+        "hint": "4th Example hint"
       },
       {
-        "hint2": "4th Examplehint2"
+        "hint": "4th Examplehint2"
       },
       {
-        "hint3": "4th Examplehint3"
+        "hint": "4th Examplehint3"
       }],
       "puzzleNum": 2
     }],
@@ -89,9 +106,12 @@
       "usableOn": "puzzle"
     }],
     "objects": [{
+      "objectName": "object name",
       "objectDescription": "Infinitely Sweet",
-      "contains": "Breakup Shoes",
-      "imagePath": "ummm images???"
+      "contains": {
+        "name": "example item name",
+        "description": "example item description"
+      }
     }],
     "roomDescription": "Brass gears, ink-stained papers, and a clockwork cipher box fill the study — crack the code hidden in the clock`s chime.",
     "options": "1. There is are some dice \n 2. There a desk"

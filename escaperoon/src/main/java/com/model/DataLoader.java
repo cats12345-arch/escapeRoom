@@ -10,6 +10,10 @@ import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants{
     
+    /**
+     * The get players will load the accounts and all associated data into the various different classes
+     * @return an arrayList of accounts
+     */
     public static ArrayList<Account> getPlayers() {
         ArrayList<Account> accounts = new ArrayList<Account>();
 
@@ -17,6 +21,7 @@ public class DataLoader extends DataConstants{
             FileReader reader = new FileReader(USER_FILE_NAME);
             JSONArray accountsJSON = (JSONArray)new JSONParser().parse(reader);
             
+            //Accounts
             for (int i=0; i < accountsJSON.size(); i++) {
                 JSONObject accountJSON = (JSONObject)accountsJSON.get(i);
                 String username = (String)accountJSON.get(ACCOUNT_USER_NAME);
@@ -137,6 +142,11 @@ public class DataLoader extends DataConstants{
         return accounts;
     }
 
+    /**
+     * A helper method that will return an ArrayList of puzzles that is used by both main methods
+     * @param array A JSONArray that contains the infomation for a puzzle
+     * @return an ArrayList of puzzles along with any associated info
+     */
     private static ArrayList<Puzzle> helperPuzzle(JSONArray array) {
         ArrayList<Puzzle> puzzles = new ArrayList<Puzzle>();
         for(int n=0; n<array.size(); n++) {
@@ -148,7 +158,7 @@ public class DataLoader extends DataConstants{
             ArrayList<String> hints = new ArrayList<String>();
             JSONArray hintsJSON = (JSONArray)puzzleJSON.get(PUZZLE_HINTS);
             for (int k=0; k<hintsJSON.size(); k++) {
-                JSONObject hintJSON = (JSONObject)hintsJSON.get(n);
+                JSONObject hintJSON = (JSONObject)hintsJSON.get(k);
                 String hint = (String)hintJSON.get(HINTS);
                 hints.add(hint);
             }
@@ -174,19 +184,31 @@ public class DataLoader extends DataConstants{
         return puzzles;
     }
 
+    /**
+     * A helper method that will take a JSONArray and trun it into an ArrayList of objects
+     * @param array A JSONArray that conatins all the info for an Object
+     * @return An ArrayList of Object
+     */
     public static ArrayList<Object> helperObject(JSONArray array) {
        ArrayList<Object> objects = new ArrayList<Object>();
        for(int i=0; i<array.size(); i++) {
             JSONObject objectJSON = (JSONObject)array.get(i);
+            String objectName = (String)objectJSON.get(OBJECT_NAME);
             String objectDescription = (String)objectJSON.get(OBJECT_DESCRIPTION);
-            String contains = (String)objectJSON.get(OBJECT_CONTAINS);
-            String imgPath = (String)objectJSON.get(OBJECT_IMAGE_PATH);
-            objects.add(new Object(objectDescription, contains, imgPath));
+            JSONObject contains = (JSONObject)objectJSON.get(OBJECT_CONTAINS);
+            String name = (String)contains.get(ITEM_NAME);
+            String description = (String)contains.get(ITEM_DESCRIPTION);
+            Item item = new Item(name, description);
+            //Fake error IDK why its there
+            objects.add(new Object(objectName, objectDescription, item));
        }
-        return null;
+        return objects;
     }
     
-
+    /**
+     * Will read from a JSON file and turn that into an ArrayList of Room
+     * @return An array list of Room
+     */
     public static ArrayList<Room> getRooms() {
         ArrayList<Room> Rooms = new ArrayList<Room>();
 
@@ -200,14 +222,7 @@ public class DataLoader extends DataConstants{
                     Boolean solved = (Boolean)roomJSON.get(ROOM_SOLVED);
 
                     //PuzzleList
-                    ArrayList<Puzzle> puzzles = new ArrayList<Puzzle>();
-                    JSONArray puzzlesJSON = (JSONArray)roomJSON.get(PUZZLE_ARRAY);
-                    for (int j=0; j<puzzlesJSON.size(); j++) {
-                        JSONObject puzzleJSON = (JSONObject)puzzlesJSON.get(j);
-                        String solution = (String)puzzleJSON.get(PUZZLE_SOLUTION);
-                        int puzzleNum = ((Long)puzzleJSON.get(PUZZLE_NUM)).intValue();
-                        puzzles.add(new Puzzle(solution, puzzleNum));
-                    }
+                    ArrayList<Puzzle> puzzles = helperPuzzle((JSONArray)roomJSON.get(PUZZLE_ARRAY));
 
                     ArrayList<Item> items = new ArrayList<Item>();
 
@@ -219,7 +234,12 @@ public class DataLoader extends DataConstants{
                         items.add(new Item(name, description));
                     }
 
-                    Rooms.add(new Room(roomName, type, puzzles, items));
+                    ArrayList<Object> objects = helperObject((JSONArray)roomJSON.get(ROOM_OBJECTS));
+
+                    String roomDescription = (String)roomJSON.get(ROOM_DESCRIPTION);
+                    String roomOptions = (String)roomJSON.get(ROOM_OPTIONS);
+
+                    Rooms.add(new Room(roomName, type, solved, puzzles, items, objects, roomDescription, roomOptions));
                 }
 
             } catch (Exception e) {
@@ -235,10 +255,11 @@ public class DataLoader extends DataConstants{
 			System.out.println(user);
 		}
 
-        //ArrayList<Room> rooms = DataLoader.getRooms();
+        ArrayList<Room> rooms = DataLoader.getRooms();
 
-        //for(Room room : rooms) {
-            //System.out.println(room);
-        //}
+        for(Room room : rooms) {
+           System.out.println(room);
+           System.out.println("\n");
+        }
 	}
 }

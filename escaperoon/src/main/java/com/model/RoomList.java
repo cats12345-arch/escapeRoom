@@ -1,3 +1,5 @@
+package com.model;
+
 import java.util.ArrayList;
 
 public class RoomList 
@@ -6,9 +8,9 @@ public class RoomList
 
     private ArrayList<Room> rooms;
 
-    private Roomlist()
+    private RoomList()
     {
-        rooms = new ArrayList<>();
+        rooms = DataLoader.getRooms();
     }
 
     public static RoomList getInstance()
@@ -18,6 +20,10 @@ public class RoomList
             roomList = new RoomList();
         }
         return roomList;
+    }
+
+    public ArrayList<Room> getRoomList() {
+        return rooms;
     }
 
     public Room getRoom(String roomName)
@@ -30,17 +36,6 @@ public class RoomList
             }
         }
         return null;
-    }
-
-
-    public void newRoom()
-    {
-        if(room != null && !rooms.contains(room))
-        {
-            rooms.add(room);
-            System.out.println("A new room has been added: " + room.roomName);
-
-        }
     }
 
     public void saveRoom()
@@ -59,7 +54,7 @@ public class RoomList
 
     public String toString()
     {
-        return roomList + rooms.toString;
+        return roomList + rooms.toString();
     }
 
 
