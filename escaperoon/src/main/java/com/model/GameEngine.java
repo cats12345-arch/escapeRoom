@@ -17,7 +17,6 @@ public class GameEngine {
     {
         this.accounts = new ArrayList<>();
         this.leaderboard = new Leaderboard();
-        this.time = new Timer();
         this.currentPuzzle = null;
     }
 
@@ -54,11 +53,15 @@ public class GameEngine {
         displayLeaderboard();
     }
 
-    public void login()
-    {
-        Account player = new Account(null, null, null, 0, null, null);
-        accounts.add(accounts);
+    public Account login(String username, String password) {
+    for (Account acc : accounts) {
+        if (acc.getUsername().equals(username) && acc.getPassword().equals(password)) {
+            return acc; 
+        }
     }
+    return null; 
+}
+
 
     public void displayLeaderboard()
     {

@@ -56,7 +56,7 @@ public Account newAccount(String username, String password)
         if(acc.getUsername().equals(username) && acc.getPassword().equals(password))
         {
             this.account = acc;
-            DataWriter.savePlayers();
+            accountList.saveAccounts();
             return acc;
         }
     }
