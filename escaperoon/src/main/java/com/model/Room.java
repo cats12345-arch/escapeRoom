@@ -118,19 +118,6 @@ public class Room
         return options;
     }
 
-    /**
-     * Checks whether all puzzles in the room are solved. If any puzzle is not solved,
-     * returns {@code false}. If there are no puzzles, returns the value of {@link #solved}.
-     *
-     * @return {@code true} if every puzzle is solved or {@link #solved} is {@code true} when there are no puzzles
-     */
-    public boolean getSolved()
-    {
-        if (puzzles == null || puzzles.isEmpty()) {
-            return solved;
-        }
-        return true;
-    }
 
     /**
      * Removes all items from the room inventory.
