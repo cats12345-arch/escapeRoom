@@ -253,6 +253,7 @@ public class UI {
                 while(input != 3) {
                     System.out.println("");
                     Boolean which = facade.selectPuzzleOrObject(input);
+                    
                     if(which) {
                         facade.getObjectNames();
                         System.out.println("Which object would you like to interact with?");
@@ -267,16 +268,17 @@ public class UI {
                             } else if (input == 2) {
                                 facade.getObjectDescription();
                             }
+                            facade.addPuzzleProgressToAccount();
                             input = scanner.nextInt();
                         }
                         println("1. Interact with Objects. \n2. Do the puzzles. \n3. Stop doing things in the room");
                     } else {
                         facade.showDifferentPuzzles();
+                        facade.createPuzzleProgress();
                         System.out.println("Which puzzles would you like to interact with?");
                         input = scanner.nextInt();
                         facade.getPuzzle(input);
                         facade.displayDifferentTypes();
-
                         System.out.println("Enter 4 to exit back to the room");
                         input = scanner.nextInt();
                         scanner.nextLine();
@@ -289,6 +291,7 @@ public class UI {
                             } else if (input == 3) {
                                 facade.displayPuzzle();
                             }
+
                             input = scanner.nextInt();
                         }
                         println("1. Interact with Objects. \n2. Do the puzzles. \n3. Stop doing things in the room");

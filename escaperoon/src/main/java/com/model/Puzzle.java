@@ -34,7 +34,11 @@ public abstract class Puzzle {
     }
 
     public boolean solve(String input) {
-        return true;
+        if(input.equals(solution)) {
+            return true;
+        }
+        return false;
+        
     }
 
     /**

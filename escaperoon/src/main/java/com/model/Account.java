@@ -58,6 +58,15 @@ public class Account {
         roomProgresses.add(roomProgress);
     }
 
+    public void addToPuzzleProgress(RoomProgress room, PuzzleProgress puzzle) {
+        for(int i=0; i<roomProgresses.size(); i++) {
+            if(roomProgresses.get(i).equals(room)) {
+                roomProgresses.get(i).addPuzzleProgress(puzzle);
+            }
+        }
+           
+    }
+
     /**
      * Returns Room Progress based on the roomname associated room name
      * @param roomName Used to search for Room Progress by room name

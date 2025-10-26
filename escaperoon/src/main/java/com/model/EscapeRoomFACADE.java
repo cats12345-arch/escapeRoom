@@ -17,6 +17,8 @@ private Puzzle puzzle;
 private int hintNum;
 private int roomNum;
 private Object object;
+private PuzzleProgress puzzleProgress;
+private RoomProgress roomProgress;
 
 public EscapeRoomFACADE()
 {
@@ -104,6 +106,8 @@ public Boolean startGame()
     if(room == null) {
         return false;
     }
+    roomProgress = new RoomProgress();
+    roomProgress.setRoomProgress(room);
     roomNum++;
     timer.start();
     return true;
@@ -116,6 +120,7 @@ public void showDifferentPuzzles() {
 public void getPuzzle(int num) {
     num--;
     this.puzzle = room.getNextPuzzle(num);
+    puzzleProgress.setPuzzle(this.puzzle);
 }
 
 public void displayDifferentTypes() {
@@ -130,6 +135,7 @@ public void displayDifferentTypes() {
 
 public void seeHint() {
     System.out.println(puzzle.getHint());
+    puzzleProgress.addNumHintsUsed();
 }
 
 public void displayPuzzle() {
@@ -144,12 +150,29 @@ public void displayPuzzle() {
     }
 }
 
+public void addPuzzleProgressToAccount() {
+    this.roomProgress.addPuzzleProgress(puzzleProgress);
+    this.puzzleProgress = null;
+}
+
+public void createPuzzleProgress() {
+    this.puzzleProgress = new PuzzleProgress();
+}
+
+public void addItems(Item item) {
+    this.roomProgress.addItem(item);
+}
+
 public void solve(String input) {
     Boolean solved = puzzle.solve(input);
     if(solved) {
         System.out.println("The puzzle has been solved!");
+        account.addToScore(20);
+        puzzleProgress.setCompletion(true);
     } else {
         System.out.println("That was incorrect!");
+        account.addToScore(-5);
+        puzzleProgress.setCompletion(false);
     }
 }
 
@@ -177,6 +200,7 @@ public void getObjectDescription() {
 
 public void interactWithObject() {
     Item item = object.interact();
+    addItems(item);
     room.addToInventory(item);
 }
 
