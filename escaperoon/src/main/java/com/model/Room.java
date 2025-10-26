@@ -27,7 +27,7 @@ public class Room
         this.options = roomOptions;
     }
 
-     public Room()
+    public Room()
     {
     this.roomName = "Unnamed";
     this.type = "Normal";
@@ -66,6 +66,13 @@ public class Room
 
     public String getRoomOption() {
         return options;
+    }
+
+    public Puzzle getNextPuzzle(int num) {
+        if(num > puzzles.size()) {
+            return null;
+        }
+        return puzzles.get(num);
     }
 
  public void reset()

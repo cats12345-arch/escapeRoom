@@ -29,6 +29,13 @@ public class AccountList {
     }
 
     /**
+     * Calls the DataWriter and saves all the different accounts
+     */
+    public void saveAccounts() {
+        DataWriter.savePlayers();
+    }
+
+    /**
      * A method that will return a user account if the username and password match, will return null if not
      * @param username The username enter for attempted login
      * @param password The password entered for attempted login

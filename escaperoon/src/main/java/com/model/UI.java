@@ -60,6 +60,62 @@ public class UI {
         println("Exiting the program");
     }
 
+    /**
+     * Ends the Game by saving all player data
+     */
+    private void endGame() {
+        facade.saveGame();
+        System.out.println("Saved all the progress and all the accounts progress. Exiting game.");
+        System.exit(0);
+    }
+
+    /**
+     * Loads the next puzzle
+     */
+    private void puzzleNext() {
+        System.out.println("Loading the next puzzle");
+        facade.nextPuzzle();
+    }
+
+    /**
+     * Shows the puzzles answer
+     */
+    private void puzzleAnswer() {
+        System.out.println(facade.puzzleAnswer());
+    }
+
+    /**
+     * Will show the next avaliable hint
+     */
+    private void getHint() {
+        String hint = facade.getNextHint();
+        if(hint == null) {
+            System.out.println("Sorry there are no more hints");
+        } else {
+            System.out.println(hint);
+        }
+    }
+
+    private void selectItem() {
+
+    }
+
+    private void exploreRoom() {
+
+    }
+
+    private void saveGame() {
+
+    }
+
+    private void loadGame () {
+
+    }
+
+    private void leaderboard () {
+
+    }
+
     private void printMenu() {
         println("Menu");
         println("1  - Login");

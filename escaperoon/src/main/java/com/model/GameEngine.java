@@ -9,6 +9,9 @@ public class GameEngine {
     private Timer time;
     private ArrayList<Account> accounts;
     private Leaderboard leaderboard;
+    private Room room;
+    private Puzzle puzzle;
+    private int currentPuzzleNum;
 
     public GameEngine()
     {
@@ -28,7 +31,7 @@ public class GameEngine {
     public void startGame()
     {
         time.start();
-        loadNextPuzzle();
+        loadNextPuzzle(0);
     }
 
     public void endGame(boolean victory)
@@ -37,9 +40,13 @@ public class GameEngine {
     }
 
 
-    public void loadNextPuzzle()
+    public void loadNextPuzzle(int num)
     {
-        currentPuzzle = new Puzzle();
+        Puzzle tempPuzzle = room.getNextPuzzle(num);
+        if(tempPuzzle == null) {
+            System.out.println("There are no more puzzles to load.");
+        }
+        currentPuzzle = room.getNextPuzzle(num);
     }
 
     public void displaySummary()
@@ -57,9 +64,4 @@ public class GameEngine {
     {
         leaderboard.displayTop();
     }
-
-
-
-    
-    
 }

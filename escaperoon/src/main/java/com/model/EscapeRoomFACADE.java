@@ -11,7 +11,9 @@ private final RoomList roomList;
 private final GameEngine gameEngine;
 private final Leaderboard leaderboard;
 private final Timer timer = new Timer(1800);
-
+private int puzzleNum;
+private Puzzle puzzle;
+private int hintNum;
 
 public EscapeRoomFACADE()
 {
@@ -19,6 +21,8 @@ public EscapeRoomFACADE()
     this.roomList = RoomList.getInstance();
     this.gameEngine = GameEngine.getInstance();
     this.leaderboard = Leaderboard.getInstance();
+    this.puzzleNum = 0;
+    this.hintNum = 0;
 }
 
 public Account login(String username, String password)
@@ -71,14 +75,9 @@ public void getLeaderboard()
 }
 
 
-public void saveGame()
-{
-    if(accountList != null)
-    {
-    accountList.saveAccount();
-    DataWriter.savePlayers();
-    }
-
+public void saveGame() {
+    accountList.saveAccounts();
+    roomList.saveRoom();
 }
 
 public void loadGame()
@@ -98,10 +97,27 @@ public void startGame()
     timer.start();
 }
 
-public void puzzleSelect()
-{
-    gameEngine.loadNextPuzzle();
+public void nextPuzzle() {
+    gameEngine.loadNextPuzzle(puzzleNum);
+    puzzleNum++;
+}
 
+public String puzzleAnswer() {
+    return puzzle.getSolution();
+}
+
+public void puzzleSelect(int num)
+{
+    gameEngine.loadNextPuzzle(num);
+}
+
+public String getNextHint() {
+    String temp = puzzle.getHint(hintNum);
+    if(temp == null) {
+        return null;
+    }
+    hintNum++;
+    return temp;
 }
 
 public void roomSelect(String roomName)

@@ -8,19 +8,20 @@ public abstract class Puzzle {
     protected ArrayList<String> hint;
     protected String puzzleType;
 
-public Puzzle(String solution, ArrayList<String> hint, int puzzleNum, String puzzleType) {
+    public Puzzle(String solution, ArrayList<String> hint, int puzzleNum, String puzzleType) {
         this.solution = solution != null ? solution.toUpperCase() : "";
         this.puzzleNum = puzzleNum;
         this.hint = hint != null ? hint : new ArrayList<>();
         this.puzzleType = puzzleType != null ? puzzleType : "GENERIC";
-}
-public Puzzle() {
+    }
+
+    public Puzzle() {
         this.solution = "";
         this.puzzleNum = 0;
         this.hint = new ArrayList<>();
         this.puzzleType = "GENERIC";
-        
-}
+        this.hintNum = 0;
+    }
 public String getPuzzleType() {
         return puzzleType;
     }
@@ -41,6 +42,13 @@ public String getPuzzleType() {
         return hint;
     }
 
+    public String getHint(int num) {
+        if(num > hint.size()) {
+            return null;
+        }
+        return hint.get(num);
+    }
+
     public boolean attempt(String input) {
         if (input == null || input.isEmpty()) {
             System.out.println("You must enter an answer.");
@@ -56,7 +64,7 @@ public String getPuzzleType() {
         }
     }
 
- public void displayHint() {
+    public void displayHint() {
         if (!hint.isEmpty()) {
             System.out.println("Hint: " + hint.get(0));
         } else {
