@@ -13,6 +13,9 @@ public class RoomList
         rooms = DataLoader.getRooms();
     }
 
+    /**
+     * @return the singleton
+     */
     public static RoomList getInstance()
     {
         if(roomList == null)
@@ -55,7 +58,7 @@ public class RoomList
         System.out.println("Starting new game...");
         for (Room room : rooms)
         {
-            room.reset();
+
         }
     }
 
