@@ -105,7 +105,12 @@ public Boolean startGame()
     }
     roomNum++;
     timer.start();
+    room.showDifferentPuzzles();
     return true;
+}
+
+public Boolean selectPuzzleOrObject(int num) {
+    return room.showWhich(num);
 }
 
 public void nextPuzzle() {

@@ -53,7 +53,6 @@ public class ItemPuzzle extends Puzzle {
     @Override
     public boolean attempt(String input) {
         if (input.equalsIgnoreCase(solution)) {
-            solved = true;
             System.out.println("You built a " + solution + ". Puzzle solved.");
             return true;
         } else {
@@ -77,7 +76,7 @@ public class ItemPuzzle extends Puzzle {
 
     @Override
     public String toString() {
-        return puzzleType + "|" + solution + "|" + puzzleNum + "|" + solved +
+        return puzzleType + "|" + solution + "|" + puzzleNum +
                 "|Required items: " + (requiredItems != null ? requiredItems.stream().map(Item::getName).toList() : "None");
     }
 }

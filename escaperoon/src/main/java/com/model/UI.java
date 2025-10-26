@@ -248,7 +248,15 @@ public class UI {
             Boolean bool = facade.startGame();
             if(bool) {
                 println("Game started successfully");
-
+                println("1. Interact with Objects. \n2. Do the puzzles");
+                int input = scanner.nextInt();
+                System.out.println("");
+                Boolean which = facade.selectPuzzleOrObject(input);
+                if(which) {
+                    System.out.println("Which object would you like to interact with?");
+                    input = scanner.nextInt();
+                    
+                }
             } else {
                 println("Game did not start successfully");
             }
@@ -270,7 +278,7 @@ public class UI {
     }
 
     private void roomMenu() {
-        
+
     }
 
     public static void main(String[] args) {

@@ -83,6 +83,35 @@ public class Room
         return inventory.size();
     }
 
+    public void showDifferentPuzzles() {
+        for(int i=0; i< puzzles.size(); i++ ) {
+            System.out.println(i++ + ". " + puzzles.get(i).getPuzzleType());
+        }
+    }
+
+    public void showDifferentObjects() {
+        for(int i=0; i< objects.size(); i++ ) {
+            System.out.println(i++ + ". " + objects.get(i).getName());
+        }
+    }
+
+    public Boolean showWhich(int num) {
+        if(num == 1) {
+            showDifferentObjects();
+            return true;
+        } else if(num == 2) {
+            showDifferentPuzzles();
+            return false;
+        } else {
+            System.out.println("Invalid input");
+            return false;
+        }
+    }
+
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
+
     /**
      * Returns the room name.
      *
@@ -99,15 +128,6 @@ public class Room
      */
     public String getRoomType() {
         return type;
-    }
-
-    /**
-     * Returns whether the room is marked as solved.
-     *
-     * @return {@code true} if solved flag is set, {@code false} otherwise
-     */
-    public Boolean getSolved() {
-        return solved;
     }
 
     /**
