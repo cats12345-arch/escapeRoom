@@ -37,8 +37,7 @@ public class Room
         this.options = roomOptions;
     }
 
-   
-    public Room()
+     public Room()
     {
     this.roomName = "Unnamed";
     this.type = "Normal";
@@ -120,38 +119,15 @@ public class Room
     }
 
     /**
-     * Reset the room state: mark it unsolved and reset every puzzle by calling {@link Puzzle#reset()}.
-     * If {@link #puzzles} is null, this method does nothing.
-     */
-    public void reset()
-    {
-        this.solved = false;
-        if (puzzles == null) {
-            return;
-        }
-        for(Puzzle p : puzzles)
-        {
-            p.reset();
-        }
-    }
-
-    /**
      * Checks whether all puzzles in the room are solved. If any puzzle is not solved,
      * returns {@code false}. If there are no puzzles, returns the value of {@link #solved}.
      *
      * @return {@code true} if every puzzle is solved or {@link #solved} is {@code true} when there are no puzzles
      */
-    public boolean isSolved()
+    public boolean getSolved()
     {
         if (puzzles == null || puzzles.isEmpty()) {
             return solved;
-        }
-        for(Puzzle p: puzzles)
-        {
-            if(!p.isSolved())
-            {
-                return false;
-            }
         }
         return true;
     }
