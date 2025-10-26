@@ -51,7 +51,7 @@ public class RoomList
         System.out.println("Starting new game...");
         for (Room room : rooms)
         {
-            room.reset();
+
         }
     }
 
