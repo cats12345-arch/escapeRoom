@@ -37,13 +37,50 @@ public class Room
         this.options = roomOptions;
     }
 
-     public Room()
+    public Room()
     {
     this.roomName = "Unnamed";
     this.type = "Normal";
     this.solved = false;
     this.puzzles = new ArrayList<>();
     this.inventory = new ArrayList<>();
+    }
+
+    public String getRoomInfo() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Exploring ").append(roomName).append("\n").append(roomDescription).append("\nThere are ").append(puzzles.size()).append(" puzzles\nThere are ").append(objects.size()).append(" things to interact with");
+        return sb.toString();
+    }
+
+    public String getItemInfo(int num) {
+        return inventory.get(num).toString();
+    }
+
+    public String getItemsNames() {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<inventory.size(); i++) {
+            sb.append("\n" + i-- + ".: " + inventory.get(i).getName());
+        }
+        return sb.toString();
+    }
+
+    public String getItemsDetails() {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<inventory.size(); i++) {
+            sb.append(inventory.get(i));
+        }
+        return sb.toString();
+    }
+
+    public Puzzle getNextPuzzle(int num) {
+        if(num > puzzles.size()) {
+            return null;
+        }
+        return puzzles.get(num);
+    }
+
+    public int getInventorySize () {
+        return inventory.size();
     }
 
     /**
