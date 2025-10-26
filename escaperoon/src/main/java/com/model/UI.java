@@ -248,6 +248,7 @@ public class UI {
             Boolean bool = facade.startGame();
             if(bool) {
                 println("Game started successfully");
+
             } else {
                 println("Game did not start successfully");
             }
@@ -266,6 +267,10 @@ public class UI {
 
     private void println(String s) {
         System.out.println(s);
+    }
+
+    private void roomMenu() {
+        
     }
 
     public static void main(String[] args) {
