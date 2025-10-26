@@ -108,6 +108,21 @@ public class Room
         }
     }
 
+    public Puzzle getPuzzle(int num) {
+        if(num > puzzles.size()) {
+            System.out.println("Number entered is out of bounds");
+        }
+        return puzzles.get(num);
+    }
+
+    public String getPuzzleDetails() {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<puzzles.size(); i++) {
+            sb.append("\n" + i-- + ".: " + puzzles.get(i).getPuzzleType());
+        }
+        return sb.toString();
+    }
+
     public void showDifferentObjects() {
         for(int i=0; i< objects.size(); i++ ) {
             System.out.println(i++ + ". " + objects.get(i).getName());

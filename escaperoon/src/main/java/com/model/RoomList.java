@@ -23,6 +23,13 @@ public class RoomList
         rooms = DataLoader.getRooms();
     }
 
+    public Room getRoom(int num) {
+        if(num > rooms.size()) {
+            return null;
+        }
+        return rooms.get(num);
+    }
+
     /**
      * Returns the single instance of RoomList.
      * Creates it if it doesn't exist.

@@ -11,6 +11,7 @@ public abstract class Puzzle {
     protected int puzzleNum;
     protected ArrayList<String> hint;
     protected String puzzleType;
+    protected int hintNum;
 
     /**
      * Constructor for puzzle
@@ -30,6 +31,10 @@ public abstract class Puzzle {
         this.puzzleNum = 0;
         this.hint = new ArrayList<>();
         this.puzzleType = "GENERIC";
+    }
+
+    public boolean solve(String input) {
+
     }
 
     /**
@@ -66,6 +71,12 @@ public String getPuzzleType() {
  */
     public ArrayList<String> getHints() {
         return hint;
+    }
+
+    public String getHint() {
+        String temp =  hint.get(hintNum);
+        hintNum++;
+        return temp;
     }
 /**
  * 

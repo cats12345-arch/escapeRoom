@@ -110,6 +110,48 @@ public Boolean startGame()
     return true;
 }
 
+public void showDifferentPuzzles() {
+    room.getPuzzleDetails();
+}
+
+public void getPuzzle(int num) {
+    this.puzzle = room.getNextPuzzle(num);
+}
+
+public void displayDifferentTypes() {
+    if(puzzle.getPuzzleType().equalsIgnoreCase("riddle")) {
+        System.out.println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the riddle?");
+    } else if(puzzle.getPuzzleType().equalsIgnoreCase("anagram")) {
+        System.out.println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the Anagram?");
+    } else if (puzzle.getPuzzleType().equalsIgnoreCase("item")) {
+        System.out.println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the Anagram?");
+    }
+}
+
+public void seeHint() {
+    puzzle.getHint();
+}
+
+public void displayPuzzle() {
+    if(puzzle.getPuzzleType().equalsIgnoreCase("riddle")) {
+        RiddlePuzzle temp =  (RiddlePuzzle) puzzle;
+        temp.getRiddle();
+    } else if(puzzle.getPuzzleType().equalsIgnoreCase("anagram")) {
+        System.out.println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the Anagram?");
+    } else if (puzzle.getPuzzleType().equalsIgnoreCase("item")) {
+        System.out.println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the Anagram?");
+    }
+}
+
+public void solve(String input) {
+    Boolean solved = puzzle.solve(input);
+    if(solved) {
+        System.out.println("The puzzle has been solved!");
+    } else {
+        System.out.println("That was incorrect!");
+    }
+}
+
 public Boolean selectPuzzleOrObject(int num) {
     return room.showWhich(num);
 }

@@ -248,7 +248,7 @@ public class UI {
             Boolean bool = facade.startGame();
             if(bool) {
                 println("Game started successfully");
-                println("1. Interact with Objects. \n2. Do the puzzles");
+                println("1. Interact with Objects. \n2. Do the puzzles. \n3. Stop doing things in the room");
                 int input = scanner.nextInt();
                 while(input != 3) {
                     System.out.println("");
@@ -269,7 +269,24 @@ public class UI {
                             }
                         }
                     } else {
-                        
+                        facade.showDifferentPuzzles();
+                        System.out.println("Which puzzles would you like to interact with?");
+                        input = scanner.nextInt();
+                        facade.getPuzzle(input);
+                        facade.displayDifferentTypes();
+                        System.out.println("Enter 4 to exit back to the room");
+                        input = scanner.nextInt();
+                        while(input != 4 ) {
+                            if(input == 1) {
+                                facade.seeHint();
+                            } else if (input == 2) {
+                                String solution = scanner.nextLine();
+                                facade.solve(solution);
+                            } else if (input == 3) {
+                                facade.displayPuzzle();
+                            }
+                        }
+
                     }
                     input = scanner.nextInt();
                 }
