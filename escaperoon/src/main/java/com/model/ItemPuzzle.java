@@ -74,11 +74,6 @@ public class ItemPuzzle extends Puzzle {
         return true;
     }
 
-<<<<<<< HEAD
-    /**
-     * displays the puzzle’s hint and lists which items are needed to solve it.
-     */
-=======
     @Override
     public boolean attempt(String input) {
         if (input.equalsIgnoreCase(solution)) {
@@ -91,7 +86,6 @@ public class ItemPuzzle extends Puzzle {
     }
 
     @Override
->>>>>>> 3cfb07e126e7f90d600b1e00a4576ae769e022e9
     public void displayHint() {
         System.out.println("Item Puzzle: Find or collect the following items to complete the puzzle.");
         super.displayHint();
@@ -110,12 +104,7 @@ public class ItemPuzzle extends Puzzle {
      * @return a string describing this puzzle
      */
     public String toString() {
-<<<<<<< HEAD
-        return puzzleType + "|" + puzzleNum +
-                "|Required items: " + requiredItems.stream().map(Item::getName).toList();
-=======
         return puzzleType + "|" + solution + "|" + puzzleNum +
                 "|Required items: " + (requiredItems != null ? requiredItems.stream().map(Item::getName).toList() : "None");
->>>>>>> 3cfb07e126e7f90d600b1e00a4576ae769e022e9
     }
 }
