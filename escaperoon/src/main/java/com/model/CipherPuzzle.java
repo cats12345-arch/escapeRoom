@@ -2,6 +2,8 @@ package com.model;
 
 import java.util.ArrayList;
 
+import com.speech.Speek;
+
 public class CipherPuzzle extends Puzzle {
     protected int caesarCiphers;
     protected String anagram;
@@ -66,17 +68,21 @@ public class CipherPuzzle extends Puzzle {
         return finalString;
     }
 
+    private void println(String s) {
+        Speek.speak(s);
+        System.out.println(s);
+    }
     
 
     /**
      * displays text and relevant hints
      */
     public void displayHint() {
-        System.out.println("Cipher Puzzle:");
-        System.out.println("Encoded Text: " + encodedText);
-        System.out.println("Hint: The letters are shifted forward by " + caesarCiphers + ".");
+        println("Cipher Puzzle:");
+        println("Encoded Text: " + encodedText);
+        println("Hint: The letters are shifted forward by " + caesarCiphers + ".");
         if (anagram != null && !anagram.isEmpty()) {
-            System.out.println("Anagram Clue: " + anagram);
+            println("Anagram Clue: " + anagram);
         }
         super.displayHint();
     }

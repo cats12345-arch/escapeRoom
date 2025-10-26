@@ -2,6 +2,8 @@ package com.model;
 
 import java.util.ArrayList;
 
+import com.speech.Speek;
+
 public class ItemPuzzle extends Puzzle {
 
     protected ArrayList<Item> requiredItems;
@@ -14,10 +16,15 @@ public class ItemPuzzle extends Puzzle {
      * @param puzzleNum the puzzle identifier
      * @param room the room this puzzle is part of
      */
-    public ItemPuzzle(ArrayList<Item> requiredItems, ArrayList<String> hint, int puzzleNum, Room room) {
-        super(null, hint, puzzleNum, "ITEM");
+    public ItemPuzzle(String solution, ArrayList<Item> requiredItems, ArrayList<String> hint, int puzzleNum, Room room) {
+        super(solution, hint, puzzleNum, "ITEM");
         this.requiredItems = requiredItems != null ? requiredItems : new ArrayList<>();
         this.room = room;
+    }
+
+    private void println(String s) {
+        Speek.speak(s);
+        System.out.println(s);
     }
 
     /**
@@ -36,7 +43,7 @@ public class ItemPuzzle extends Puzzle {
         }
 
         if (requiredItems == null || requiredItems.isEmpty()) {
-            System.out.println("You solved the " + puzzleNum + " puzzle!");
+            println("You solved the " + puzzleNum + " puzzle!");
             return true;
         }
 
@@ -70,27 +77,27 @@ public class ItemPuzzle extends Puzzle {
         }
 
         // all required items are both in the room and owned by the player
-        System.out.println("You solved the " + puzzleNum + " puzzle!");
+        println("You solved the " + puzzleNum + " puzzle!");
         return true;
     }
 
     @Override
     public boolean attempt(String input) {
         if (input.equalsIgnoreCase(solution)) {
-            System.out.println("You built a " + solution + ". Puzzle solved.");
+            println("You built a " + solution + ". Puzzle solved.");
             return true;
         } else {
-            System.out.println("Incorrect. Try again or gather more resources.");
+            println("Incorrect. Try again or gather more resources.");
             return false;
         }
     }
 
     @Override
     public void displayHint() {
-        System.out.println("Item Puzzle: Find or collect the following items to complete the puzzle.");
+        println("Item Puzzle: Find or collect the following items to complete the puzzle.");
         super.displayHint();
         if (!requiredItems.isEmpty()) {
-            System.out.print("Required items: ");
+            println("Required items: ");
             for (Item item : requiredItems) {
                 System.out.print(item.getName() + " ");
             }

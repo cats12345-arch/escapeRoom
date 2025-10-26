@@ -2,6 +2,8 @@ package com.model;
 
 import java.util.ArrayList;
 
+import com.speech.Speek;
+
 public class GameEngine {
 
     private static GameEngine gameengine; 
@@ -56,7 +58,7 @@ public class GameEngine {
     {
         Puzzle tempPuzzle = room.getNextPuzzle(num);
         if(tempPuzzle == null) {
-            System.out.println("There are no more puzzles to load.");
+            println("There are no more puzzles to load.");
         }
         currentPuzzle = room.getNextPuzzle(num);
     }
@@ -87,5 +89,10 @@ public class GameEngine {
     public void displayLeaderboard()
     {
         leaderboard.displayTop(accounts);
+    }
+
+    private void println(String s) {
+        Speek.speak(s);
+        System.out.println(s);
     }
 }

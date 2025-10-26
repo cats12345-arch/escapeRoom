@@ -2,6 +2,8 @@ package com.model;
 
 import java.util.ArrayList;
 
+import com.speech.Speek;
+
 /**
  * puzzle class
  * each puzzle has solutions and hints
@@ -93,6 +95,12 @@ public String getPuzzleType() {
         }
         return hint.get(num);
     }
+    
+    private void println(String s) {
+        Speek.speak(s);
+        System.out.println(s);
+    }
+
 /**
  * 
  * @param input the players answer
@@ -100,15 +108,15 @@ public String getPuzzleType() {
  */
     public boolean attempt(String input) {
         if (input == null || input.isEmpty()) {
-            System.out.println("You must enter an answer.");
+            println("You must enter an answer.");
             return false;
         }
 
         if (input.equalsIgnoreCase(solution)) {
-            System.out.println("Correct! You solved the puzzle.");
+            println("Correct! You solved the puzzle.");
             return true;
         } else {
-            System.out.println("Incorrect. Try again.");
+            println("Incorrect. Try again.");
             return false;
         }
     }
@@ -117,9 +125,9 @@ public String getPuzzleType() {
  */
     public void displayHint() {
         if (!hint.isEmpty()) {
-            System.out.println("Hint: " + hint.get(0));
+            println("Hint: " + hint.get(0));
         } else {
-            System.out.println("No hints available.");
+            println("No hints available.");
         }
     }
 

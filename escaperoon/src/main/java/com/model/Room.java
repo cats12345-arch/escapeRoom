@@ -2,6 +2,8 @@ package com.model;
 
 import java.util.ArrayList;
 
+import com.speech.Speek;
+
 public class Room 
 {
     protected String roomName;
@@ -46,16 +48,34 @@ public class Room
     this.inventory = new ArrayList<>();
     }
 
+    private void println(String s) {
+        Speek.speak(s);
+        System.out.println(s);
+    }
+
+    /**
+     * A method that will return all of the info about the room
+     * @return A sting containing info about the room
+     */
     public String getRoomInfo() {
         StringBuilder sb = new StringBuilder();
         sb.append("Exploring ").append(roomName).append("\n").append(roomDescription).append("\nThere are ").append(puzzles.size()).append(" puzzles\nThere are ").append(objects.size()).append(" things to interact with");
         return sb.toString();
     }
 
+    /**
+     * A method that will return a string with info about an item
+     * @param num The item number in the arrayList
+     * @return a Strng with info about item
+     */
     public String getItemInfo(int num) {
         return inventory.get(num).toString();
     }
 
+    /**
+     * A method that will return the names of all of the items
+     * @return A string with all the names of the items
+     */
     public String getItemsNames() {
         StringBuilder sb = new StringBuilder();
         for(int i=0; i<inventory.size(); i++) {
@@ -64,6 +84,10 @@ public class Room
         return sb.toString();
     }
 
+    /**
+     * A method that will return all the names of the objects in the room
+     * @return A string of all the object names
+     */
     public String getObjectnames() {
         StringBuilder sb = new StringBuilder();
         for(int i=0; i<objects.size(); i++) {
@@ -74,6 +98,11 @@ public class Room
         return sb.toString();
     }
 
+    /**
+     * A method that will return the selected object
+     * @param num The number of the object that will be gottoen
+     * @return An object
+     */
     public Object getObject(int num) {
         if(num > objects.size()) {
             return null;
@@ -81,10 +110,18 @@ public class Room
         return objects.get(num);
     }
 
+    /**
+     * A method that will add an item to the inventory arraylist
+     * @param item the item that will be added to the item inventory
+     */
     public void addToInventory(Item item) {
         inventory.add(item);
     }
 
+    /**
+     * A method that will show all the info about the inventory 
+     * @return A string with the inventory item details
+     */
     public String getItemsDetails() {
         StringBuilder sb = new StringBuilder();
         for(int i=0; i<inventory.size(); i++) {
@@ -93,6 +130,11 @@ public class Room
         return sb.toString();
     }
 
+    /**
+     * A method that will return a puzzle based on the number entered
+     * @param num the puzzle that will be gone to
+     * @return A puzzle
+     */
     public Puzzle getNextPuzzle(int num) {
         if(num > puzzles.size()) {
             return null;
@@ -100,25 +142,41 @@ public class Room
         return puzzles.get(num);
     }
 
+    /**
+     * Returns the size of the inventory
+     * @return an int
+     */
     public int getInventorySize () {
         return inventory.size();
     }
 
+    /**
+     * Shows all of the differnt puzzles that can be solved
+     */
     public void showDifferentPuzzles() {
         for(int i=0; i< puzzles.size(); i++ ) {
             int num = i;
             num++;
-            System.out.println(num + ". " + puzzles.get(i).getPuzzleType());
+            println(num + ". " + puzzles.get(i).getPuzzleType());
         }
     }
 
+    /**
+     * A method that will return a puzzle to be worked on
+     * @param num The puzzle num that is desired
+     * @return A puzzle
+     */
     public Puzzle getPuzzle(int num) {
         if(num > puzzles.size()) {
-            System.out.println("Number entered is out of bounds");
+            println("Number entered is out of bounds");
         }
         return puzzles.get(num);
     }
 
+    /**
+     * A method that will show details about the puzzle
+     * @return A string with the details about the puzzle
+     */
     public String getPuzzleDetails() {
         StringBuilder sb = new StringBuilder();
         for(int i=0; i<puzzles.size(); i++) {
@@ -129,14 +187,22 @@ public class Room
         return sb.toString();
     }
 
+    /**
+     * A method that will show all of the differnet object names numbered off
+     */
     public void showDifferentObjects() {
         for(int i=0; i< objects.size(); i++ ) {
             int num = i;
             num++;
-            System.out.println(num + ". " + objects.get(i).getName());
+            println(num + ". " + objects.get(i).getName());
         }
     }
 
+    /**
+     * A method that will show the different objects if the user entered 1 and show the differnet puzzles if the user entered 2
+     * @param num The num for user options
+     * @return A boolean that is true for objects false for puzzles
+     */
     public Boolean showWhich(int num) {
         if(num == 1) {
             showDifferentObjects();
@@ -150,6 +216,10 @@ public class Room
         }
     }
 
+    /**
+     * A method that will return inventory
+     * @return an arrayList of items
+     */
     public ArrayList<Item> getInventory() {
         return inventory;
     }
@@ -240,7 +310,7 @@ public class Room
      */
     public void exploreRoom()
     {
-       System.out.println("Exploring " + roomName + ". Found "
+       println("Exploring " + roomName + ". Found "
        + (inventory == null ? 0 : inventory.size()) + " items and "
        + (puzzles == null ? 0 : puzzles.size()) + " puzzles.");
     }
@@ -251,8 +321,8 @@ public class Room
      */
     private void displayOptions()
     {
-        System.out.println("\nAvailable actions: ");
-        System.out.println(options);
+        println("\nAvailable actions: ");
+        println(options);
     }
 
     /**
@@ -275,7 +345,7 @@ public class Room
             case 1:
                 Item found = chest();
                 if (found != null) {
-                    System.out.println("You found: " + found.getName());
+                    println("You found: " + found.getName());
                     if (player != null);
                 } else {
                     System.out.println("The chest is empty.");
@@ -294,7 +364,7 @@ public class Room
                 bed();
                 break;
             default:
-                System.out.println("Invalid option.");
+                println("Invalid option.");
         }
     }
 
@@ -316,10 +386,10 @@ public class Room
      * @return the removed {@link Item} if present, otherwise {@code null}
      */
     public Item chest() {
-        System.out.println("You open the chest...");
+        println("You open the chest...");
 
         if (inventory == null || inventory.isEmpty()) {
-            System.out.println("It appears empty.");
+            println("It appears empty.");
             return null;
         }
 
@@ -333,7 +403,7 @@ public class Room
      */
     public void bookshelf() 
     {
-        System.out.println("You browse the bookshelf. A few titles catch your eye.");
+        println("You browse the bookshelf. A few titles catch your eye.");
     }
 
     /**
@@ -349,7 +419,7 @@ public class Room
      */
     public void desk() 
     {
-        System.out.println("You examine the desk and find scattered notes.");
+        println("You examine the desk and find scattered notes.");
     }
 
     /**
@@ -357,7 +427,7 @@ public class Room
      */
     public void bed() 
     {
-        System.out.println("You check under the bed and lift the mattress.");
+        println("You check under the bed and lift the mattress.");
     }
 
     /**
@@ -399,7 +469,7 @@ public class Room
         {
             int num = i + 1;
             // Note: assumes objects.get(i) has a getName() method; if not, this will fail at runtime.
-            System.out.println(num +"." + objects.get(i).getName());
+            println(num +"." + objects.get(i).getName());
         }
     }
 
@@ -423,8 +493,8 @@ public class Room
      */
     public void showObjectOption()
     {
-        System.out.println("1. Show Description" );
-        System.out.println("2. Interact");
+        println("1. Show Description" );
+        println("2. Interact");
     }
 
     /**

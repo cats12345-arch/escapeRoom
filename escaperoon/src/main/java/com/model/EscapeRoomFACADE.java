@@ -2,6 +2,8 @@ package com.model;
 
 import java.util.ArrayList;
 
+import com.speech.Speek;
+
 public class EscapeRoomFACADE {
 
 private Account account; 
@@ -159,17 +161,21 @@ public void getPuzzle(int num) {
     this.puzzle = room.getNextPuzzle(num);
     puzzleProgress.setPuzzle(this.puzzle);
 }
+    private void println(String s) {
+        Speek.speak(s);
+        System.out.println(s);
+    }
 
 /*
  * Displays the different puzzle types 
  */
 public void displayDifferentTypes() {
     if(puzzle.getPuzzleType().equalsIgnoreCase("riddle")) {
-        System.out.println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the riddle?");
+        println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the riddle?");
     } else if(puzzle.getPuzzleType().equalsIgnoreCase("cipher")) {
-        System.out.println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the Anagram?");
+        println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the Anagram?");
     } else if (puzzle.getPuzzleType().equalsIgnoreCase("item")) {
-        System.out.println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the Anagram?");
+        println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the Anagram?");
     }
 }
 
@@ -177,7 +183,7 @@ public void displayDifferentTypes() {
  * Displays the hint for the puzzle 
  */
 public void seeHint() {
-    System.out.println(puzzle.getHint());
+    println(puzzle.getHint());
     puzzleProgress.addNumHintsUsed();
 }
 
@@ -187,24 +193,34 @@ public void seeHint() {
 public void displayPuzzle() {
     if(puzzle.getPuzzleType().equalsIgnoreCase("riddle")) {
         RiddlePuzzle temp =  (RiddlePuzzle) puzzle;
-        System.out.println(temp.getRiddle());
+        println(temp.getRiddle());
     } else if(puzzle.getPuzzleType().equalsIgnoreCase("anagram")) {
         CipherPuzzle temp = (CipherPuzzle) puzzle;
-        System.out.println(temp.getAnagram());
+        println(temp.getAnagram());
     } else if (puzzle.getPuzzleType().equalsIgnoreCase("item")) {
-        System.out.println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the Anagram?");
+        println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the Anagram?");
     }
 }
 
+/**
+ * Adds puzzleProgress to the roomprogress in puzzle progress
+ */
 public void addPuzzleProgressToAccount() {
     this.roomProgress.addPuzzleProgress(puzzleProgress);
     this.puzzleProgress = null;
 }
 
+/**
+ * Makes a new puzzleProgress
+ */
 public void createPuzzleProgress() {
     this.puzzleProgress = new PuzzleProgress();
 }
 
+/**
+ * Adds an item to the roomprogress
+ * @param item an item
+ */
 public void addItems(Item item) {
     this.roomProgress.addItem(item);
 }
@@ -215,11 +231,11 @@ public void addItems(Item item) {
 public void solve(String input) {
     Boolean solved = puzzle.solve(input);
     if(solved) {
-        System.out.println("The puzzle has been solved!");
+        println("The puzzle has been solved!");
         account.addToScore(20);
         puzzleProgress.setCompletion(true);
     } else {
-        System.out.println("That was incorrect!");
+        println("That was incorrect!");
         account.addToScore(-5);
         puzzleProgress.setCompletion(false);
     }
@@ -256,7 +272,7 @@ public Boolean getObject(int num) {
  * Displays the description of the current object
  */
 public void getObjectDescription() {
-    System.out.println(object.getDescription());
+    println(object.getDescription());
 }
 
 /*

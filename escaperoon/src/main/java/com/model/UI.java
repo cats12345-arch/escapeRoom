@@ -2,6 +2,7 @@ package com.model;
 
 import java.util.Scanner;
 
+import com.speech.Speek;
 
 public class UI {
 
@@ -74,7 +75,7 @@ public class UI {
      */
     private void endGame() {
         facade.saveGame();
-        System.out.println("Saved all the progress and all the accounts progress. Exiting game.");
+        println("Saved all the progress and all the accounts progress. Exiting game.");
         System.exit(0);
     }
 
@@ -82,7 +83,7 @@ public class UI {
      * Loads the next puzzle
      */
     private void puzzleNext() {
-        System.out.println("Loading the next puzzle");
+        println("Loading the next puzzle");
         facade.nextPuzzle();
     }
 
@@ -90,7 +91,7 @@ public class UI {
      * Shows the puzzles answer
      */
     private void puzzleAnswer() {
-        System.out.println(facade.puzzleAnswer());
+        println(facade.puzzleAnswer());
     }
 
     /**
@@ -99,9 +100,9 @@ public class UI {
     private void getHint() {
         String hint = facade.getNextHint();
         if(hint == null) {
-            System.out.println("Sorry there are no more hints");
+            println("Sorry there are no more hints");
         } else {
-            System.out.println(hint);
+            println(hint);
         }
     }
 
@@ -109,20 +110,20 @@ public class UI {
      * Will ask the user if they want to see all items or just a certain item and then will do as the user asks
      */
     private void selectItem() {
-        System.out.println("1. To see all items \n2. To see a certain item.");
+        println("1. To see all items \n2. To see a certain item.");
         int num = scanner.nextInt();
-        System.out.print("");
+        println("");
         if(num == 1) {
             facade.getAllItemsDescription();
         } else if (num == 2) {
             facade.getAllItemNames();
-            System.out.println("Which Item would you like to see the details for?");
+            println("Which Item would you like to see the details for?");
             num = scanner.nextInt();
             String item = facade.getItemInfo(num);
             if(item == null) {
-                System.out.println("Sorry that Item does not exist");
+                println("Sorry that Item does not exist");
             } else {
-                System.out.println(item);
+                println(item);
             }
         }
         
@@ -140,9 +141,9 @@ public class UI {
      * Saves the current game state 
      */
     private void saveGame() {
-        System.out.println("Saving game");
+        println("Saving game");
         facade.saveGame();
-        System.out.println("Completed");
+        println("Completed");
     }
 
     /*
@@ -150,9 +151,9 @@ public class UI {
      */
 
     private void loadGame () {
-        System.out.println("Loading game");
+        println("Loading game");
         facade.loadGame();
-        System.out.println("Completed");
+        println("Completed");
     }
 
     /*
@@ -201,7 +202,7 @@ public class UI {
         {
             Account acc = facade.login(username, password);
             if(acc == null) {
-                System.out.println("Login Failed due to different username and password");
+                println("Login Failed due to different username and password");
             } else {
                 println("Login successful");
             }
@@ -224,7 +225,7 @@ public class UI {
         {
             Account acc = facade.newAccount(username, password);
             if(acc == null) {
-                System.out.println("An account with this username already exits!");
+                println("An account with this username already exits!");
             } else {
                 println("Account created successfully");
             }
@@ -295,17 +296,17 @@ public class UI {
                 println("1. Interact with Objects. \n2. Do the puzzles. \n3. Stop doing things in the room");
                 int input = scanner.nextInt();
                 while(input != 3) {
-                    System.out.println("");
+                    println("");
                     Boolean which = facade.selectPuzzleOrObject(input);
                     
                     if(which) {
                         facade.getObjectNames();
-                        System.out.println("Which object would you like to interact with?");
+                        println("Which object would you like to interact with?");
                         input = scanner.nextInt();
                         facade.getObject(input);
-                        System.out.println("1. Would you like to interact with the object? \n2. Would you like to see the object description?\n3. Stop interacting with objects");
+                        println("1. Would you like to interact with the object? \n2. Would you like to see the object description?\n3. Stop interacting with objects");
                         input = scanner.nextInt();
-                        System.out.println("");
+                        println("");
                         while(input != 3) {
                             if(input == 1) {
                                 facade.interactWithObject();
@@ -319,11 +320,11 @@ public class UI {
                     } else {
                         facade.showDifferentPuzzles();
                         facade.createPuzzleProgress();
-                        System.out.println("Which puzzles would you like to interact with?");
+                        println("Which puzzles would you like to interact with?");
                         input = scanner.nextInt();
                         facade.getPuzzle(input);
                         facade.displayDifferentTypes();
-                        System.out.println("Enter 4 to exit back to the room");
+                        println("Enter 4 to exit back to the room");
                         input = scanner.nextInt();
                         scanner.nextLine();
                         while(input != 4 ) {
@@ -368,11 +369,8 @@ public class UI {
      * Prints a string to the console 
      */
     private void println(String s) {
+        Speek.speak(s);
         System.out.println(s);
-    }
-
-    private void roomMenu() {
-
     }
 
     public static void main(String[] args) {

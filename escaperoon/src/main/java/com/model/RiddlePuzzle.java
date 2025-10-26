@@ -2,6 +2,8 @@ package com.model;
 
 import java.util.ArrayList;
 
+import com.speech.Speek;
+
 public class RiddlePuzzle extends Puzzle {
     protected String riddle;
     
@@ -38,25 +40,30 @@ public class RiddlePuzzle extends Puzzle {
     */
     public boolean attempt(String input) {
         if (input == null || input.isEmpty()) {
-            System.out.println("Enter an answer to solve the riddle.");
+            println("Enter an answer to solve the riddle.");
             return false;
         }
 
         if (input.equalsIgnoreCase(solution)) {
 
-            System.out.println("Correct! You solved the riddle.");
+            println("Correct! You solved the riddle.");
             return true;
         } else {
-            System.out.println("Incorrect. Try again or use a hint.");
+            println("Incorrect. Try again or use a hint.");
             return false;
         }
+    }
+
+    private void println(String s) {
+        Speek.speak(s);
+        System.out.println(s);
     }
 
    /**
     * hints for puzzle
     */
     public void displayHint() {
-        System.out.println("Riddle: " + riddle);
+        println("Riddle: " + riddle);
         super.displayHint();
     }
 
