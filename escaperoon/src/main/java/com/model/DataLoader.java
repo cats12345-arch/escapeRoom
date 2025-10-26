@@ -10,6 +10,10 @@ import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants{
     
+    /**
+     * The get players will load the accounts and all associated data into the various different classes
+     * @return an arrayList of accounts
+     */
     public static ArrayList<Account> getPlayers() {
         ArrayList<Account> accounts = new ArrayList<Account>();
 
@@ -17,6 +21,7 @@ public class DataLoader extends DataConstants{
             FileReader reader = new FileReader(USER_FILE_NAME);
             JSONArray accountsJSON = (JSONArray)new JSONParser().parse(reader);
             
+            //Accounts
             for (int i=0; i < accountsJSON.size(); i++) {
                 JSONObject accountJSON = (JSONObject)accountsJSON.get(i);
                 String username = (String)accountJSON.get(ACCOUNT_USER_NAME);
@@ -137,6 +142,11 @@ public class DataLoader extends DataConstants{
         return accounts;
     }
 
+    /**
+     * A helper method that will return an ArrayList of puzzles that is used by both main methods
+     * @param array A JSONArray that contains the infomation for a puzzle
+     * @return an ArrayList of puzzles along with any associated info
+     */
     private static ArrayList<Puzzle> helperPuzzle(JSONArray array) {
         ArrayList<Puzzle> puzzles = new ArrayList<Puzzle>();
         for(int n=0; n<array.size(); n++) {
@@ -174,6 +184,11 @@ public class DataLoader extends DataConstants{
         return puzzles;
     }
 
+    /**
+     * A helper method that will take a JSONArray and trun it into an ArrayList of objects
+     * @param array A JSONArray that conatins all the info for an Object
+     * @return An ArrayList of Object
+     */
     public static ArrayList<Object> helperObject(JSONArray array) {
        ArrayList<Object> objects = new ArrayList<Object>();
        for(int i=0; i<array.size(); i++) {
@@ -190,7 +205,10 @@ public class DataLoader extends DataConstants{
         return objects;
     }
     
-
+    /**
+     * Will read from a JSON file and turn that into an ArrayList of Room
+     * @return An array list of Room
+     */
     public static ArrayList<Room> getRooms() {
         ArrayList<Room> Rooms = new ArrayList<Room>();
 
