@@ -6,6 +6,9 @@ public class Timer
     private int timeRemaining;
     private boolean timesUp;
 
+    /*
+     * Constructs a new timer with a specified duration 
+     */
     public Timer(int duration)
     {
         this.duration = duration;
@@ -13,13 +16,18 @@ public class Timer
         this.timesUp = false;
     }
 
+    /*
+     * Starts or resets the timer 
+     */
     public void start()
     {
        this.timeRemaining = duration; 
        this.timesUp = false;
     }
 
-
+    /*
+     * Decreases the remaining time by one second 
+     */
     public void tick()
     {
         if(timesUp)
@@ -45,11 +53,18 @@ public class Timer
 
     }
 
+    /*
+     * Returns whether the time is up or not 
+     */
     public boolean isTimeUp()
     {
         return timesUp;
     }
 
+    /*
+     * Stops the timer 
+     * Sets time remaining to 0 
+     */
     public void stop()
     {
         if(!timesUp)

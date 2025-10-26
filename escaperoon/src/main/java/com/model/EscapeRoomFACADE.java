@@ -18,6 +18,10 @@ private int hintNum;
 private int roomNum;
 private Object object;
 
+/**
+ * Constructs a new EscapeRoomFACADE instance
+ * Initalizes all singleton references
+ */
 public EscapeRoomFACADE()
 {
     this.accountList = AccountList.getInstance();
@@ -28,6 +32,10 @@ public EscapeRoomFACADE()
     this.hintNum = 0;
 }
 
+/*
+ * Logs the user in with the given username and password
+ * Returns the Account if successful, null otherwise
+ */
 public Account login(String username, String password)
 {
     if(accountList == null || password == null)
@@ -44,6 +52,10 @@ public Account login(String username, String password)
     return acc;
 }
 
+/*
+ * Creates a new account with the given username and password 
+ * Saves all accounts 
+ */
 public Account newAccount(String username, String password)
 {
     if(accountList == null || password == null)
@@ -67,11 +79,18 @@ public Account newAccount(String username, String password)
     }
     return null;
 }
+
+/*
+ * Logs out the user
+ */
 public void logout()
 {
     this.account = null;
 }
 
+/*
+ * Displays the leaderboard 
+ */
 public void getLeaderboard()
 {
     if(leaderboard != null)
@@ -80,24 +99,36 @@ public void getLeaderboard()
     }
 }
 
-
+/*
+ * Saves the game data
+ * Saves the accounts and rooms 
+ */
 public void saveGame() {
     accountList.saveAccounts();
     roomList.saveRoom();
 }
 
+/*
+ * Loads the game data 
+ */
 public void loadGame()
 {
     DataLoader.getPlayers();
     DataLoader.getRooms();
 }
 
+/*
+ * Ends the current game 
+ */
 public void endGame()
 {
     gameEngine.endGame(false);
     timer.stop();
 }
 
+/*
+ * Starts a new game session 
+ */
 public Boolean startGame()
 {
     this.room = roomList.getRoom(roomNum);
@@ -109,15 +140,24 @@ public Boolean startGame()
     return true;
 }
 
+/*
+ * Displays all the puzzles in the current room 
+ */
 public void showDifferentPuzzles() {
     room.getPuzzleDetails();
 }
 
+/*
+ * Loads the puzzle 
+ */
 public void getPuzzle(int num) {
     num--;
     this.puzzle = room.getNextPuzzle(num);
 }
 
+/*
+ * Displays the different puzzle types 
+ */
 public void displayDifferentTypes() {
     if(puzzle.getPuzzleType().equalsIgnoreCase("riddle")) {
         System.out.println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the riddle?");
@@ -128,10 +168,16 @@ public void displayDifferentTypes() {
     }
 }
 
+/*
+ * Displays the hint for the puzzle 
+ */
 public void seeHint() {
     System.out.println(puzzle.getHint());
 }
 
+/*
+ * Displays the puzzle 
+ */
 public void displayPuzzle() {
     if(puzzle.getPuzzleType().equalsIgnoreCase("riddle")) {
         RiddlePuzzle temp =  (RiddlePuzzle) puzzle;
@@ -144,6 +190,9 @@ public void displayPuzzle() {
     }
 }
 
+/*
+ * Attempts to solve the puzzle with the given input 
+ */
 public void solve(String input) {
     Boolean solved = puzzle.solve(input);
     if(solved) {
@@ -153,14 +202,23 @@ public void solve(String input) {
     }
 }
 
+/*
+ * Selects a puzzle or an object in the room 
+ */
 public Boolean selectPuzzleOrObject(int num) {
     return room.showWhich(num);
 }
 
+/*
+ * Returns the names of all objects in the room 
+ */
 public String getObjectNames() {
     return room.getObjectnames();
 }
 
+/*
+ * Retrieves an object and sets it as the current object
+ */
 public Boolean getObject(int num) {
     num--;
     Object temp = room.getObject(num);
@@ -171,29 +229,47 @@ public Boolean getObject(int num) {
     return true;
 }
 
+/*
+ * Displays the description of the current object
+ */
 public void getObjectDescription() {
     System.out.println(object.getDescription());
 }
 
+/*
+ * Interacts with the selected object 
+ */
 public void interactWithObject() {
     Item item = object.interact();
     room.addToInventory(item);
 }
 
+/*
+ * Loads the next puzzle 
+ */
 public void nextPuzzle() {
     gameEngine.loadNextPuzzle(puzzleNum);
     puzzleNum++;
 }
 
+/*
+ * Returns the solution to the puzzle 
+ */
 public String puzzleAnswer() {
     return puzzle.getSolution();
 }
 
+/*
+ * Selects a puzzle by its number and loads it 
+ */
 public void puzzleSelect(int num)
 {
     gameEngine.loadNextPuzzle(num);
 }
 
+/*
+ * Returns the next hint for the current puzzle 
+ */
 public String getNextHint() {
     String temp = puzzle.getHint(hintNum);
     if(temp == null) {
@@ -203,14 +279,23 @@ public String getNextHint() {
     return temp;
 }
 
+/*
+ * Returns the descriptions of all the iterms in the room 
+ */
 public String getAllItemsDescription() {
     return room.getItemsDetails();
 }
 
+/*
+ * Returns the names of all items in the room 
+ */
 public String getAllItemNames() {
     return room.getItemsNames();
 }
 
+/*
+ * Retrieves information for a specific item in the room's inventory 
+ */
 public String getItemInfo(int num) {
     if(num > room.getInventorySize()) {
         return null;
@@ -218,16 +303,25 @@ public String getItemInfo(int num) {
     return room.getItemInfo(num);
 }
 
+/*
+ * Selects a room 
+ */
 public void roomSelect(String roomName)
 {
     roomList.getRoom(roomName);
 }
 
+/*
+ * Returns information about the room 
+ */
 public String exploreRoom()
 {
     return room.getRoomInfo();
 }
 
+/*
+ * Adds accounts to the leadeboard 
+ */
 public void addToLeaderbaord() {
     ArrayList<Account> accounts = accountList.getAccount();
     for (int i=0; i < accounts.size(); i++) {
@@ -235,9 +329,14 @@ public void addToLeaderbaord() {
     }
 }
 
+/*
+ * Displays the leaderboard using the account list 
+ */
 public void displayLeaderBoard() {
     leaderboard.displayTop(accountList.getAccount());
 }
+
+
 public void puzzleAnswer(String answer)
 {
     
