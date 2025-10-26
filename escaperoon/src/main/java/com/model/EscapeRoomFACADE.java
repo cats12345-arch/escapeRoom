@@ -174,6 +174,6 @@ public void selectItem(String itemName)
 
 public void createRoom()
 {
-    roomList.newRoom();
+    roomList.getRoom(null);
 }
 }
