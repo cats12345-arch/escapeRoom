@@ -5,23 +5,37 @@ import java.util.ArrayList;
 public class RiddlePuzzle extends Puzzle {
     protected String riddle;
     
-
+/**
+ * 
+ * @param riddle riddle question , correct answer, list the hints, and puzzlenumber
+ * @param answer
+ * @param hint
+ * @param puzzleNum
+ */
     public RiddlePuzzle(String riddle, String answer, ArrayList<String> hint, int puzzleNum) {
         super(answer, hint, puzzleNum, "RIDDLE");
         this.riddle = riddle;
     }
-
+/**
+ * default constructor
+ */
     public RiddlePuzzle() {
         super();
         this.riddle = "";
         this.puzzleType = "RIDDLE";
     }
-
+/**
+ * 
+ * @return the string of the riddle
+ */
     public String getRiddle() {
         return riddle;
     }
 
-    @Override
+   /**
+    * @param input for the answer
+    * @return true or false based on answer
+    */
     public boolean attempt(String input) {
         if (input == null || input.isEmpty()) {
             System.out.println("Enter an answer to solve the riddle.");
@@ -38,17 +52,25 @@ public class RiddlePuzzle extends Puzzle {
         }
     }
 
-    @Override
+   /**
+    * hints for puzzle
+    */
     public void displayHint() {
         System.out.println("Riddle: " + riddle);
         super.displayHint();
     }
 
-    @Override
+    /**
+     * string of the puzzle
+     */
     public String toString() {
         return puzzleType + "|" + riddle + "|" + solution + "|" + puzzleNum + "|" + hintString(hint);
     }
-
+/**
+ * 
+ * @param hint the list of hints
+ * @return hint string
+ */
     public String hintString(ArrayList<String> hint) {
         String finalString = "";
         for(int i=0; i<hint.size(); i++) {
@@ -56,7 +78,10 @@ public class RiddlePuzzle extends Puzzle {
         }
         return finalString;
     }
-
+/**
+ * 
+ * @return list of possible riddles to be selected
+ */
     public static ArrayList<RiddlePuzzle> loadDefaultRiddles() {
         ArrayList<RiddlePuzzle> riddles = new ArrayList<>();
 

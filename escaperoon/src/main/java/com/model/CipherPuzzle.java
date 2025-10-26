@@ -6,22 +6,40 @@ public class CipherPuzzle extends Puzzle {
     protected int caesarCiphers;
     protected String anagram;
     protected String encodedText;
-
+/**
+ * 
+ * @param plainText the original message, number ofshifts, optional hint, list of hints, puzzle number 
+ * @param caesarCiphers
+ * @param anagram
+ * @param hint
+ * @param puzzleNum
+ */
     public CipherPuzzle(String plainText, int caesarCiphers, String anagram, ArrayList<String> hint, int puzzleNum) {
         super(plainText, hint, puzzleNum, "CIPHER");
         this.caesarCiphers = caesarCiphers;
         this.anagram = anagram;
         this.encodedText = encrypt(plainText, caesarCiphers);
     }
-
+/**
+ * 
+ * @return the ceasar iphers shift value
+ */
     public int getCeaserCipher() {
         return caesarCiphers;
     }
-
+/**
+ * 
+ * @return returns anagram hint
+ */
     public String getAnagram() {
         return anagram;
     }
-
+/**
+ * 
+ * @param text the text getting encrypted
+ * @param shift the number of letters to be shifted
+ * @return the actualy cipher
+ */
     private String encrypt(String text, int shift) {
         StringBuilder result = new StringBuilder();
         for (char c : text.toUpperCase().toCharArray()) {
@@ -34,7 +52,12 @@ public class CipherPuzzle extends Puzzle {
         }                                 //make method to print out the hints
         return result.toString(); 
     }
-
+/**
+ * 
+ * @param hint the list of hints
+ * @return combined hint string
+ * 
+ */
     public String hintString(ArrayList<String> hint) {
         String finalString = "";
         for(int i=0; i<hint.size(); i++) {
@@ -45,7 +68,9 @@ public class CipherPuzzle extends Puzzle {
 
     
 
-    @Override
+    /**
+     * displays text and relevant hints
+     */
     public void displayHint() {
         System.out.println("Cipher Puzzle:");
         System.out.println("Encoded Text: " + encodedText);
@@ -56,7 +81,9 @@ public class CipherPuzzle extends Puzzle {
         super.displayHint();
     }
 
-    @Override
+    /**
+     * @return string of the cipher puzzle
+     */
     public String toString() {
         return puzzleType + "|" + solution + "|" + caesarCiphers + "|" + anagram + "|" + encodedText + "|" + puzzleNum;
     }

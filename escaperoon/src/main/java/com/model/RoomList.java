@@ -65,9 +65,19 @@ public class RoomList
         return null;
     }
 
+<<<<<<< HEAD
     /**
      * Saves all room data using {@link DataWriter#saveRooms()}.
      */
+=======
+    public Room getRoom(int num) {
+        if(num > rooms.size()) {
+            return null;
+        }
+        return rooms.get(num);
+    }
+
+>>>>>>> 69f4a285f71349914a29647bfcb21e2be6206e07
     public void saveRoom()
     {
         DataWriter.saveRooms();
