@@ -16,6 +16,7 @@ private int puzzleNum;
 private Puzzle puzzle;
 private int hintNum;
 private int roomNum;
+private Object object;
 
 public EscapeRoomFACADE()
 {
@@ -111,6 +112,28 @@ public Boolean startGame()
 
 public Boolean selectPuzzleOrObject(int num) {
     return room.showWhich(num);
+}
+
+public String getObjectNames() {
+    return room.getObjectnames();
+}
+
+public Boolean getObject(int num) {
+    Object temp = room.getObject(num);
+    if(temp == null) {
+        return false;
+    }
+    this.object = temp;
+    return true;
+}
+
+public void getObjectDescription() {
+    System.out.println(object.getDescription());
+}
+
+public void interactWithObject() {
+    Item item = object.interact();
+    room.addToInventory(item);
 }
 
 public void nextPuzzle() {

@@ -64,6 +64,25 @@ public class Room
         return sb.toString();
     }
 
+    public String getObjectnames() {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<inventory.size(); i++) {
+            sb.append("\n" + i-- + ".: " + objects.get(i).getName());
+        }
+        return sb.toString();
+    }
+
+    public Object getObject(int num) {
+        if(num > objects.size()) {
+            return null;
+        }
+        return objects.get(num);
+    }
+
+    public void addToInventory(Item item) {
+        inventory.add(item);
+    }
+
     public String getItemsDetails() {
         StringBuilder sb = new StringBuilder();
         for(int i=0; i<inventory.size(); i++) {

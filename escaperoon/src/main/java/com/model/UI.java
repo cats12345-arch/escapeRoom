@@ -250,13 +250,30 @@ public class UI {
                 println("Game started successfully");
                 println("1. Interact with Objects. \n2. Do the puzzles");
                 int input = scanner.nextInt();
-                System.out.println("");
-                Boolean which = facade.selectPuzzleOrObject(input);
-                if(which) {
-                    System.out.println("Which object would you like to interact with?");
+                while(input != 3) {
+                    System.out.println("");
+                    Boolean which = facade.selectPuzzleOrObject(input);
+                    if(which) {
+                        facade.getObjectNames();
+                        System.out.println("Which object would you like to interact with?");
+                        input = scanner.nextInt();
+                        facade.getObject(input);
+                        System.out.println("1. Would you like to interact with the object? \n2. Would you like to see the object description?\n3. Stop interacting with objects");
+                        input = scanner.nextInt();
+                        System.out.println("");
+                        while(input != 3) {
+                            if(input == 1) {
+                                facade.interactWithObject();
+                            } else if (input == 2) {
+                                facade.getObjectDescription();
+                            }
+                        }
+                    } else {
+                        
+                    }
                     input = scanner.nextInt();
-                    
                 }
+                
             } else {
                 println("Game did not start successfully");
             }
