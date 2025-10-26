@@ -106,7 +106,6 @@ public Boolean startGame()
     }
     roomNum++;
     timer.start();
-    room.showDifferentPuzzles();
     return true;
 }
 
@@ -115,13 +114,14 @@ public void showDifferentPuzzles() {
 }
 
 public void getPuzzle(int num) {
+    num--;
     this.puzzle = room.getNextPuzzle(num);
 }
 
 public void displayDifferentTypes() {
     if(puzzle.getPuzzleType().equalsIgnoreCase("riddle")) {
         System.out.println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the riddle?");
-    } else if(puzzle.getPuzzleType().equalsIgnoreCase("anagram")) {
+    } else if(puzzle.getPuzzleType().equalsIgnoreCase("cipher")) {
         System.out.println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the Anagram?");
     } else if (puzzle.getPuzzleType().equalsIgnoreCase("item")) {
         System.out.println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the Anagram?");
@@ -129,15 +129,16 @@ public void displayDifferentTypes() {
 }
 
 public void seeHint() {
-    puzzle.getHint();
+    System.out.println(puzzle.getHint());
 }
 
 public void displayPuzzle() {
     if(puzzle.getPuzzleType().equalsIgnoreCase("riddle")) {
         RiddlePuzzle temp =  (RiddlePuzzle) puzzle;
-        temp.getRiddle();
+        System.out.println(temp.getRiddle());
     } else if(puzzle.getPuzzleType().equalsIgnoreCase("anagram")) {
-        System.out.println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the Anagram?");
+        CipherPuzzle temp = (CipherPuzzle) puzzle;
+        System.out.println(temp.getAnagram());
     } else if (puzzle.getPuzzleType().equalsIgnoreCase("item")) {
         System.out.println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the Anagram?");
     }
@@ -161,6 +162,7 @@ public String getObjectNames() {
 }
 
 public Boolean getObject(int num) {
+    num--;
     Object temp = room.getObject(num);
     if(temp == null) {
         return false;

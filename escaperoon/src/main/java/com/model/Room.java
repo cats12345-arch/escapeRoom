@@ -66,8 +66,10 @@ public class Room
 
     public String getObjectnames() {
         StringBuilder sb = new StringBuilder();
-        for(int i=0; i<inventory.size(); i++) {
-            sb.append("\n" + i-- + ".: " + objects.get(i).getName());
+        for(int i=0; i<objects.size(); i++) {
+            int num = i;
+            num++;
+            sb.append("\n" + num + ".: " + objects.get(i).getName());
         }
         return sb.toString();
     }
@@ -104,7 +106,9 @@ public class Room
 
     public void showDifferentPuzzles() {
         for(int i=0; i< puzzles.size(); i++ ) {
-            System.out.println(i++ + ". " + puzzles.get(i).getPuzzleType());
+            int num = i;
+            num++;
+            System.out.println(num + ". " + puzzles.get(i).getPuzzleType());
         }
     }
 
@@ -118,14 +122,18 @@ public class Room
     public String getPuzzleDetails() {
         StringBuilder sb = new StringBuilder();
         for(int i=0; i<puzzles.size(); i++) {
-            sb.append("\n" + i-- + ".: " + puzzles.get(i).getPuzzleType());
+            int num = i;
+            num++;
+            sb.append("\n" + num + ".: " + puzzles.get(i).getPuzzleType());
         }
         return sb.toString();
     }
 
     public void showDifferentObjects() {
         for(int i=0; i< objects.size(); i++ ) {
-            System.out.println(i++ + ". " + objects.get(i).getName());
+            int num = i;
+            num++;
+            System.out.println(num + ". " + objects.get(i).getName());
         }
     }
 

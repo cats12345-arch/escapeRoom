@@ -267,15 +267,19 @@ public class UI {
                             } else if (input == 2) {
                                 facade.getObjectDescription();
                             }
+                            input = scanner.nextInt();
                         }
+                        println("1. Interact with Objects. \n2. Do the puzzles. \n3. Stop doing things in the room");
                     } else {
                         facade.showDifferentPuzzles();
                         System.out.println("Which puzzles would you like to interact with?");
                         input = scanner.nextInt();
                         facade.getPuzzle(input);
                         facade.displayDifferentTypes();
+
                         System.out.println("Enter 4 to exit back to the room");
                         input = scanner.nextInt();
+                        scanner.nextLine();
                         while(input != 4 ) {
                             if(input == 1) {
                                 facade.seeHint();
@@ -285,11 +289,14 @@ public class UI {
                             } else if (input == 3) {
                                 facade.displayPuzzle();
                             }
+                            input = scanner.nextInt();
                         }
-
+                        println("1. Interact with Objects. \n2. Do the puzzles. \n3. Stop doing things in the room");
                     }
                     input = scanner.nextInt();
                 }
+                scanner.nextLine();
+                printMenu();
                 
             } else {
                 println("Game did not start successfully");
