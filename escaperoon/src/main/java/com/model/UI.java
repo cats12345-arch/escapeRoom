@@ -245,8 +245,13 @@ public class UI {
     private void startGame()
     {
         try {
-            facade.startGame();
-            println("Game started successfully");
+            Boolean bool = facade.startGame();
+            if(bool) {
+                println("Game started successfully");
+            } else {
+                println("Game did not start successfully");
+            }
+            
         } catch (Exception e)
         {
             println("Exception starting game: " + e.getMessage());

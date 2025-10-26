@@ -15,6 +15,7 @@ private final Timer timer = new Timer(1800);
 private int puzzleNum;
 private Puzzle puzzle;
 private int hintNum;
+private int roomNum;
 
 public EscapeRoomFACADE()
 {
@@ -74,7 +75,7 @@ public void getLeaderboard()
 {
     if(leaderboard != null)
     {
-    leaderboard.displayTop();
+    leaderboard.displayTop(accountList.getAccount());
     }
 }
 
@@ -96,10 +97,15 @@ public void endGame()
     timer.stop();
 }
 
-public void startGame()
+public Boolean startGame()
 {
-    gameEngine.startGame();
+    this.room = roomList.getRoom(roomNum);
+    if(room == null) {
+        return false;
+    }
+    roomNum++;
     timer.start();
+    return true;
 }
 
 public void nextPuzzle() {

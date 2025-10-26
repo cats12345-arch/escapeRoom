@@ -18,6 +18,7 @@ public class GameEngine {
         this.accounts = new ArrayList<>();
         this.leaderboard = new Leaderboard();
         this.currentPuzzle = null;
+        this.time = new Timer(0);
     }
 
     public static GameEngine getInstance() {
@@ -65,6 +66,6 @@ public class GameEngine {
 
     public void displayLeaderboard()
     {
-        leaderboard.displayTop();
+        leaderboard.displayTop(accounts);
     }
 }

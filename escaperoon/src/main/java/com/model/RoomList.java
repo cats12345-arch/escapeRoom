@@ -38,6 +38,13 @@ public class RoomList
         return null;
     }
 
+    public Room getRoom(int num) {
+        if(num > rooms.size()) {
+            return null;
+        }
+        return rooms.get(num);
+    }
+
     public void saveRoom()
     {
         DataWriter.saveRooms();
