@@ -216,6 +216,5 @@ public void inputOptions(int num, Account player) {
     return roomName + type + solved + puzzles.toString() + inventory.toString() + "\n" + objects + roomDescription + options; 
  }
 
- 
 }
  
