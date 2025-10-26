@@ -14,7 +14,7 @@ public class RoomList
     }
 
     /**
-     * @return
+     * @return the singleton
      */
     public static RoomList getInstance()
     {
