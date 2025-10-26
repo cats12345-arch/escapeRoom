@@ -96,24 +96,48 @@ public class UI {
         }
     }
 
+    /**
+     * Will ask the user if they want to see all items or just a certain item and then will do as the user asks
+     */
     private void selectItem() {
-
+        System.out.println("1. To see all items \n2. To see a certain item.");
+        int num = scanner.nextInt();
+        System.out.print("");
+        if(num == 1) {
+            facade.getAllItemsDescription();
+        } else if (num == 2) {
+            facade.getAllItemNames();
+            System.out.println("Which Item would you like to see the details for?");
+            num = scanner.nextInt();
+            String item = facade.getItemInfo(num);
+            if(item == null) {
+                System.out.println("Sorry that Item does not exist");
+            } else {
+                System.out.println(item);
+            }
+        }
+        
     }
 
     private void exploreRoom() {
-
+        facade.exploreRoom();
     }
 
     private void saveGame() {
-
+        System.out.println("Saving game");
+        facade.saveGame();
+        System.out.println("Completed");
     }
 
     private void loadGame () {
-
+        System.out.println("Loading game");
+        facade.loadGame();
+        System.out.println("Completed");
     }
 
     private void leaderboard () {
-
+        facade.addToLeaderbaord();
+        facade.displayLeaderBoard();
     }
 
     private void printMenu() {

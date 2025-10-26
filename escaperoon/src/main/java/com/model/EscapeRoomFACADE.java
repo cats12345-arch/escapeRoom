@@ -1,5 +1,6 @@
 package com.model;
 
+import java.util.ArrayList;
 
 public class EscapeRoomFACADE {
 
@@ -83,6 +84,7 @@ public void saveGame() {
 public void loadGame()
 {
     DataLoader.getPlayers();
+    DataLoader.getRooms();
 }
 
 public void endGame()
@@ -120,16 +122,41 @@ public String getNextHint() {
     return temp;
 }
 
+public String getAllItemsDescription() {
+    return room.getItemsDetails();
+}
+
+public String getAllItemNames() {
+    return room.getItemsNames();
+}
+
+public String getItemInfo(int num) {
+    if(num > room.getInventorySize()) {
+        return null;
+    }
+    return room.getItemInfo(num);
+}
+
 public void roomSelect(String roomName)
 {
     roomList.getRoom(roomName);
 }
 
-public void exploreRoom()
+public String exploreRoom()
 {
-    room.exploreRoom();
+    return room.getRoomInfo();
 }
 
+public void addToLeaderbaord() {
+    ArrayList<Account> accounts = accountList.getAccount();
+    for (int i=0; i < accounts.size(); i++) {
+        leaderboard.addScore(accounts.get(i));
+    }
+}
+
+public void displayLeaderBoard() {
+    leaderboard.displayTop();
+}
 public void puzzleAnswer(String answer)
 {
     

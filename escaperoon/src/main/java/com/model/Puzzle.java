@@ -20,7 +20,6 @@ public abstract class Puzzle {
         this.puzzleNum = 0;
         this.hint = new ArrayList<>();
         this.puzzleType = "GENERIC";
-        this.hintNum = 0;
     }
 public String getPuzzleType() {
         return puzzleType;

@@ -1,5 +1,7 @@
 package com.model; 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Leaderboard {
     private HashMap<Account, Integer> scores;
@@ -32,6 +34,9 @@ public class Leaderboard {
 
     public void displayTop()
     {
-
+        TreeMap<Account, Integer> sortedMap = new TreeMap<>(scores);
+        for(Map.Entry<Account, Integer> entry: sortedMap.entrySet()) {
+            System.out.println(entry.getKey().getUsername() + ": " + entry.getValue());
+        }
     }
 }
