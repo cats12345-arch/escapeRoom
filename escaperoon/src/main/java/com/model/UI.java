@@ -59,6 +59,8 @@ public class UI {
                 break;
                 case "16": printMenu();
                 break;
+                case "17": 
+                break;
                 case "0": 
                     facade.saveGame();
                     running = false; 
@@ -68,6 +70,11 @@ public class UI {
             }
         }
         println("Exiting the program");
+    }
+
+    public void showPercentage() {
+        String temp = "" + facade.showPercentage();
+        println(temp);
     }
 
     /**

@@ -157,6 +157,21 @@ public void showDifferentPuzzles() {
     room.getPuzzleDetails();
 }
 
+public double showPercentage() {
+    int size = roomProgress.getPuzzles().size();
+    return howManyComplete(roomProgress.getPuzzles())/ size;
+}
+
+private int howManyComplete(ArrayList<PuzzleProgress> puzzle) {
+    int n = 0;
+    for(int i=0; i<puzzle.size(); i++) {
+        if(puzzle.get(i).getIsComplete()) {
+            n++;
+        }
+    }
+    return n;
+}
+
 /*
  * Loads the puzzle 
  */
