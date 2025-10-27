@@ -54,22 +54,54 @@
     }
     ],
     "objects": [{
-      "objectName": "object name",
-      "objectDescription": "Infinitely Sweet",
+      "objectName": "BookShelf",
+      "objectDescription": "A tall and long, brown stained bookshelf sits in the corner of the library.",
       "contains": {
-        "name": "example item name",
-        "description": "example item description"
+        "name": "brick", 
+      "description": "While technically clay found in mines, we call it brick."
       }
-    }],
-    "roomDescription": "A grand, dimly lit library filled with towering bookshelves, dusty tomes, and hidden secrets waiting to be unlocked.",
-    "options": "1. There is a chest \n 2. There is a bookshelf"
+    }
+    , {
+      "objectName": "Desk",
+      "objectDescription": "A desk sits on the back wall of the room, covered in dust and old scriptures.",
+      "contains": {
+        "name": "lumber", 
+      "description": "Found inside the forest."
+      }
+    } 
+    , {
+      "objectName": "Chest",
+      "objectDescription": "A treasure chest sits near the front of the room, with its lock rusted open.",
+      "contains": {
+        "name": "sheep", 
+      "description": "The only and lonely animal of catan."
+      }
+    }, 
+    {
+       "objectName": "Table",
+      "objectDescription": "A long table in the center of the library with many chairs to sit and read. ",
+      "contains": {
+        "name": "ore", 
+      "description": "A rocky element from the mountains of catan."
+    }
+  }, 
+  {
+     "objectName": "Perculiar Throne",
+      "objectDescription": "The throne sits in the direct front of the library, like it was made to watch the people coming in and out. ",
+      "contains": {
+        "name": "wheat", 
+      "description": "A golden source of fuel for you and sheep."
+    }
+  }
+    ]
+    
   },
   {
     "roomName": "Victorian",
-    "type": "Cipher",
+    "type": "cipher",
     "solved": true,
     "puzzles": [{
-      "type": "Cipher",
+      "type": "cipher",
       "ceasarCiphers": "4",
      "anagram" : "HEPES",
       "answer": "SHEEP",
@@ -107,13 +139,46 @@
       "usableOn": "puzzle"
     }],
     "objects": [{
-      "objectName": "object name",
-      "objectDescription": "Infinitely Sweet",
+      "objectName": "BookShelf",
+      "objectDescription": "A tall and long, brown stained bookshelf sits in the corner of the library.",
       "contains": {
-        "name": "example item name",
-        "description": "example item description"
+        "name": "brick", 
+      "description": "While technically clay found in mines, we call it brick."
       }
-    }],
+    }
+    , {
+      "objectName": "Desk",
+      "objectDescription": "A desk sits on the back wall of the room, covered in dust and old scriptures.",
+      "contains": {
+        "name": "lumber", 
+      "description": "Found inside the forest."
+      }
+    } 
+    , {
+      "objectName": "Chest",
+      "objectDescription": "A treasure chest sits near the front of the room, with its lock rusted open.",
+      "contains": {
+        "name": "sheep", 
+      "description": "The only and lonely animal of catan."
+      }
+    }, 
+    {
+       "objectName": "Table",
+      "objectDescription": "A long table in the center of the library with many chairs to sit and read. ",
+      "contains": {
+        "name": "ore", 
+      "description": "A rocky element from the mountains of catan."
+    }
+  }, 
+  {
+     "objectName": "Perculiar Throne",
+      "objectDescription": "The throne sits in the direct front of the library, like it was made to watch the people coming in and out. ",
+      "contains": {
+        "name": "wheat", 
+      "description": "A golden source of fuel for you and sheep."
+    }
+  }
+    ],
     "roomDescription": "Brass gears, ink-stained papers, and a clockwork cipher box fill the study — crack the code hidden in the clock`s chime.",
     "options": "1. There is are some dice \n 2. There a desk"
   }
