@@ -36,7 +36,7 @@ public abstract class Puzzle {
     }
 
     public boolean solve(String input) {
-        if(input.equals(solution)) {
+        if(input.equalsIgnoreCase(solution)) {
             return true;
         }
         return false;

@@ -293,6 +293,7 @@ public class UI {
                 println("Game started successfully");
                 println("1. Interact with Objects. \n2. Do the puzzles. \n3. Stop doing things in the room");
                 int input = scanner.nextInt();
+                scanner.nextLine();
                 while(input != 3) {
                     println("");
                     Boolean which = facade.selectPuzzleOrObject(input);
@@ -304,6 +305,7 @@ public class UI {
                         facade.getObject(input);
                         println("1. Would you like to interact with the object? \n2. Would you like to see the object description?\n3. Stop interacting with objects");
                         input = scanner.nextInt();
+                        scanner.nextLine();
                         println("");
                         while(input != 3) {
                             if(input == 1) {
@@ -313,6 +315,7 @@ public class UI {
                             }
                             facade.addPuzzleProgressToAccount();
                             input = scanner.nextInt();
+                            scanner.nextLine();
                         }
                         println("1. Interact with Objects. \n2. Do the puzzles. \n3. Stop doing things in the room");
                     } else {
@@ -320,14 +323,17 @@ public class UI {
                         facade.createPuzzleProgress();
                         println("Which puzzles would you like to interact with?");
                         input = scanner.nextInt();
+                        scanner.nextLine();
                         facade.getPuzzle(input);
                         facade.displayDifferentTypes();
                         println("Enter 4 to exit back to the room");
                         input = scanner.nextInt();
+                        scanner.nextLine();
                         while(input != 4 ) {
                             if(input == 1) {
                                 facade.seeHint();
                             } else if (input == 2) {
+                                scanner.nextLine();
                                 String solution = scanner.nextLine();
                                 facade.solve(solution);
                             } else if (input == 3) {
@@ -340,6 +346,7 @@ public class UI {
                     }
                     input = scanner.nextInt();
                 }
+                facade.addRoomProgress();
                 scanner.nextLine();
                 printMenu();
                 

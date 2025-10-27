@@ -32,6 +32,7 @@ public EscapeRoomFACADE()
     this.roomList = RoomList.getInstance();
     this.gameEngine = GameEngine.getInstance();
     this.leaderboard = Leaderboard.getInstance();
+    this.roomProgress = new RoomProgress();
     this.puzzleNum = 0;
     this.hintNum = 0;
 }
@@ -130,6 +131,10 @@ public void endGame()
     timer.stop();
 }
 
+public void addRoomProgress() {
+    account.addToRoomProgress(roomProgress);
+}
+
 /*
  * Starts a new game session 
  */
@@ -139,7 +144,6 @@ public Boolean startGame()
     if(room == null) {
         return false;
     }
-    roomProgress = new RoomProgress();
     roomProgress.setRoomProgress(room);
     roomNum++;
     timer.start();
@@ -194,7 +198,7 @@ public void displayPuzzle() {
     if(puzzle.getPuzzleType().equalsIgnoreCase("riddle")) {
         RiddlePuzzle temp =  (RiddlePuzzle) puzzle;
         println(temp.getRiddle());
-    } else if(puzzle.getPuzzleType().equalsIgnoreCase("anagram")) {
+    } else if(puzzle.getPuzzleType().equalsIgnoreCase("cipher")) {
         CipherPuzzle temp = (CipherPuzzle) puzzle;
         println(temp.getAnagram());
     } else if (puzzle.getPuzzleType().equalsIgnoreCase("item")) {
