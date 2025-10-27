@@ -55,7 +55,7 @@ public class Account {
      * @param roomProgress Additional RoomProgress
      */
     public void addToRoomProgress(RoomProgress roomProgress) {
-        roomProgresses.add(roomProgress);
+        this.roomProgresses.add(roomProgress);
     }
 
     public void addToPuzzleProgress(RoomProgress room, PuzzleProgress puzzle) {

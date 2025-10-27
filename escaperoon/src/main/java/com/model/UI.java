@@ -59,7 +59,9 @@ public class UI {
                 break;
                 case "16": printMenu();
                 break;
-                case "0": running = false; 
+                case "0": 
+                    facade.saveGame();
+                    running = false; 
                 break;
                 default: println("Try again.");
                 break;

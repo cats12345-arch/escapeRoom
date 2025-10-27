@@ -43,6 +43,7 @@ public class RoomProgress {
         this.isComplete = false;
         this.time = null;
         this.room = null;
+        this.time = Duration.ZERO;
     }
 
     public void setRoomProgress(Room room) {

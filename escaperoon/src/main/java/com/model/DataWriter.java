@@ -25,7 +25,7 @@ public class DataWriter extends DataConstants{
             jsonRooms.add(getRoom(roomList.get(i)));
         }
 
-        try (FileWriter file = new FileWriter(ROOM_TEMP_FILE_NAME)) {
+        try (FileWriter file = new FileWriter(ROOM_FILE_NAME)) {
             file.write(jsonRooms.toJSONString());
             file.flush();
         } catch (Exception e) {
@@ -47,7 +47,7 @@ public class DataWriter extends DataConstants{
             jsonAccounts.add(getUserJSON(accountList.get(i)));
         }
 
-        try (FileWriter file = new FileWriter(USER_TEMP_FILE_NAME)){
+        try (FileWriter file = new FileWriter(USER_FILE_NAME)){
             file.write(jsonAccounts.toJSONString());
             file.flush();
         } catch (Exception e) {
