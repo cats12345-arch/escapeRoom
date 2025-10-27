@@ -5,32 +5,32 @@
     "solved": false,
     "puzzles": [{
       "type": "Riddle",
-      "riddle": "The Polar Boys",
-      "answer": "Goodbye",
+      "riddle": "From mountains high, I shine and gleam; build your cities with my beam.",
+      "answer": "ORE",
       "hints": [{
-        "hint": "3rd Example hint"
+        "hint": "Its a 3 letter word for a rocky substance"
       },
       {
-        "hint": "3rd Examplehint2"
+        "hint": "Its just a stupid boulder. Its not just a boulder, its a (3 letter) rock!"
       },
       {
-        "hint": "3rd Examplehint3"
+        "hint": "An anagram for this answer is: REO."
       }],
       "puzzleNum": 1
     },
     {
       "type": "cipher",
-      "answer": "Arc System Works",
-      "ceasarCiphers": 5,
-      "anagram": "please pretend this is an anagram",
+      "answer": "CATAN",
+      "ceasarCiphers": 4,
+      "anagram": "TNACA",
       "hints": [{
-        "hint": "3rd Example hint"
+        "hint": "Its the name of a very popular board Game! (not monopoly)"
       },
       {
-        "hint": "3rd Examplehint2"
+        "hint": "The settlers vist the vast lands of this island."
       },
       {
-        "hint": "3rd Examplehint3"
+        "hint": "The answer starts with the CAT (meow)."
       }],
       "puzzleNum": 2
     }],
@@ -69,33 +69,34 @@
     "type": "Cipher",
     "solved": true,
     "puzzles": [{
-      "type": "Riddle",
-      "riddle": "JAWWNY",
-      "answer": "Anything You want",
+      "type": "Cipher",
+      "ceasarCiphers": "4",
+     "anagram" : "HEPES",
+      "answer": "SHEEP",
       "hints": [{
-        "hint": "5th Example hint"
+        "hint": "This animal goes 'BAHHH'"
       },
       {
-        "hint": "5th Examplehint2"
+        "hint": "It is a tradable commodity in the game CATAN"
       },
       {
-        "hint": "5th Examplehint3"
+        "hint": "They are great animals for development!"
       }],
       "puzzleNum": 1
     },
     {
       "type": "cipher",
-      "answer": "Blue Rain Boots",
-      "ceasarCiphers": 5,
-      "anagram": "This is totally an annagram",
+      "answer": "ROBBER",
+      "ceasarCiphers": 4,
+      "anagram": "RBOREB",
       "hints": [{
-        "hint": "4th Example hint"
+        "hint": "Unlucky number 7 results in this!"
       },
       {
-        "hint": "4th Examplehint2"
+        "hint": "They like to steal resources from the settlers"
       },
       {
-        "hint": "4th Examplehint3"
+        "hint": "Lives in the baren desert hex tile."
       }],
       "puzzleNum": 2
     }],
