@@ -59,7 +59,7 @@ public class UI {
                 break;
                 case "16": printMenu();
                 break;
-                case "17": 
+                case "17": showPercentage();
                 break;
                 case "0": 
                     facade.saveGame();
@@ -192,6 +192,7 @@ public class UI {
         println("14 - Load game");
         println("15 - Leaderboard");
         println("16 - Show options");
+        println("17  - Show Percentage");
         println("0  - Exit");
     }
 

@@ -21,7 +21,7 @@ public class PuzzleProgress {
      * @param puzzle The linked puzzle to its progress
      */
     public PuzzleProgress(boolean isComplete, Duration time, int numHintsUsed, Puzzle puzzle) {
-        this.isComplete = isComplete;
+        this.isComplete = true;
         this.time = time;
         this.numHintsUsed = numHintsUsed;
         this.puzzle = puzzle;
@@ -39,7 +39,7 @@ public class PuzzleProgress {
      *  default constructor
      */
     public PuzzleProgress() {
-        this.isComplete = false;
+        this.isComplete = true;
         this.time = null;
         this.numHintsUsed = 0;
         this.puzzle = null;

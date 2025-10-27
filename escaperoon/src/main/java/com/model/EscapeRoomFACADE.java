@@ -158,8 +158,7 @@ public void showDifferentPuzzles() {
 }
 
 public double showPercentage() {
-    int size = roomProgress.getPuzzles().size();
-    return howManyComplete(roomProgress.getPuzzles())/ size;
+    return howManyComplete(roomProgress.getPuzzles()) / 3;
 }
 
 private int howManyComplete(ArrayList<PuzzleProgress> puzzle) {
