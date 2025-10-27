@@ -33,7 +33,38 @@
         "hint": "The answer starts with the CAT (meow)."
       }],
       "puzzleNum": 2
-    }],
+    }, {
+      "type": "item",
+      "answer": "CATAN",
+      "hints": [{
+        "hint": "Its the name of a very popular board Game! (not monopoly)"
+      },
+      {
+        "hint": "The settlers vist the vast lands of this island."
+      },
+      {
+        "hint": "The answer starts with the CAT (meow)."
+      }],
+      "requiredItems":[{
+        "name": "wheat", 
+        "description": "A golden source of fuel for you and sheep."
+      }, {
+        "name": "ore", 
+        "description": "A rocky element from the mountains of catan."
+      }, {
+        "name": "sheep", 
+        "description": "The only and lonely animal of catan."
+      }, {
+        "name": "brick", 
+        "description": "While technically clay found in mines, we call it brick."
+      }, {
+        "name": "lumber", 
+        "description": "Found inside the forest."
+      }
+    ],
+      "puzzleNum": 2
+    }
+    ],
     "items": [{
       "name": "wheat", 
       "description": "A golden source of fuel for you and sheep.",
@@ -137,6 +168,36 @@
       "name": "key",
       "description": "The decryption key for the puzzle",
       "usableOn": "puzzle"
+    }, {
+      "type": "item",
+      "answer": "CATAN",
+      "hints": [{
+        "hint": "Its the name of a very popular board Game! (not monopoly)"
+      },
+      {
+        "hint": "The settlers vist the vast lands of this island."
+      },
+      {
+        "hint": "The answer starts with the CAT (meow)."
+      }],
+      "requiredItems":[{
+        "name": "wheat", 
+        "description": "A golden source of fuel for you and sheep."
+      }, {
+        "name": "ore", 
+        "description": "A rocky element from the mountains of catan."
+      }, {
+        "name": "sheep", 
+        "description": "The only and lonely animal of catan."
+      }, {
+        "name": "brick", 
+        "description": "While technically clay found in mines, we call it brick."
+      }, {
+        "name": "lumber", 
+        "description": "Found inside the forest."
+      }
+    ],
+      "puzzleNum": 2
     }],
     "objects": [{
       "objectName": "BookShelf",

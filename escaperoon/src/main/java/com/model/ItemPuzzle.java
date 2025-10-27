@@ -22,6 +22,30 @@ public class ItemPuzzle extends Puzzle {
         this.room = room;
     }
 
+    public ItemPuzzle(String solution, ArrayList<Item> requiredItems, ArrayList<String> hint, int puzzleNum) {
+        super(solution, hint, puzzleNum, "item");
+        this.requiredItems = requiredItems;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
+
+    public String getSolution() {
+        return solution;
+    }
+
+    public String getRequiredItems() {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<requiredItems.size(); i++) {
+            int num = i;
+            num++;
+            sb.append("\n" + num + ".: " + requiredItems.get(i).getName());
+        }
+        return sb.toString();
+    }
+
     private void println(String s) {
         Speek.speak(s);
         System.out.println(s);
@@ -33,52 +57,20 @@ public class ItemPuzzle extends Puzzle {
      * @return true or false if all required room items are found in the player's inventory
      */
     public boolean isSolved(ArrayList<Item> playerInventory) {
-        if (room == null) {
-            return false;
+        int size = requiredItems.size();
+        int temp = 1;
+        for(int i=0; i<requiredItems.size(); i++) {
+            for(int j=0; j<playerInventory.size(); j++) {
+                if(requiredItems.get(i).getName().equals(playerInventory.get(j).getName())) {
+                    temp++;
+                    playerInventory.remove(j);
+                }
+            }
         }
-
-        ArrayList<Item> roomItems = room.getItems();
-        if (roomItems == null || roomItems.isEmpty()) {
-            return false;
-        }
-
-        if (requiredItems == null || requiredItems.isEmpty()) {
-            println("You solved the " + puzzleNum + " puzzle!");
+        if(temp >= size) {
             return true;
         }
-
-        if (playerInventory == null || playerInventory.isEmpty()) {
-            return false;
-        }
-
-        // verify each required item both exists in the room and is owned by the player
-        for (Item needed : requiredItems) {
-            boolean inRoom = false;
-            boolean withPlayer = false;
-
-            for (Item item : roomItems) {
-                if (item.getName().equalsIgnoreCase(needed.getName())) {
-                    inRoom = true;
-                    break;
-                }
-            }
-
-            for (Item playerItem : playerInventory) {
-                if (playerItem.getName().equalsIgnoreCase(needed.getName())) {
-                    withPlayer = true;
-                    break;
-                }
-            }
-
-            // if missing in either location, puzzle is not solved
-            if (!inRoom || !withPlayer) {
-                return false;
-            }
-        }
-
-        // all required items are both in the room and owned by the player
-        println("You solved the " + puzzleNum + " puzzle!");
-        return true;
+        return false;
     }
 
     @Override

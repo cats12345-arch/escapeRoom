@@ -2,8 +2,6 @@ package com.model;
 
 import java.util.Scanner;
 
-import com.speech.Speek;
-
 public class UI {
 
     private final EscapeRoomFACADE facade;
@@ -326,7 +324,6 @@ public class UI {
                         facade.displayDifferentTypes();
                         println("Enter 4 to exit back to the room");
                         input = scanner.nextInt();
-                        scanner.nextLine();
                         while(input != 4 ) {
                             if(input == 1) {
                                 facade.seeHint();
@@ -369,7 +366,7 @@ public class UI {
      * Prints a string to the console 
      */
     private void println(String s) {
-        Speek.speak(s);
+        //Speek.speak(s);
         System.out.println(s);
     }
 

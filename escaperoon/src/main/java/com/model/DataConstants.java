@@ -82,6 +82,8 @@ public abstract class DataConstants {
     //Riddle Puzzle
     protected static final String RIDDLE_RIDDLE = "riddle";
 
+    //Item puzzle
+    protected static final String ITEM_PUZZLE_ARRAY = "requiredItems";
 
     //Items
     protected static final String ITEM_NAME = "name";

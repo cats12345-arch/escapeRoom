@@ -174,9 +174,9 @@ public class DataLoader extends DataConstants{
                 int shift = ((Long)puzzleJSON.get(CIPHER_CEASER)).intValue();
                 puzzle = new CipherPuzzle(puzzleAnswer, shift, anagram, hints, puzzleNum);
             } else if (puzzleType.equalsIgnoreCase("item")) {
-                //Im gonna wait until miles is done to mess with this I can tell it will be a pain
-            } else {
-                puzzle = null;
+                JSONArray itemsJSON = (JSONArray)puzzleJSON.get(ITEM_PUZZLE_ARRAY);
+                ArrayList<Item> items = helperItem(itemsJSON);
+                puzzle = new ItemPuzzle(puzzleAnswer, items, hintsJSON, puzzleNum);
             }
 
             puzzles.add(puzzle);
@@ -203,6 +203,17 @@ public class DataLoader extends DataConstants{
             objects.add(new Object(objectName, objectDescription, item));
        }
         return objects;
+    }
+
+    public static ArrayList<Item> helperItem(JSONArray array) {
+        ArrayList<Item> items = new ArrayList<Item>();
+        for (int m=0; m < array.size(); m++) {
+            JSONObject itemJSON = (JSONObject)array.get(m);
+            String itemName = (String)itemJSON.get(ITEM_NAME);
+            String itemDescription = (String)itemJSON.get(ITEM_DESCRIPTION);
+            items.add(new Item(itemName, itemDescription));
+        }
+        return items;
     }
     
     /**

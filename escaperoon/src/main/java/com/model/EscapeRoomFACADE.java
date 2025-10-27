@@ -175,7 +175,7 @@ public void displayDifferentTypes() {
     } else if(puzzle.getPuzzleType().equalsIgnoreCase("cipher")) {
         println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the Anagram?");
     } else if (puzzle.getPuzzleType().equalsIgnoreCase("item")) {
-        println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the Anagram?");
+        println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the required Items?");
     }
 }
 
@@ -198,7 +198,8 @@ public void displayPuzzle() {
         CipherPuzzle temp = (CipherPuzzle) puzzle;
         println(temp.getAnagram());
     } else if (puzzle.getPuzzleType().equalsIgnoreCase("item")) {
-        println("1. Would you like a hint? \n2. Would you like to try to solve the puzzle? \n3. Would you like to see the Anagram?");
+        ItemPuzzle temp = (ItemPuzzle) puzzle;
+        println(temp.getRequiredItems());
     }
 }
 
@@ -228,16 +229,33 @@ public void addItems(Item item) {
 /*
  * Attempts to solve the puzzle with the given input 
  */
-public void solve(String input) {
+public Boolean solve(String input) {
+    if(puzzle.getPuzzleType().equalsIgnoreCase("item")) {
+        ItemPuzzle temp = (ItemPuzzle) puzzle;
+        Boolean bool = temp.isSolved(room.getInventory());
+        if(bool) {
+            println("The puzzle has been solved!");
+            account.addToScore(20);
+            puzzleProgress.setCompletion(true);
+            return true;
+        } else {
+            println("That was incorrect!");
+            account.addToScore(-5);
+            puzzleProgress.setCompletion(false);
+            return false;
+        }
+    }
     Boolean solved = puzzle.solve(input);
     if(solved) {
         println("The puzzle has been solved!");
         account.addToScore(20);
         puzzleProgress.setCompletion(true);
+        return true;
     } else {
         println("That was incorrect!");
         account.addToScore(-5);
         puzzleProgress.setCompletion(false);
+        return false;
     }
 }
 
