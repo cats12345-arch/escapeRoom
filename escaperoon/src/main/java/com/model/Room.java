@@ -2,6 +2,8 @@ package com.model;
 
 import java.util.ArrayList;
 
+import com.speech.Speek;
+
 public class Room 
 {
     protected String roomName;
@@ -47,7 +49,7 @@ public class Room
     }
 
     private void println(String s) {
-        //Speek.speak(s);
+        Speek.speak(s);
         System.out.println(s);
     }
 

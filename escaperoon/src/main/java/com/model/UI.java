@@ -2,6 +2,8 @@ package com.model;
 
 import java.util.Scanner;
 
+import com.speech.Speek;
+
 public class UI {
 
     private final EscapeRoomFACADE facade;
@@ -383,7 +385,7 @@ public class UI {
      * Prints a string to the console 
      */
     private void println(String s) {
-        //Speek.speak(s);
+        Speek.speak(s);
         System.out.println(s);
     }
 
