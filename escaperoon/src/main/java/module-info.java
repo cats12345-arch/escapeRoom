@@ -4,6 +4,7 @@ module com.example {
     requires javafx.fxml;
     requires json.simple;
     requires freetts;
+    requires junit;
     opens com.example to javafx.fxml;
     exports com.example;
 }
